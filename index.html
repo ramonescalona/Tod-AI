@@ -13,7 +13,7 @@
 body{font-family:'Nunito Sans',sans-serif;background:#f5f5f3;color:#1a1a1a;-webkit-font-smoothing:antialiased}
 .app{max-width:1200px;margin:0 auto;padding:16px;padding-bottom:100px}
 .header{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid #ddd}
-.logo{width:48px;height:48px;border-radius:14px;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#5DCAA5;cursor:pointer;flex-shrink:0}
+.logo{width:48px;height:48px;border-radius:14px;background:#085041;cursor:pointer;flex-shrink:0;overflow:hidden;padding:0}.logo img{width:100%;height:100%;object-fit:cover;display:block}
 .header-text{flex:1}
 .header-text h1{font-size:19px;font-weight:700;cursor:pointer}
 .header-text p{font-size:13px;color:#888;margin-top:2px}
@@ -98,17 +98,16 @@ td.over-budget{color:#A32D2D!important;font-weight:700!important}
 .section-pills button.active{border-color:#085041;background:#08504114;color:#085041;font-weight:600}
 .collapse-toggle{display:inline-block;width:16px;font-size:10px;color:#888;cursor:pointer;text-align:center}
 .sheet-info{margin-top:8px;font-size:11px;color:#888}
-/* CHAT */
-.chat-fab{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#085041;border:none;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:transform .2s}
+.chat-fab{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#085041;border:none;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:transform .2s;overflow:hidden;padding:0}
 .chat-fab:active{transform:scale(.92)}
-.chat-fab svg{width:28px;height:28px}
+.chat-fab img{width:100%;height:100%;object-fit:cover}
 .chat-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:300;opacity:0;transition:opacity .3s;pointer-events:none}
 .chat-backdrop.open{opacity:1;pointer-events:auto}
 .chat-panel{position:fixed;bottom:0;left:0;right:0;max-width:600px;margin:0 auto;height:75vh;max-height:680px;background:#fff;border-radius:20px 20px 0 0;z-index:301;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,.72,.37,1.12);display:flex;flex-direction:column;box-shadow:0 -8px 40px rgba(0,0,0,.15)}
 .chat-panel.open{transform:translateY(0)}
 .chat-handle{width:40px;height:4px;border-radius:2px;background:#ccc;margin:10px auto 0}
 .chat-head{display:flex;align-items:center;gap:10px;padding:12px 20px;border-bottom:1px solid #eee;flex-shrink:0}
-.chat-head .av{width:32px;height:32px;border-radius:50%;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#5DCAA5}
+.chat-head .av{width:32px;height:32px;border-radius:50%;background:#085041;overflow:hidden;padding:0}.chat-head .av img{width:100%;height:100%;object-fit:cover;display:block}
 .chat-head .info{flex:1}
 .chat-head .info h3{font-size:15px;font-weight:700}
 .chat-head .info p{font-size:11px;color:#888}
@@ -119,7 +118,7 @@ td.over-budget{color:#A32D2D!important;font-weight:700!important}
 .chat-msg .bubble{max-width:85%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
 .chat-msg.user .bubble{background:#085041;color:#fff;border-bottom-right-radius:4px}
 .chat-msg.bot .bubble{background:#f0f0ee;color:#1a1a1a;border-bottom-left-radius:4px}
-.chat-msg .bot-av{width:24px;height:24px;border-radius:50%;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;color:#5DCAA5;flex-shrink:0;margin-top:2px}
+.chat-msg .bot-av{width:24px;height:24px;border-radius:50%;background:#085041;overflow:hidden;flex-shrink:0;margin-top:2px;padding:0}.chat-msg .bot-av img{width:100%;height:100%;object-fit:cover;display:block}
 .chat-suggestions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .chat-suggestions button{padding:8px 14px;border:1px solid #ddd;border-radius:20px;font-size:12px;font-family:inherit;cursor:pointer;background:#fff;color:#1a1a1a;text-align:left;line-height:1.3}
 .chat-suggestions button:active{background:#f0f0ee}
@@ -132,10 +131,9 @@ td.over-budget{color:#A32D2D!important;font-weight:700!important}
 .typing-dots span:nth-child(2){animation-delay:.2s}
 .typing-dots span:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
-/* API KEY SETUP */
 .setup-overlay{position:fixed;inset:0;background:rgba(8,80,65,.92);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
 .setup-card{background:#fff;border-radius:20px;padding:32px;max-width:420px;width:100%;text-align:center}
-.setup-card .tod-logo{width:60px;height:60px;border-radius:16px;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;color:#5DCAA5;margin:0 auto 16px}
+.setup-card .tod-logo{width:60px;height:60px;border-radius:16px;background:#085041;overflow:hidden;margin:0 auto 16px;padding:0}.setup-card .tod-logo img{width:100%;height:100%;object-fit:cover;display:block}
 .setup-card h2{font-size:20px;font-weight:700;margin-bottom:6px}
 .setup-card p{font-size:13px;color:#666;margin-bottom:20px;line-height:1.5}
 .setup-card input{width:100%;padding:12px 16px;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-family:inherit;outline:none;margin-bottom:8px}
@@ -159,6 +157,8 @@ td.over-budget{color:#A32D2D!important;font-weight:700!important}
 const{useState,useMemo,useRef,useEffect}=React;
 
 /* ── DATA ── */
+const MASCOT_IMG="data:image/jpeg;base64,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";
+
 const MANAGERS=[
   {id:1,mgr:"Jun David",contract:561326636.24,projects:[{id:"1.1",name:"JIL Tower",subs:[{id:"1.1.1",name:"Structural Works Package 1",contract:72000000,pct:.5891},{id:"1.1.2",name:"Retrofitting Works Package 2",contract:42448917.24,pct:.7608},{id:"1.1.3",name:"Retrofitting Works Pkg 3 (Steel Jacket)",contract:49400000,pct:.3874},{id:"1.1.4",name:"Electrical Roughing-ins",contract:540000,pct:.48},{id:"1.1.5",name:"Controlled Demolition",contract:1437719,pct:.3423}]},{id:"1.2",name:"Woodsville Crest Residences",subs:[{id:"1.2.1",name:"Woodsville Tower 3",contract:276000000,pct:.4045},{id:"1.2.2",name:"Woodsville Site Dev",contract:54500000,pct:.4909},{id:"1.2.3",name:"Tower 1 Architectural Fit-out",contract:65000000,pct:.3661}]}]},
   {id:2,mgr:"Ramel De Castro",contract:537320631.83,projects:[{id:"2.1",name:"Sierra Valley Gardens",subs:[{id:"2.1.1",name:"Sierra Tower 4",contract:439320631.83,pct:.3154},{id:"2.1.2",name:"Sierra Tower 1 Fit-out",contract:98000000,pct:.552}]}]},
@@ -196,79 +196,7 @@ const CSR=[
 ];
 
 /* ── SYSTEM PROMPT ── */
-const SYS_PROMPT=`You are Tod, an AI construction ERP analyst for TERP / TACC (The Asian Construction Company). You know all project and cost data.
-
-PORTFOLIO SUMMARY
-10 project managers, ₱5,002,609,086.88 gross contract, ~35% weighted progress.
-5% Tax: ₱250,130,454.34 | After-tax: ₱4,752,478,632.54 | 15% Profit target: ₱750,391,363.03 | Target direct cost: ₱4,002,087,269.50
-Profitability formula: NPAT = (Contract Amount − CSR Column D) × 95%
-
-MANAGERS & PROJECTS
-1. Jun David ₱561M — JIL Tower (Struct Pkg1 59%, Retrofit Pkg2 76%, Retrofit Pkg3 39%, Electrical 48%, Demolition 34%), Woodsville (Tower3 40%, Site Dev 49%, T1 Fitout 37%)
-2. Ramel De Castro ₱537M — Sierra Tower 4 (₱439M, 32%), Sierra T1 Fitout (₱98M, 55%)
-3. Godfrey Aranzaso ₱1.05B — GVMC Architectural (₱640M, PROJ-0020, 15% has CSR), GVMC Phase I (₱126M, 99%), GVMC Phase II (₱101M, 77%), Tarlac Hall of Justice (₱182M, 99%)
-4. Alfhie Masinadiong ₱589M — One Tolentino East (₱499M main 81%, Sealant 43%, Precast 63%, PU Foam 75%, RSB Fab 63%, Lintel 83%)
-5. Ryan Legaspi ₱1.55B — Mantawi Residences Cebu (₱1.55B, 18%)
-6. Mark Tumpalan ₱339M — Dumaguete Medical City (₱219M, 34%), Dumaguete Gov Center (₱82M, 100%), Koko Hotel (₱39M, 94%), Parking (62%)
-7. Reymark La Guardia ₱25M — Amisa Interior Painting (₱25M, 11%)
-8. Giselle Gerardo ₱43M — Lolo Uweng Phase 2 (₱28M, 87%), Belfry Tower Sacred Heart (₱15M, 15%)
-9. Dolphy Esteban ₱207M — Fili Bridgetown Elevator (₱8.8M, 92%), Grand Summit Pangasinan (₱198M, 4%)
-10. Rowell Clarin ₱102M — Maribago Mercado Resort (₱102M, 0%)
-
-GVMC ARCHITECTURAL CSR (PROJ-0020)
-Budget ₱531.6M | Actual ₱130.5M (24.5%) | Remaining ₱401.1M
-A. General Req: ₱87.2M bud / ₱6.2M act (7.2%)
-B. Civil Works: ₱0 bud / ₱15K act
-D. Architectural: ₱164.9M bud / ₱56.1M act (34%)
-E. Mechanical: ₱69.3M bud / ₱51.9M act (74.9% HIGH RISK)
-F. Electrical: ₱37.4M bud / ₱0.5M act (1.3%)
-G. Plumbing: ₱21.1M bud / ₱0.2M act
-H. Fire Protection: ₱21.5M bud / ₱0 act
-I. Auxiliary: ₱130.3M bud / ₱15.5M act
-
-KEY RISKS: Mechanical 74.9% consumed with project only 15% done. Other Costs ₱102.4M with ₱0 budget (unbudgeted). CHB 6" actual ₱2.3M vs budget ₱1.74M (overspent 32%). Staff salary ₱5.72M of ₱9.75M budget (58.6%). D.1.3 Masonry Subcontractor ₱35.9M actual vs ₱47M budget with ₱34.6M in Other costs.
-
-CSR STRUCTURE (Cost Status Report)
-Column A = Budgetary (entered by Estimating/PMU, locked after save)
-Column B = Cost to Date / CTD (auto-pulled from ERPNext, not editable)
-Column C = Cost to Complete / CTC (PM estimate of remaining costs)
-Column D = CSR = B + C (projected cost at completion, saved to DB)
-Column E = Remarks (PM free text)
-Each column has: Qty, UOM, Material Cost, Labor Cost, Equipment Cost, Other Cost, Total Cost
-
-COST BREAKDOWN HIERARCHY (GVMC Architectural)
-A. General Requirements → A.1 Mobilization → A.2 Bonds & Insurance (CARI, Performance Bond, Surety Bond, Guarantee Bond) → A.3 Permits & Licenses → A.4/A.5 Temp Facilities → A.6/A.7 Temp Utilities → A.8 Shop Drawings → A.9 HSE & Security → A.11 Support Equipment → A.12 Site Management → A.13 Representation → A.14 Demobilization
-B. Civil Works → B.1 Demolition
-D. Architectural → D.1 Masonry (CHB 6", Cement, White Sand, Gravel, CHB 4", Plywood, Vibro Sand, Subcon) → D.2 Plastering → D.3 Floor Finishes → D.4 Wall Finishes → D.5 Others
-E/F/G/H/I. Mechanical / Electrical / Plumbing / Fire Protection / Auxiliary
-
-ALLOCATION RULES (Cost Recognition in Column B)
-Priority 1 (Default): PO → Receipt → Payment
-Priority 2: Receipt → PO → Payment (expense at delivery)
-Priority 3: Payment → PO → Receipt (cash basis)
-Set at Cost Breakdown level; overridable at Supplier level.
-
-APPROVAL MATRICES
-MPR (Site): Docs Controller → PIC → Project Manager
-MPR (HO): Requestor → Department Head
-PO: Purchaser → Sir Nick → Sir Ryan
-Pull-Out Request: Purchaser → Sir Nick
-Payment Entry: AP Processor → Sir Ben → Sir Raymund/Sir BE
-Petty Cash JE: Site Custodian → AP Processor → Sir Ben
-
-ERP SYSTEM
-URL: https://terpasia.xurpaslabs.com | App: terp | Platform: ERPNext/Frappe | Implementor: Xurpas Labs
-Processes: Order to Cash (Sales Order → Progress Billing → Collection), Procure to Pay (MPR → RFQ → PO → Receipt → Invoice → Payment), Inventory to Deliver (CW → Site transfers with pull-out approval), Record to Report (AP/AR/petty cash/JE), Acquire to Retire (Asset management)
-CSR files: Excel .xlsm connecting to ERPNext API. VBA macros pull CTD data, save CTC entries, upload files to Digital Ocean (prod folder).
-Conservatism: Inventory and fixed assets fully expensed for CSR even if capitalized in books.
-
-GLOSSARY (key terms)
-CSR=Cost Status Report | CTD=Cost to Date | CTC=Cost to Complete | BOQ=Bill of Quantity | MPR=Material Purchase Requisition | PO=Purchase Order | JE=Journal Entry | CW=Central Warehouse | PMU=Project Management Unit | NPAT=Net Profit After Tax | EWT=Expanded Withholding Tax | VAT=12% | TACC=The Asian Construction Company | TERP=trade name | GVMC=Great Valley Medical Center | PROJ-0020=GVMC Architectural | Pasabay=subcon pass-through materials not tracked in TACC inventory | RIR=Receiving & Inspection Report | FIFO=stock valuation method | CHB=Concrete Hollow Blocks | CARI=Contractors All Risk Insurance
-
-Full CSR data: ${JSON.stringify(CSR)}
-Full project data: ${JSON.stringify(MANAGERS.map(m=>({mgr:m.mgr,contract:m.contract,projects:m.projects})))}
-
-Rules: Use ₱ (Philippine Peso) formatting. Be concise. Flag risks proactively. Answer only from provided data. Keep responses under 1000 tokens.`;
+const SYS_PROMPT=`You are Tod, an AI construction ERP analyst for TERP / TACC (The Asian Construction Company). You know all project and cost data.\n\nPORTFOLIO SUMMARY\n10 project managers, ₱5,002,609,086.88 gross contract, ~35% weighted progress.\n5% Tax: ₱250,130,454.34 | After-tax: ₱4,752,478,632.54 | 15% Profit target: ₱750,391,363.03 | Target direct cost: ₱4,002,087,269.50\n\nMANAGERS & PROJECTS\n1. Jun David ₱561M — JIL Tower + Woodsville\n2. Ramel De Castro ₱537M — Sierra Valley\n3. Godfrey Aranzaso ₱1.05B — GVMC + Tarlac\n4. Alfhie Masinadiong ₱589M — One Tolentino East\n5. Ryan Legaspi ₱1.55B — Mantawi Cebu 18%\n6. Mark Tumpalan ₱339M — Dumaguete projects\n7. Reymark La Guardia ₱25M — Amisa 11%\n8. Giselle Gerardo ₱43M — Lolo Uweng + Belfry\n9. Dolphy Esteban ₱207M — Fili + Grand Summit\n10. Rowell Clarin ₱102M — Maribago 0%\n\nGVMC ARCHITECTURAL CSR (PROJ-0020)\nBudget ₱531.6M | Actual ₱130.5M (24.5%) | Remaining ₱401.1M\nKEY RISKS: Mechanical 74.9% consumed with project only 15% done. Other Costs ₱102.4M with ₱0 budget. CHB 6" overspent 32%.\n\nFull CSR data: ${JSON.stringify(CSR)}\nFull project data: ${JSON.stringify(MANAGERS.map(m=>({mgr:m.mgr,contract:m.contract,projects:m.projects})))}\n\nRules: Use ₱ (Philippine Peso) formatting. Be concise. Flag risks proactively. Answer only from provided data. Keep responses under 1000 tokens.`;
 
 /* ── HELPERS ── */
 const TC=5002609086.88;
@@ -291,7 +219,7 @@ function SetupScreen({onSave}){
   return(
     <div className="setup-overlay">
       <div className="setup-card">
-        <div className="tod-logo">T</div>
+        <div className="tod-logo"><img src={MASCOT_IMG} alt="TACC"/></div>
         <h2>Welcome to Tod</h2>
         <p>Tod uses Google Gemini AI to answer your project questions. Enter your free Gemini API key to get started.</p>
         <input type="password" placeholder="Paste your Gemini API key..." value={key} onChange={e=>setKey(e.target.value)} onKeyDown={onKey} autoFocus/>
@@ -309,73 +237,40 @@ function ChatPanel({open,onClose,apiKey}){
   const[loading,setLoading]=useState(false);
   const endRef=useRef(null);
   const inputRef=useRef(null);
-
   useEffect(()=>{endRef.current?.scrollIntoView({behavior:"smooth"});},[msgs,loading]);
   useEffect(()=>{if(open)setTimeout(()=>inputRef.current?.focus(),400);},[open]);
-
   const send=async(text)=>{
-    const msg=text||input.trim();
-    if(!msg||loading)return;
-    setInput("");
-    const newMsgs=[...msgs,{role:"user",content:msg}];
-    setMsgs(newMsgs);
-    setLoading(true);
+    const msg=text||input.trim();if(!msg||loading)return;setInput("");
+    const newMsgs=[...msgs,{role:"user",content:msg}];setMsgs(newMsgs);setLoading(true);
     try{
-      const res=await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+      const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
         {method:"POST",headers:{"Content-Type":"application/json"},
-         body:JSON.stringify({
-           system_instruction:{parts:[{text:SYS_PROMPT}]},
-           contents:newMsgs.map(m=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]})),
-           generationConfig:{maxOutputTokens:1000}
-         })}
-      );
-      const data=await res.json();
-      if(data.error)throw new Error(data.error.message);
+         body:JSON.stringify({system_instruction:{parts:[{text:SYS_PROMPT}]},contents:newMsgs.map(m=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]})),generationConfig:{maxOutputTokens:1000}})});
+      const data=await res.json();if(data.error)throw new Error(data.error.message);
       const reply=data.candidates?.[0]?.content?.parts?.map(p=>p.text).join("\n")||"Sorry, I couldn't process that.";
       setMsgs([...newMsgs,{role:"assistant",content:reply}]);
-    }catch(e){
-      setMsgs([...newMsgs,{role:"assistant",content:"Error: "+e.message}]);
-    }finally{setLoading(false);}
+    }catch(e){setMsgs([...newMsgs,{role:"assistant",content:"Error: "+e.message}]);}finally{setLoading(false);}
   };
-
   const onKey=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}};
-
   return(
     <React.Fragment>
       <div className={"chat-backdrop"+(open?" open":"")} onClick={onClose}/>
       <div className={"chat-panel"+(open?" open":"")}>
         <div className="chat-handle"/>
         <div className="chat-head">
-          <div className="av">T</div>
+          <div className="av"><img src={MASCOT_IMG} alt="Tod"/></div>
           <div className="info"><h3>Ask Tod</h3><p>AI project analyst · Gemini 2.5 Flash</p></div>
           <button className="close-btn" onClick={onClose}>✕</button>
         </div>
         <div className="chat-msgs">
-          {msgs.length===0&&(
-            <div>
-              <div style={{padding:"12px 0 16px"}}>
-                <p style={{fontSize:14,color:"#888",lineHeight:1.6}}>Hi! I'm Tod. Ask me anything about the portfolio — budgets, progress, risks, any project or manager.</p>
-              </div>
-              <div className="chat-suggestions">
-                {SUGGESTIONS.map((s,i)=><button key={i} onClick={()=>send(s)}>{s}</button>)}
-              </div>
-            </div>
-          )}
-          {msgs.map((m,i)=>(
-            <div key={i} className={"chat-msg "+(m.role==="user"?"user":"bot")}>
-              {m.role==="assistant"&&<div className="bot-av">T</div>}
-              <div className="bubble">{m.content}</div>
-            </div>
-          ))}
-          {loading&&<div className="chat-msg bot"><div className="bot-av">T</div><div className="bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}
+          {msgs.length===0&&(<div><div style={{padding:"12px 0 16px"}}><p style={{fontSize:14,color:"#888",lineHeight:1.6}}>Hi! I'm Tod. Ask me anything about the portfolio — budgets, progress, risks, any project or manager.</p></div><div className="chat-suggestions">{SUGGESTIONS.map((s,i)=><button key={i} onClick={()=>send(s)}>{s}</button>)}</div></div>)}
+          {msgs.map((m,i)=>(<div key={i} className={"chat-msg "+(m.role==="user"?"user":"bot")}>{m.role==="assistant"&&<div className="bot-av"><img src={MASCOT_IMG} alt="Tod"/></div>}<div className="bubble">{m.content}</div></div>))}
+          {loading&&<div className="chat-msg bot"><div className="bot-av"><img src={MASCOT_IMG} alt="Tod"/></div><div className="bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}
           <div ref={endRef}/>
         </div>
         <div className="chat-input-bar">
           <textarea ref={inputRef} value={input} onChange={e=>setInput(e.target.value)} onKeyDown={onKey} placeholder="Ask about any project..." rows={1}/>
-          <button className="send" onClick={()=>send()} style={{background:input.trim()&&!loading?"#085041":"#eee"}}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={input.trim()&&!loading?"#fff":"#aaa"} strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
+          <button className="send" onClick={()=>send()} style={{background:input.trim()&&!loading?"#085041":"#eee"}}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={input.trim()&&!loading?"#fff":"#aaa"} strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
         </div>
       </div>
     </React.Fragment>
@@ -384,8 +279,7 @@ function ChatPanel({open,onClose,apiKey}){
 
 /* ── CSR SHEET ── */
 function Sheet({onBack}){
-  const[col,setCol]=useState({});
-  const[sec,setSec]=useState("all");
+  const[col,setCol]=useState({});const[sec,setSec]=useState("all");
   const toggle=id=>setCol(p=>({...p,[id]:!p[id]}));
   const sections=useMemo(()=>CSR.filter(r=>r[3]===1).map(r=>({id:r[0],name:r[1]})),[]);
   const hasKids=id=>CSR.some(r=>r[0].startsWith(id+".")&&r[0]!==id);
@@ -393,59 +287,30 @@ function Sheet({onBack}){
   const W=130;const cols=["Material","Labor","Equip.","Other","Total"];
   const hColors=[{bg:"#1a5276",bg2:"#21618c"},{bg:"#7d3c00",bg2:"#8b4513"},{bg:"#085041",bg2:"#0a6b55"}];
   const hNames=["Budgetary (A)","Cost to Date (B)","CSR (D = B + C)"];
-  return(
-    <div>
-      <button className="back-btn" onClick={onBack}>← Back to projects</button>
-      <div style={{marginBottom:12}}><h2 style={{fontSize:18}}>GVMC Architectural Works</h2><p style={{fontSize:13,color:"#888",marginTop:4}}>Cost Status Report · PROJ-0020</p></div>
-      <div className="section-pills">
-        <button className={sec==="all"?"active":""} onClick={()=>setSec("all")}>All sections</button>
-        {sections.map(s=><button key={s.id} className={sec===s.id?"active":""} onClick={()=>setSec(sec===s.id?"all":s.id)}>{s.id}. {s.name}</button>)}
-      </div>
-      <div className="sheet-wrap"><div className="sheet-scroll">
-        <table style={{width:80+210+(W*15)}}>
-          <colgroup><col style={{width:80}}/><col style={{width:210}}/>{Array.from({length:15},(_,i)=><col key={i} style={{width:W}}/>)}</colgroup>
-          <thead>
-            <tr><th className="frozen-item frozen-corner" style={{background:"#085041",left:0,textAlign:"left"}}>Item</th><th className="frozen-desc frozen-corner" style={{background:"#085041",left:80,textAlign:"left",borderRight:"2px solid #333"}}>Description</th>{hNames.map((n,gi)=><th key={gi} colSpan={5} style={{background:hColors[gi].bg,borderRight:gi<2?"2px solid #333":"none"}}>{n}</th>)}</tr>
-            <tr><th className="frozen-item frozen-corner" style={{background:"#0a6b55",left:0,borderTop:"none"}}></th><th className="frozen-desc frozen-corner" style={{background:"#0a6b55",left:80,borderTop:"none",borderRight:"2px solid #333"}}></th>{hColors.map((hc,gi)=>cols.map((c,ci)=><th key={gi+"-"+ci} style={{background:hc.bg2,borderTop:"none",borderRight:ci===4&&gi<2?"2px solid #333":"1px solid rgba(255,255,255,.15)"}}>{c}</th>))}</tr>
-          </thead>
-          <tbody>{vis.map((r,i)=>{const[id,desc,lvl,isGrp]=r;const isT=id==="GRAND TOTAL";const isS=isGrp===1;const canC=hasKids(id);const bg=isT?"#e8e4da":isS?"#dceeda":i%2===0?"#ffffff":"#f7f7f5";const cls=isT?"row-total":isS?"row-group":"";const indent=lvl*14;const isOver=r[8]>0&&r[13]>r[8];
-            return(<tr key={id+i} className={cls} style={{background:bg}}>
-              <td className="frozen-item" style={{background:bg,left:0,fontSize:10,color:"#888",textAlign:"left"}}>{isT?"":id}</td>
-              <td className="frozen-desc" style={{background:bg,left:80,textAlign:"left",paddingLeft:10+indent,cursor:canC?"pointer":"default",borderRight:"2px solid #505050"}} onClick={canC?()=>toggle(id):undefined}>{canC&&<span className="collapse-toggle">{col[id]?"▸":"▾"}</span>}{isT?"GRAND TOTAL":desc}</td>
-              {[4,5,6,7].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-              <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[8]?nf(r[8]):"—"}</td>
-              {[9,10,11,12].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-              <td className={"col-total"+(isOver?" over-budget":"")} style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[13]?nf(r[13]):"—"}</td>
-              {[14,15,16,17].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-              <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined,borderRight:"none"}}>{r[18]?nf(r[18]):"—"}</td>
-            </tr>);})}</tbody>
-        </table>
-      </div></div>
-      <p className="sheet-info">{vis.length} of {CSR.length} rows · Tap ▾ to collapse · Swipe right for more columns</p>
-    </div>
-  );
+  return(<div>
+    <button className="back-btn" onClick={onBack}>← Back to projects</button>
+    <div style={{marginBottom:12}}><h2 style={{fontSize:18}}>GVMC Architectural Works</h2><p style={{fontSize:13,color:"#888",marginTop:4}}>Cost Status Report · PROJ-0020</p></div>
+    <div className="section-pills"><button className={sec==="all"?"active":""} onClick={()=>setSec("all")}>All sections</button>{sections.map(s=><button key={s.id} className={sec===s.id?"active":""} onClick={()=>setSec(sec===s.id?"all":s.id)}>{s.id}. {s.name}</button>)}</div>
+    <div className="sheet-wrap"><div className="sheet-scroll">
+      <table style={{width:80+210+(W*15)}}>
+        <colgroup><col style={{width:80}}/><col style={{width:210}}/>{Array.from({length:15},(_,i)=><col key={i} style={{width:W}}/>)}</colgroup>
+        <thead><tr><th className="frozen-item frozen-corner" style={{background:"#085041",left:0,textAlign:"left"}}>Item</th><th className="frozen-desc frozen-corner" style={{background:"#085041",left:80,textAlign:"left",borderRight:"2px solid #333"}}>Description</th>{hNames.map((n,gi)=><th key={gi} colSpan={5} style={{background:hColors[gi].bg,borderRight:gi<2?"2px solid #333":"none"}}>{n}</th>)}</tr>
+        <tr><th className="frozen-item frozen-corner" style={{background:"#0a6b55",left:0,borderTop:"none"}}></th><th className="frozen-desc frozen-corner" style={{background:"#0a6b55",left:80,borderTop:"none",borderRight:"2px solid #333"}}></th>{hColors.map((hc,gi)=>cols.map((c,ci)=><th key={gi+"-"+ci} style={{background:hc.bg2,borderTop:"none",borderRight:ci===4&&gi<2?"2px solid #333":"1px solid rgba(255,255,255,.15)"}}>{c}</th>))}</tr></thead>
+        <tbody>{vis.map((r,i)=>{const[id,desc,lvl,isGrp]=r;const isT=id==="GRAND TOTAL";const isS=isGrp===1;const canC=hasKids(id);const bg=isT?"#e8e4da":isS?"#dceeda":i%2===0?"#ffffff":"#f7f7f5";const cls=isT?"row-total":isS?"row-group":"";const indent=lvl*14;const isOver=r[8]>0&&r[13]>r[8];
+          return(<tr key={id+i} className={cls} style={{background:bg}}><td className="frozen-item" style={{background:bg,left:0,fontSize:10,color:"#888",textAlign:"left"}}>{isT?"":id}</td><td className="frozen-desc" style={{background:bg,left:80,textAlign:"left",paddingLeft:10+indent,cursor:canC?"pointer":"default",borderRight:"2px solid #505050"}} onClick={canC?()=>toggle(id):undefined}>{canC&&<span className="collapse-toggle">{col[id]?"▸":"▾"}</span>}{isT?"GRAND TOTAL":desc}</td>
+          {[4,5,6,7].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}<td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[8]?nf(r[8]):"—"}</td>{[9,10,11,12].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}<td className={"col-total"+(isOver?" over-budget":"")} style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[13]?nf(r[13]):"—"}</td>{[14,15,16,17].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}<td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined,borderRight:"none"}}>{r[18]?nf(r[18]):"—"}</td></tr>);})}</tbody>
+      </table>
+    </div></div>
+    <p className="sheet-info">{vis.length} of {CSR.length} rows · Tap ▾ to collapse · Swipe right for more columns</p>
+  </div>);
 }
 
 /* ── MAIN APP ── */
 function App(){
   const[apiKey,setApiKey]=useState(()=>localStorage.getItem("tod_gemini_key")||"");
-  const[path,setPath]=useState([]);
-  const[sortBy,setSortBy]=useState("ch");
-  const[stage,setStage]=useState("all");
-  const[search,setSearch]=useState("");
-  const[showSort,setShowSort]=useState(false);
-  const[view,setView]=useState("managers");
-  const[showCSR,setShowCSR]=useState(false);
-  const[chatOpen,setChatOpen]=useState(false);
-
+  const[path,setPath]=useState([]);const[sortBy,setSortBy]=useState("ch");const[stage,setStage]=useState("all");const[search,setSearch]=useState("");const[showSort,setShowSort]=useState(false);const[view,setView]=useState("managers");const[showCSR,setShowCSR]=useState(false);const[chatOpen,setChatOpen]=useState(false);
   if(!apiKey)return <SetupScreen onSave={setApiKey}/>;
-
-  const nav=item=>setPath(p=>[...p,item]);
-  const goHome=()=>{setPath([]);setShowCSR(false);};
-  const goTo=idx=>setPath(p=>p.slice(0,idx+1));
-  const current=path[path.length-1];
-  const level=path.length;
-
+  const nav=item=>setPath(p=>[...p,item]);const goHome=()=>{setPath([]);setShowCSR(false);};const goTo=idx=>setPath(p=>p.slice(0,idx+1));const current=path[path.length-1];const level=path.length;
   const enriched=useMemo(()=>MANAGERS.map(m=>({...m,...ms(m)})),[]);
   const allPkgs=useMemo(()=>{const p=[];MANAGERS.forEach(m=>m.projects.forEach(pr=>pr.subs.forEach(s=>p.push({...s,mn:m.mgr,mi:m.id,pn:pr.name}))));return p;},[]);
   const sort=(a,b)=>({ch:(b.totalC||b.contract||0)-(a.totalC||a.contract||0),cl:(a.totalC||a.contract||0)-(b.totalC||b.contract||0),ph:(b.wPct??b.pct??0)-(a.wPct??a.pct??0),pl:(a.wPct??a.pct??0)-(b.wPct??b.pct??0),na:(a.mgr||a.name||"").localeCompare(b.mgr||b.name||""),pk:(b.count||0)-(a.count||0)}[sortBy]||0);
@@ -455,65 +320,28 @@ function App(){
   const aC=useMemo(()=>{let c=0;MANAGERS.forEach(m=>m.projects.forEach(p=>p.subs.forEach(s=>{if(s.pct>0&&s.pct<1)c++;})));return c;},[]);
   const sC=useMemo(()=>{const c={es:0,ip:0,ot:0,nd:0};allPkgs.forEach(s=>c[ss(s.pct)]++);return c;},[allPkgs]);
   const hasF=sortBy!=="ch"||stage!=="all"||search;
-
-  const fab=(
-    <button className="chat-fab" onClick={()=>setChatOpen(true)}>
-      <svg viewBox="0 0 24 24" fill="none" stroke="#5DCAA5" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    </button>
-  );
-
+  const fab=(<button className="chat-fab" onClick={()=>setChatOpen(true)}><img src={MASCOT_IMG} alt="Ask Tod"/></button>);
   if(showCSR)return <div className="app"><Sheet onBack={()=>setShowCSR(false)}/>{fab}<ChatPanel open={chatOpen} onClose={()=>setChatOpen(false)} apiKey={apiKey}/></div>;
-
   return(
     <div className="app">
       <div className="header">
-        <div className="logo" onClick={goHome}>T</div>
+        <div className="logo" onClick={goHome}><img src={MASCOT_IMG} alt="TACC"/></div>
         <div className="header-text"><h1 onClick={goHome}>Tod</h1><p>Project portfolio dashboard</p></div>
         <div className="header-right"><span>TERP New Projects</span><b>March 2026</b></div>
       </div>
-
       {level>0&&<div className="breadcrumb"><span onClick={goHome}>All Projects</span>{path.map((p,i)=><React.Fragment key={i}><span className="sep">›</span><span className={i===path.length-1?"current":""} onClick={()=>i<path.length-1&&goTo(i)}>{p.name||p.mgr}</span></React.Fragment>)}</div>}
-
       {level===0&&<div>
-        <div className="kpis">
-          <div className="kpi"><label>Gross contract</label><div className="val">{f(TC)}</div></div>
-          <div className="kpi"><label>Active packages</label><div className="val">{aC}</div></div>
-          <div className="kpi"><label>Weighted progress</label><div className="val" style={{color:"#085041"}}>{(wP*100).toFixed(1)}%</div></div>
-        </div>
-        <div className="search-box">
-          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search manager, project, or package..."/>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          {search&&<button className="clear" onClick={()=>setSearch("")}>×</button>}
-        </div>
-        <div className="pills">
-          {STAGES.map(s=>{const a=stage===s.k;const ct=s.k==="all"?allPkgs.length:sC[s.k]||0;return <button key={s.k} className={"pill"+(a?" active":"")} style={a?{borderColor:s.c,background:s.c+"14",color:s.c}:{}} onClick={()=>setStage(stage===s.k&&s.k!=="all"?"all":s.k)}>{s.l} ({ct})</button>;})}
-        </div>
-        <div className="controls">
-          <div className="tab-bar"><button className={view==="managers"?"active":""} onClick={()=>setView("managers")}>By manager</button><button className={view==="packages"?"active":""} onClick={()=>setView("packages")}>All packages</button></div>
-          <div style={{display:"flex",gap:8,alignItems:"center"}}>
-            {hasF&&<button className="clear-btn" onClick={()=>{setSortBy("ch");setStage("all");setSearch("");}}>Clear</button>}
-            <div style={{position:"relative"}}><button className="sort-btn" onClick={()=>setShowSort(!showSort)}>{SORTS.find(o=>o.k===sortBy)?.l} ▾</button>{showSort&&<><div onClick={()=>setShowSort(false)} style={{position:"fixed",inset:0,zIndex:99}}/><div className="sort-menu">{SORTS.map(o=><button key={o.k} className={sortBy===o.k?"active":""} onClick={()=>{setSortBy(o.k);setShowSort(false);}}>{o.l}</button>)}</div></>}</div>
-          </div>
-        </div>
-
+        <div className="kpis"><div className="kpi"><label>Gross contract</label><div className="val">{f(TC)}</div></div><div className="kpi"><label>Active packages</label><div className="val">{aC}</div></div><div className="kpi"><label>Weighted progress</label><div className="val" style={{color:"#085041"}}>{(wP*100).toFixed(1)}%</div></div></div>
+        <div className="search-box"><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search manager, project, or package..."/><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>{search&&<button className="clear" onClick={()=>setSearch("")}>×</button>}</div>
+        <div className="pills">{STAGES.map(s=>{const a=stage===s.k;const ct=s.k==="all"?allPkgs.length:sC[s.k]||0;return <button key={s.k} className={"pill"+(a?" active":"")} style={a?{borderColor:s.c,background:s.c+"14",color:s.c}:{}} onClick={()=>setStage(stage===s.k&&s.k!=="all"?"all":s.k)}>{s.l} ({ct})</button>;})}</div>
+        <div className="controls"><div className="tab-bar"><button className={view==="managers"?"active":""} onClick={()=>setView("managers")}>By manager</button><button className={view==="packages"?"active":""} onClick={()=>setView("packages")}>All packages</button></div><div style={{display:"flex",gap:8,alignItems:"center"}}>{hasF&&<button className="clear-btn" onClick={()=>{setSortBy("ch");setStage("all");setSearch("");}}>Clear</button>}<div style={{position:"relative"}}><button className="sort-btn" onClick={()=>setShowSort(!showSort)}>{SORTS.find(o=>o.k===sortBy)?.l} ▾</button>{showSort&&<><div onClick={()=>setShowSort(false)} style={{position:"fixed",inset:0,zIndex:99}}/><div className="sort-menu">{SORTS.map(o=><button key={o.k} className={sortBy===o.k?"active":""} onClick={()=>{setSortBy(o.k);setShowSort(false);}}>{o.l}</button>)}</div></>}</div></div></div>
         {view==="managers"&&<div>{fM.map(m=><div key={m.id} className="mgr-card" onClick={()=>nav(m)}><div className="mgr-row"><div className="mgr-info"><div className="mgr-avatar" style={{background:sc(m.wPct)+"18",color:sc(m.wPct)}}>{m.mgr.split(" ").map(w=>w[0]).join("")}</div><div><div className="mgr-name">{m.mgr}</div><div className="mgr-sub">{m.count} pkg{m.count>1?"s":""} · {f(m.totalC)}</div></div></div><div className="mgr-pct" style={{color:sc(m.wPct)}}>{(m.wPct*100).toFixed(0)}%<small>{sl(m.wPct)}</small></div></div><div className="progress-bar"><div className="progress-fill" style={{width:pb(m.wPct)+"%",background:sc(m.wPct)}}/></div></div>)}</div>}
         {view==="packages"&&<div>{fP.map((s,i)=><div key={s.id+i} className="pkg-card" onClick={()=>{const m=MANAGERS.find(x=>x.id===s.mi);if(m)nav({...m,...ms(m)});}}><div className="pkg-row"><div style={{flex:1,minWidth:0}}><div className="pkg-name">{s.name}</div><div className="pkg-meta">{s.mn} · {s.pn}{s.contract>0&&" · "+f(s.contract)}</div></div><div className="pkg-pct" style={{color:sc(s.pct)}}>{(s.pct*100).toFixed(1)}%</div></div><div className="progress-bar" style={{height:6}}><div className="progress-fill" style={{width:pb(s.pct)+"%",background:sc(s.pct)}}/></div></div>)}</div>}
-
         <div className="summary"><h4>Portfolio summary</h4>{[["Gross contract",f(TC)],["5% Tax",f(250130454.344)],["After tax",f(4752478632.536)],["15% Target profit",f(750391363.032)],["Target direct cost",f(4002087269.504)]].map(([l,v],i)=><div key={i} className="summary-row"><span className="label">{l}</span><span className="value">{v}</span></div>)}</div>
-
-        <div className="key-bar">
-          <span>AI: Gemini 2.5 Flash · key ending …{apiKey.slice(-6)}</span>
-          <button onClick={()=>{localStorage.removeItem("tod_gemini_key");setApiKey("");}}>Change key</button>
-        </div>
+        <div className="key-bar"><span>AI: Gemini 2.5 Flash · key ending …{apiKey.slice(-6)}</span><button onClick={()=>{localStorage.removeItem("tod_gemini_key");setApiKey("");}}>Change key</button></div>
       </div>}
-
-      {level===1&&current&&<div>
-        <div style={{margin:"16px 0 20px"}}><h2 style={{fontSize:18}}>{current.mgr}</h2><p style={{fontSize:13,color:"#888",marginTop:4}}>Total contract: {f(current.contract)}</p></div>
-        {current.projects.map(p=><div key={p.id}><div className="sub-header">{p.name}</div>{p.subs.map(s=><div key={s.id} className="pkg-card" onClick={()=>{if(s.hasCSR)setShowCSR(true);else nav({...s,parentProject:p.name});}}><div className="pkg-row"><div><div className="pkg-name">{s.name}</div><div className="pkg-meta">{f(s.contract)}</div></div><div className="pkg-pct" style={{color:sc(s.pct),fontSize:24}}>{(s.pct*100).toFixed(1)}%</div></div><div className="progress-bar"><div className="progress-fill" style={{width:pb(s.pct)+"%",background:sc(s.pct)}}/></div>{s.hasCSR&&<div className="csr-label">📊 Open detailed Cost Status Report</div>}</div>)}</div>)}
-      </div>}
-
+      {level===1&&current&&<div><div style={{margin:"16px 0 20px"}}><h2 style={{fontSize:18}}>{current.mgr}</h2><p style={{fontSize:13,color:"#888",marginTop:4}}>Total contract: {f(current.contract)}</p></div>{current.projects.map(p=><div key={p.id}><div className="sub-header">{p.name}</div>{p.subs.map(s=><div key={s.id} className="pkg-card" onClick={()=>{if(s.hasCSR)setShowCSR(true);else nav({...s,parentProject:p.name});}}><div className="pkg-row"><div><div className="pkg-name">{s.name}</div><div className="pkg-meta">{f(s.contract)}</div></div><div className="pkg-pct" style={{color:sc(s.pct),fontSize:24}}>{(s.pct*100).toFixed(1)}%</div></div><div className="progress-bar"><div className="progress-fill" style={{width:pb(s.pct)+"%",background:sc(s.pct)}}/></div>{s.hasCSR&&<div className="csr-label">📊 Open detailed Cost Status Report</div>}</div>)}</div>)}</div>}
       {level===2&&current&&!showCSR&&<div className="empty-state"><div className="icon">📋</div><h3>Detailed CSR not yet available</h3><p>{(current.pct*100).toFixed(1)}% complete · {f(current.contract)}</p></div>}
-
       {fab}
       <ChatPanel open={chatOpen} onClose={()=>setChatOpen(false)} apiKey={apiKey}/>
     </div>
