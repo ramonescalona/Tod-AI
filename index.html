@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tod">
-<title>Tod v11 — AI Project Dashboard</title>
+<title>Tod v12 — AI Project Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -194,6 +194,29 @@ td.over-budget{color:#A32D2D!important;font-weight:700!important}
 .po-loading-inline{padding:20px;text-align:center;color:#888;font-size:12px}
 .items-total-row td{font-weight:700;background:#dceeda!important;border-top:2px solid #085041}
 
+/* LOGIN SCREEN */
+.login-screen{position:fixed;inset:0;background:linear-gradient(160deg,#085041 0%,#063328 60%,#041f18 100%);display:flex;align-items:center;justify-content:center;padding:24px;z-index:1000}
+.login-card{background:#fff;border-radius:24px;padding:40px 36px;max-width:420px;width:100%;box-shadow:0 32px 80px rgba(0,0,0,.35)}
+.login-logo-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:28px}
+.login-company-logo{width:80px;height:80px;border-radius:20px;background:#085041;display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:0 8px 24px rgba(8,80,65,.3)}
+.login-company-logo svg{width:52px;height:52px}
+.login-company-name{font-size:13px;font-weight:700;color:#085041;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px}
+.login-company-sub{font-size:11px;color:#aaa;letter-spacing:.5px}
+.login-divider{width:40px;height:3px;background:#085041;border-radius:2px;margin:16px auto}
+.login-title{font-size:22px;font-weight:700;text-align:center;color:#1a1a1a;margin-bottom:4px}
+.login-subtitle{font-size:13px;color:#888;text-align:center;margin-bottom:28px}
+.login-field{margin-bottom:14px}
+.login-field label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.login-field input{width:100%;padding:14px 16px;border:1.5px solid #ddd;border-radius:12px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.login-field input:focus{border-color:#085041}
+.login-btn{width:100%;padding:15px;background:#085041;color:#fff;border:none;border-radius:12px;font-size:16px;font-family:inherit;font-weight:700;cursor:pointer;margin-top:6px;transition:background .2s}
+.login-btn:hover{background:#0a6b55}
+.login-btn:active{background:#063328}
+.login-error{background:#FCEBEB;color:#A32D2D;border-radius:10px;padding:10px 14px;font-size:13px;text-align:center;margin-bottom:14px}
+.login-footer{text-align:center;margin-top:20px;font-size:11px;color:#bbb}
+.logout-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1px solid #ddd;border-radius:8px;font-size:11px;font-family:inherit;cursor:pointer;background:#fff;color:#888;font-weight:500}
+.logout-btn:hover{background:#f5f5f3;color:#1a1a1a}
+
 /* LIVE CSR TABLE */
 .live-csr-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .live-csr-table{width:100%;border-collapse:collapse;font-size:12px;min-width:820px}
@@ -380,6 +403,69 @@ ${JSON.stringify(_liveGvmcPOs.map(po => ({po: po.name, supplier: po.supplier, am
   return p;
 }
 
+/* ─── AUTH ───────────────────────────────────────────────── */
+// To add/remove users: update this object { username: password }
+const APP_USERS = {
+  "admin":  "Terp2026",
+  "ramon":  "TodViewer1",
+};
+
+function LoginScreen({onLogin}){
+  const[user,setUser]=useState("");
+  const[pass,setPass]=useState("");
+  const[err,setErr]=useState("");
+  const[showPass,setShowPass]=useState(false);
+
+  const attempt=()=>{
+    const u=user.trim().toLowerCase();
+    const p=pass;
+    if(!u||!p){setErr("Please enter your username and password.");return;}
+    if(APP_USERS[u]&&APP_USERS[u]===p){
+      localStorage.setItem("tod_user",u);
+      onLogin(u);
+    } else {
+      setErr("Incorrect username or password. Please try again.");
+      setPass("");
+    }
+  };
+  const onKey=e=>{if(e.key==="Enter")attempt();};
+
+  return(
+    <div className="login-screen">
+      <div className="login-card">
+        <div className="login-logo-wrap">
+          {/* TACC / Terp Asia company logo */}
+          <div className="login-company-logo">
+            <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="52" height="52" rx="12" fill="#085041"/>
+              <text x="26" y="34" textAnchor="middle" fontFamily="'Nunito Sans',sans-serif" fontWeight="700" fontSize="22" fill="#5DCAA5">TACC</text>
+            </svg>
+          </div>
+          <div className="login-company-name">Terp Asia</div>
+          <div className="login-company-sub">The Asian Construction Company</div>
+          <div className="login-divider"/>
+        </div>
+        <div className="login-title">Tod</div>
+        <div className="login-subtitle">AI Project Dashboard · v12</div>
+        {err&&<div className="login-error">{err}</div>}
+        <div className="login-field">
+          <label>Username</label>
+          <input type="text" placeholder="Enter your username" value={user} onChange={e=>{setUser(e.target.value);setErr("");}} onKeyDown={onKey} autoFocus autoCapitalize="none" autoCorrect="off"/>
+        </div>
+        <div className="login-field">
+          <label>Password</label>
+          <input type={showPass?"text":"password"} placeholder="Enter your password" value={pass} onChange={e=>{setPass(e.target.value);setErr("");}} onKeyDown={onKey}/>
+        </div>
+        <div style={{textAlign:"right",marginTop:-8,marginBottom:14}}>
+          <button onClick={()=>setShowPass(s=>!s)} style={{background:"none",border:"none",fontSize:12,color:"#888",cursor:"pointer",fontFamily:"inherit"}}>{showPass?"Hide":"Show"} password</button>
+        </div>
+        <button className="login-btn" onClick={attempt}>Sign In</button>
+        <div className="login-footer">Internal use only · TACC Project Portfolio</div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── API KEY MODAL ──────────────────────────────────────── */
 function ApiKeyModal({onSave}){
   const[key,setKey]=useState("");
@@ -395,7 +481,7 @@ function ApiKeyModal({onSave}){
     <div className="modal-backdrop">
       <div className="modal">
         <div className="tod-logo">T</div>
-        <h2>Welcome to Tod v11</h2>
+        <h2>Welcome to Tod v12</h2>
         <p>Enter your Anthropic API key to activate the AI chat assistant. Your key is stored only in your browser — never sent anywhere else.</p>
         {err&&<div className="error">{err}</div>}
         <input type="password" placeholder="sk-ant-api03-..." value={key} onChange={e=>setKey(e.target.value)} onKeyDown={onKey} autoFocus/>
@@ -919,7 +1005,7 @@ function LiveCSR(){
 function Sheet({onBack}){
   const[col,setCol]=useState({});
   const[sec,setSec]=useState("all");
-  const[tab,setTab]=useState("csr");
+  const[tab,setTab]=useState("live");
   const toggle=id=>setCol(p=>({...p,[id]:!p[id]}));
   const sections=useMemo(()=>CSR.filter(r=>r[3]===1).map(r=>({id:r[0],name:r[1]})),[]);
   const hasKids=id=>CSR.some(r=>r[0].startsWith(id+".")&&r[0]!==id);
@@ -951,74 +1037,29 @@ function Sheet({onBack}){
       </div>
 
       <div className="tab-bar" style={{marginBottom:16,display:"inline-flex"}}>
-        <button className={tab==="csr"?"active":""} onClick={()=>setTab("csr")}>Cost Status Report</button>
         <button className={tab==="po"?"active":""} onClick={()=>setTab("po")}>Purchase Orders</button>
         <button className={tab==="live"?"active":""} onClick={()=>setTab("live")}>
-          Live CSR <span className="live-dot" style={{display:"inline-block",width:6,height:6,borderRadius:"50%",background:tab==="live"?"#085041":"#5DCAA5",marginLeft:4,verticalAlign:"middle"}}/>
+          Live CSR <span style={{display:"inline-block",width:6,height:6,borderRadius:"50%",background:"#5DCAA5",marginLeft:5,verticalAlign:"middle",animation:"pulse 2s infinite"}}/>
         </button>
       </div>
 
       {tab==="po"&&<LivePOs/>}
       {tab==="live"&&<LiveCSR/>}
-
-      {tab==="csr"&&(
-        <div>
-          <div className="section-pills">
-            <button className={sec==="all"?"active":""} onClick={()=>setSec("all")}>All sections</button>
-            {sections.map(s=><button key={s.id} className={sec===s.id?"active":""} onClick={()=>setSec(sec===s.id?"all":s.id)}>{s.id}. {s.name}</button>)}
-          </div>
-          <div className="sheet-wrap"><div className="sheet-scroll">
-            <table style={{width:80+210+(W*15)}}>
-              <colgroup><col style={{width:80}}/><col style={{width:210}}/>{Array.from({length:15},(_,i)=><col key={i} style={{width:W}}/>)}</colgroup>
-              <thead>
-                <tr>
-                  <th className="frozen-item frozen-corner" style={{background:"#085041",left:0,textAlign:"left"}}>Item</th>
-                  <th className="frozen-desc frozen-corner" style={{background:"#085041",left:80,textAlign:"left",borderRight:"2px solid #333"}}>Description</th>
-                  {hNames.map((n,gi)=><th key={gi} colSpan={5} style={{background:hColors[gi].bg,borderRight:gi<2?"2px solid #333":"none"}}>{n}</th>)}
-                </tr>
-                <tr>
-                  <th className="frozen-item frozen-corner" style={{background:"#0a6b55",left:0,borderTop:"none"}}></th>
-                  <th className="frozen-desc frozen-corner" style={{background:"#0a6b55",left:80,borderTop:"none",borderRight:"2px solid #333"}}></th>
-                  {hColors.map((hc,gi)=>cols.map((c,ci)=><th key={gi+"-"+ci} style={{background:hc.bg2,borderTop:"none",borderRight:ci===4&&gi<2?"2px solid #333":"1px solid rgba(255,255,255,.15)"}}>{c}</th>))}
-                </tr>
-              </thead>
-              <tbody>{vis.map((r,i)=>{
-                const[id,desc,lvl,isGrp]=r;
-                const isT=id==="GRAND TOTAL";
-                const isS=isGrp===1;
-                const canC=hasKids(id);
-                const bg=isT?"#e8e4da":isS?"#dceeda":i%2===0?"#ffffff":"#f7f7f5";
-                const cls=isT?"row-total":isS?"row-group":"";
-                const indent=lvl*14;
-                const isOver=r[8]>0&&r[13]>r[8];
-                return(
-                  <tr key={id+i} className={cls} style={{background:bg}}>
-                    <td className="frozen-item" style={{background:bg,left:0,fontSize:10,color:"#888",textAlign:"left"}}>{isT?"":id}</td>
-                    <td className="frozen-desc" style={{background:bg,left:80,textAlign:"left",paddingLeft:10+indent,cursor:canC?"pointer":"default",borderRight:"2px solid #505050"}} onClick={canC?()=>toggle(id):undefined}>
-                      {canC&&<span className="collapse-toggle">{col[id]?"▸":"▾"}</span>}
-                      {isT?"GRAND TOTAL":desc}
-                    </td>
-                    {[4,5,6,7].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-                    <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[8]?nf(r[8]):"—"}</td>
-                    {[9,10,11,12].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-                    <td className={"col-total"+(isOver?" over-budget":"")} style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[13]?nf(r[13]):"—"}</td>
-                    {[14,15,16,17].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-                    <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined,borderRight:"none"}}>{r[18]?nf(r[18]):"—"}</td>
-                  </tr>
-                );})}</tbody>
-            </table>
-          </div></div>
-          <p className="sheet-info">{vis.length} of {CSR.length} rows · Tap ▾ to collapse · Swipe right for more columns</p>
-        </div>
-      )}
     </div>
   );
 }
 
 /* ─── MAIN APP ───────────────────────────────────────────── */
 function App(){
+  const[loggedIn,setLoggedIn]=useState(()=>!!localStorage.getItem("tod_user"));
+  const[currentUser,setCurrentUser]=useState(()=>localStorage.getItem("tod_user")||"");
   const[apiKey,setApiKey]=useState(()=>localStorage.getItem("tod_api_key")||"");
   const[showKeyModal,setShowKeyModal]=useState(!localStorage.getItem("tod_api_key"));
+
+  const handleLogin=u=>{setLoggedIn(true);setCurrentUser(u);};
+  const handleLogout=()=>{localStorage.removeItem("tod_user");setLoggedIn(false);setCurrentUser("");};
+
+  if(!loggedIn)return <LoginScreen onLogin={handleLogin}/>;
   const[path,setPath]=useState([]);
   const[sortBy,setSortBy]=useState("ch");
   const[stage,setStage]=useState("all");
@@ -1062,9 +1103,12 @@ function App(){
               <div className="logo" onClick={goHome}>T</div>
               <div className="header-text">
                 <h1 onClick={goHome}>Tod</h1>
-                <p>Project portfolio dashboard · v11</p>
+                <p>Project portfolio dashboard · v12</p>
               </div>
-              <div className="header-right"><span>TERP New Projects</span><b>March 2026</b></div>
+              <div className="header-right" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:6}}>
+                <div style={{fontSize:12,color:"#888"}}><b style={{color:"#1a1a1a"}}>March 2026</b></div>
+                <button className="logout-btn" onClick={handleLogout}>👤 {currentUser} · Sign out</button>
+              </div>
             </div>
 
             {level>0&&(
