@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tod">
-<title>Tod v5 — AI Project Dashboard</title>
+<title>Tod v8 — AI Project Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -150,6 +150,29 @@ td.over-budget{color:#A32D2D!important;font-weight:700!important}
 .key-badge{display:inline-flex;align-items:center;gap:6px;background:#08504114;border:1px solid #08504130;border-radius:20px;padding:4px 10px 4px 8px;font-size:11px;color:#085041;font-weight:600;cursor:pointer}
 .key-badge:hover{background:#08504122}
 
+/* LIVE PO PANEL */
+.po-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.po-kpi{background:#fff;border:1px solid #e5e5e3;border-radius:12px;padding:14px 16px}
+.po-kpi label{font-size:11px;color:#888;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.po-kpi .val{font-size:20px;font-weight:700}
+.po-table-wrap{background:#fff;border:1px solid #e5e5e3;border-radius:12px;overflow:hidden}
+.po-table{width:100%;border-collapse:collapse;font-size:13px}
+.po-table th{background:#f5f5f3;padding:10px 14px;text-align:left;font-weight:600;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #e5e5e3}
+.po-table th.right{text-align:right}
+.po-table td{padding:12px 14px;border-bottom:1px solid #f0f0ee;vertical-align:top}
+.po-table td.right{text-align:right;font-family:'Courier New',monospace;font-size:12px}
+.po-table tr:last-child td{border-bottom:none}
+.po-status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.po-status.received{background:#08504114;color:#085041}
+.po-status.partial{background:#BA751714;color:#BA7517}
+.po-status.pending{background:#D85A3014;color:#D85A30}
+.po-status.billed{background:#1D9E7514;color:#1D9E75}
+.po-loading{text-align:center;padding:32px;color:#888;font-size:13px}
+.po-error{text-align:center;padding:24px;color:#A32D2D;font-size:13px;background:#FCEBEB;border-radius:12px}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:#08504114;border:1px solid #08504130;border-radius:20px;padding:3px 10px;font-size:11px;color:#085041;font-weight:600;margin-left:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#085041;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
 @media(max-width:768px){
   .kpis{grid-template-columns:1fr 1fr}
   .kpi .val{font-size:20px}
@@ -210,6 +233,7 @@ const CSR=[
 const TC=5002609086.88;
 const f=v=>{if(!v&&v!==0)return"—";if(Math.abs(v)>=1e9)return"₱"+(v/1e9).toFixed(2)+"B";if(Math.abs(v)>=1e6)return"₱"+(v/1e6).toFixed(1)+"M";if(Math.abs(v)>=1e3)return"₱"+(v/1e3).toFixed(0)+"K";return"₱"+Math.round(v).toLocaleString();};
 const nf=v=>v?v.toLocaleString("en",{minimumFractionDigits:2,maximumFractionDigits:2}):"—";
+const fp=v=>v||v===0?"₱"+v.toLocaleString("en",{minimumFractionDigits:2,maximumFractionDigits:2}):"—";
 const sc=p=>p>=.9?"#085041":p>=.6?"#1D9E75":p>=.3?"#BA7517":"#D85A30";
 const sl=p=>p>=.9?"Nearly done":p>=.6?"On track":p>=.3?"In progress":"Early stage";
 const ss=p=>p>=.9?"nd":p>=.6?"ot":p>=.3?"ip":"es";
@@ -268,6 +292,26 @@ Full project data: ${JSON.stringify(MANAGERS.map(m=>({mgr:m.mgr,contract:m.contr
 
 RULES: Always use ₱ (Philippine Peso). Be concise — max 800 tokens. Proactively flag risks. Answer only from the data above. If data is not available, say so clearly.`;
 
+/* Module-level cache — updated when LivePOs loads */
+let _liveGvmcPOs = null;
+
+function buildSysPrompt() {
+  let p = SYS_PROMPT;
+  if (_liveGvmcPOs && _liveGvmcPOs.length > 0) {
+    const total = _liveGvmcPOs.reduce((s, po) => s + po.grand_total, 0);
+    const byStatus = _liveGvmcPOs.reduce((a, po) => { a[po.status] = (a[po.status] || 0) + 1; return a; }, {});
+    const pending = _liveGvmcPOs.filter(po => po.per_billed < 100).length;
+    p += `\n\nLIVE ERP DATA — GVMC Purchase Orders (PROJ-0020) as of now:
+Total POs: ${_liveGvmcPOs.length}
+Total committed value: ₱${total.toLocaleString('en', {minimumFractionDigits:2, maximumFractionDigits:2})}
+Pending billing: ${pending} POs
+Status breakdown: ${JSON.stringify(byStatus)}
+Full PO list (name, supplier, amount, status, date):
+${JSON.stringify(_liveGvmcPOs.map(po => ({po: po.name, supplier: po.supplier, amount: po.grand_total, status: po.status, date: po.transaction_date})))}`;
+  }
+  return p;
+}
+
 /* ─── API KEY MODAL ──────────────────────────────────────── */
 function ApiKeyModal({onSave}){
   const[key,setKey]=useState("");
@@ -324,7 +368,7 @@ function ChatPanel({open,onClose,apiKey,onChangeKey}){
         body:JSON.stringify({
           model:"claude-sonnet-4-20250514",
           max_tokens:1000,
-          system:SYS_PROMPT,
+          system:buildSysPrompt(),
           messages:newMsgs.map(m=>({role:m.role,content:m.content}))
         })
       });
@@ -384,10 +428,127 @@ function ChatPanel({open,onClose,apiKey,onChangeKey}){
   );
 }
 
+/* ─── LIVE PO PANEL ──────────────────────────────────────── */
+const PO_STATUS_MAP={
+  "To Receive and Bill":{label:"Pending",cls:"pending"},
+  "To Bill":{cls:"partial",label:"Received"},
+  "Completed":{cls:"billed",label:"Completed"},
+  "Closed":{cls:"received",label:"Closed"},
+  "Cancelled":{cls:"pending",label:"Cancelled"},
+};
+
+const naturalCmp=(a,b)=>{
+  const ax=a.replace(/(\d+)/g,n=>n.padStart(6,"0"));
+  const bx=b.replace(/(\d+)/g,n=>n.padStart(6,"0"));
+  return ax.localeCompare(bx);
+};
+
+const SORT_COLS={po:"PO Number",date:"Date",amount:"Amount",status:"Status",supplier:"Supplier"};
+
+function LivePOs(){
+  const[pos,setPos]=useState(null);
+  const[err,setErr]=useState("");
+  const[search,setSearch]=useState("");
+  const[sortCol,setSortCol]=useState("po");
+  const[sortDir,setSortDir]=useState(1); // 1=asc, -1=desc
+
+  useEffect(()=>{
+    fetch("/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22,%22supplier%22,%22grand_total%22,%22status%22,%22transaction_date%22,%22per_received%22,%22per_billed%22]&limit=500")
+      .then(r=>r.json())
+      .then(d=>{
+        if(d.exc_type||d.error)throw new Error(d.exc||d.error||"ERP error");
+        const data=d.data||[];
+        setPos(data);
+        _liveGvmcPOs=data; /* Feed live data into AI chat */
+      })
+      .catch(e=>setErr(e.message));
+  },[]);
+
+  const toggleSort=col=>{
+    if(sortCol===col)setSortDir(s=>-s);
+    else{setSortCol(col);setSortDir(1);}
+  };
+
+  const sorted=useMemo(()=>{
+    if(!pos)return[];
+    const q=search.trim().toLowerCase();
+    let list=q?pos.filter(p=>p.name.toLowerCase().includes(q)||p.supplier.toLowerCase().includes(q)):pos;
+    return [...list].sort((a,b)=>{
+      let av,bv;
+      if(sortCol==="po"){av=a.name;bv=b.name;return sortDir*naturalCmp(av,bv);}
+      if(sortCol==="date"){av=a.transaction_date||"";bv=b.transaction_date||"";return sortDir*av.localeCompare(bv);}
+      if(sortCol==="amount"){return sortDir*(a.grand_total-b.grand_total);}
+      if(sortCol==="status"){av=a.status||"";bv=b.status||"";return sortDir*av.localeCompare(bv);}
+      if(sortCol==="supplier"){av=a.supplier||"";bv=b.supplier||"";return sortDir*av.localeCompare(bv);}
+      return 0;
+    });
+  },[pos,search,sortCol,sortDir]);
+
+  const totalCommitted=useMemo(()=>pos?pos.reduce((s,p)=>s+p.grand_total,0):0,[pos]);
+  const totalPending=useMemo(()=>pos?pos.filter(p=>p.per_billed<100).length:0,[pos]);
+
+  if(err)return <div className="po-error">Could not load live PO data: {err}</div>;
+  if(!pos)return <div className="po-loading">Loading live purchase orders from ERP...</div>;
+
+  const SortTh=({col,children,right})=>{
+    const active=sortCol===col;
+    const arrow=active?(sortDir===1?" ▲":" ▼"):" ↕";
+    return(
+      <th className={right?"right":""} onClick={()=>toggleSort(col)} style={{cursor:"pointer",userSelect:"none",whiteSpace:"nowrap"}}>
+        {children}<span style={{opacity:active?1:.3,fontSize:10,marginLeft:3}}>{arrow}</span>
+      </th>
+    );
+  };
+
+  return(
+    <div>
+      <div className="po-kpis">
+        <div className="po-kpi"><label>Total POs</label><div className="val">{pos.length}</div></div>
+        <div className="po-kpi"><label>Total Committed</label><div className="val" style={{fontSize:15}}>{fp(totalCommitted)}</div></div>
+        <div className="po-kpi"><label>Pending Billing</label><div className="val" style={{color:"#BA7517"}}>{totalPending}</div></div>
+      </div>
+      <div style={{position:"relative",marginBottom:12}}>
+        <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search PO number or supplier..." style={{width:"100%",padding:"10px 14px 10px 38px",border:"1.5px solid #ddd",borderRadius:10,fontSize:13,fontFamily:"inherit",outline:"none",background:"#fff"}}/>
+        <svg style={{position:"absolute",left:12,top:12,opacity:.35}} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div className="po-table-wrap">
+        <table className="po-table">
+          <thead>
+            <tr>
+              <SortTh col="po">PO Number</SortTh>
+              <SortTh col="supplier">Supplier</SortTh>
+              <SortTh col="date">Date</SortTh>
+              <SortTh col="status">Status</SortTh>
+              <SortTh col="amount" right>Amount (₱)</SortTh>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.length===0&&<tr><td colSpan={5} style={{textAlign:"center",color:"#888",padding:24}}>No purchase orders found</td></tr>}
+            {sorted.map(po=>{
+              const st=PO_STATUS_MAP[po.status]||{label:po.status,cls:"pending"};
+              return(
+                <tr key={po.name}>
+                  <td style={{fontWeight:600,fontSize:13,whiteSpace:"nowrap"}}>{po.name}</td>
+                  <td style={{color:"#555",fontSize:12,maxWidth:200,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{po.supplier}</td>
+                  <td style={{color:"#888",fontSize:12,whiteSpace:"nowrap"}}>{po.transaction_date}</td>
+                  <td><span className={"po-status "+st.cls}>{st.label}</span></td>
+                  <td className="right">{fp(po.grand_total)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p style={{marginTop:8,fontSize:11,color:"#888"}}>{sorted.length} of {pos.length} purchase orders · PROJ-0020 · Tap column headers to sort · Live from ERPNext</p>
+    </div>
+  );
+}
+
 /* ─── CSR SPREADSHEET ────────────────────────────────────── */
 function Sheet({onBack}){
   const[col,setCol]=useState({});
   const[sec,setSec]=useState("all");
+  const[tab,setTab]=useState("csr");
   const toggle=id=>setCol(p=>({...p,[id]:!p[id]}));
   const sections=useMemo(()=>CSR.filter(r=>r[3]===1).map(r=>({id:r[0],name:r[1]})),[]);
   const hasKids=id=>CSR.some(r=>r[0].startsWith(id+".")&&r[0]!==id);
@@ -410,53 +571,71 @@ function Sheet({onBack}){
   return(
     <div>
       <button className="back-btn" onClick={onBack}>← Back to projects</button>
-      <div style={{marginBottom:12}}><h2 style={{fontSize:18}}>GVMC Architectural Works</h2><p style={{fontSize:13,color:"#888",marginTop:4}}>Cost Status Report · PROJ-0020</p></div>
-      <div className="section-pills">
-        <button className={sec==="all"?"active":""} onClick={()=>setSec("all")}>All sections</button>
-        {sections.map(s=><button key={s.id} className={sec===s.id?"active":""} onClick={()=>setSec(sec===s.id?"all":s.id)}>{s.id}. {s.name}</button>)}
+      <div style={{marginBottom:12,display:"flex",alignItems:"center",flexWrap:"wrap",gap:8}}>
+        <div>
+          <h2 style={{fontSize:18}}>GVMC Architectural Works</h2>
+          <p style={{fontSize:13,color:"#888",marginTop:4}}>PROJ-0020 · Great Valley Medical Center</p>
+        </div>
+        <span className="live-badge"><span className="live-dot"/>Live ERP</span>
       </div>
-      <div className="sheet-wrap"><div className="sheet-scroll">
-        <table style={{width:80+210+(W*15)}}>
-          <colgroup><col style={{width:80}}/><col style={{width:210}}/>{Array.from({length:15},(_,i)=><col key={i} style={{width:W}}/>)}</colgroup>
-          <thead>
-            <tr>
-              <th className="frozen-item frozen-corner" style={{background:"#085041",left:0,textAlign:"left"}}>Item</th>
-              <th className="frozen-desc frozen-corner" style={{background:"#085041",left:80,textAlign:"left",borderRight:"2px solid #333"}}>Description</th>
-              {hNames.map((n,gi)=><th key={gi} colSpan={5} style={{background:hColors[gi].bg,borderRight:gi<2?"2px solid #333":"none"}}>{n}</th>)}
-            </tr>
-            <tr>
-              <th className="frozen-item frozen-corner" style={{background:"#0a6b55",left:0,borderTop:"none"}}></th>
-              <th className="frozen-desc frozen-corner" style={{background:"#0a6b55",left:80,borderTop:"none",borderRight:"2px solid #333"}}></th>
-              {hColors.map((hc,gi)=>cols.map((c,ci)=><th key={gi+"-"+ci} style={{background:hc.bg2,borderTop:"none",borderRight:ci===4&&gi<2?"2px solid #333":"1px solid rgba(255,255,255,.15)"}}>{c}</th>))}
-            </tr>
-          </thead>
-          <tbody>{vis.map((r,i)=>{
-            const[id,desc,lvl,isGrp]=r;
-            const isT=id==="GRAND TOTAL";
-            const isS=isGrp===1;
-            const canC=hasKids(id);
-            const bg=isT?"#e8e4da":isS?"#dceeda":i%2===0?"#ffffff":"#f7f7f5";
-            const cls=isT?"row-total":isS?"row-group":"";
-            const indent=lvl*14;
-            const isOver=r[8]>0&&r[13]>r[8];
-            return(
-              <tr key={id+i} className={cls} style={{background:bg}}>
-                <td className="frozen-item" style={{background:bg,left:0,fontSize:10,color:"#888",textAlign:"left"}}>{isT?"":id}</td>
-                <td className="frozen-desc" style={{background:bg,left:80,textAlign:"left",paddingLeft:10+indent,cursor:canC?"pointer":"default",borderRight:"2px solid #505050"}} onClick={canC?()=>toggle(id):undefined}>
-                  {canC&&<span className="collapse-toggle">{col[id]?"▸":"▾"}</span>}
-                  {isT?"GRAND TOTAL":desc}
-                </td>
-                {[4,5,6,7].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-                <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[8]?nf(r[8]):"—"}</td>
-                {[9,10,11,12].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-                <td className={"col-total"+(isOver?" over-budget":"")} style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[13]?nf(r[13]):"—"}</td>
-                {[14,15,16,17].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
-                <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined,borderRight:"none"}}>{r[18]?nf(r[18]):"—"}</td>
-              </tr>
-            );})}</tbody>
-        </table>
-      </div></div>
-      <p className="sheet-info">{vis.length} of {CSR.length} rows · Tap ▾ to collapse · Swipe right for more columns</p>
+
+      <div className="tab-bar" style={{marginBottom:16,display:"inline-flex"}}>
+        <button className={tab==="csr"?"active":""} onClick={()=>setTab("csr")}>Cost Status Report</button>
+        <button className={tab==="po"?"active":""} onClick={()=>setTab("po")}>Purchase Orders</button>
+      </div>
+
+      {tab==="po"&&<LivePOs/>}
+
+      {tab==="csr"&&(
+        <div>
+          <div className="section-pills">
+            <button className={sec==="all"?"active":""} onClick={()=>setSec("all")}>All sections</button>
+            {sections.map(s=><button key={s.id} className={sec===s.id?"active":""} onClick={()=>setSec(sec===s.id?"all":s.id)}>{s.id}. {s.name}</button>)}
+          </div>
+          <div className="sheet-wrap"><div className="sheet-scroll">
+            <table style={{width:80+210+(W*15)}}>
+              <colgroup><col style={{width:80}}/><col style={{width:210}}/>{Array.from({length:15},(_,i)=><col key={i} style={{width:W}}/>)}</colgroup>
+              <thead>
+                <tr>
+                  <th className="frozen-item frozen-corner" style={{background:"#085041",left:0,textAlign:"left"}}>Item</th>
+                  <th className="frozen-desc frozen-corner" style={{background:"#085041",left:80,textAlign:"left",borderRight:"2px solid #333"}}>Description</th>
+                  {hNames.map((n,gi)=><th key={gi} colSpan={5} style={{background:hColors[gi].bg,borderRight:gi<2?"2px solid #333":"none"}}>{n}</th>)}
+                </tr>
+                <tr>
+                  <th className="frozen-item frozen-corner" style={{background:"#0a6b55",left:0,borderTop:"none"}}></th>
+                  <th className="frozen-desc frozen-corner" style={{background:"#0a6b55",left:80,borderTop:"none",borderRight:"2px solid #333"}}></th>
+                  {hColors.map((hc,gi)=>cols.map((c,ci)=><th key={gi+"-"+ci} style={{background:hc.bg2,borderTop:"none",borderRight:ci===4&&gi<2?"2px solid #333":"1px solid rgba(255,255,255,.15)"}}>{c}</th>))}
+                </tr>
+              </thead>
+              <tbody>{vis.map((r,i)=>{
+                const[id,desc,lvl,isGrp]=r;
+                const isT=id==="GRAND TOTAL";
+                const isS=isGrp===1;
+                const canC=hasKids(id);
+                const bg=isT?"#e8e4da":isS?"#dceeda":i%2===0?"#ffffff":"#f7f7f5";
+                const cls=isT?"row-total":isS?"row-group":"";
+                const indent=lvl*14;
+                const isOver=r[8]>0&&r[13]>r[8];
+                return(
+                  <tr key={id+i} className={cls} style={{background:bg}}>
+                    <td className="frozen-item" style={{background:bg,left:0,fontSize:10,color:"#888",textAlign:"left"}}>{isT?"":id}</td>
+                    <td className="frozen-desc" style={{background:bg,left:80,textAlign:"left",paddingLeft:10+indent,cursor:canC?"pointer":"default",borderRight:"2px solid #505050"}} onClick={canC?()=>toggle(id):undefined}>
+                      {canC&&<span className="collapse-toggle">{col[id]?"▸":"▾"}</span>}
+                      {isT?"GRAND TOTAL":desc}
+                    </td>
+                    {[4,5,6,7].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
+                    <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[8]?nf(r[8]):"—"}</td>
+                    {[9,10,11,12].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
+                    <td className={"col-total"+(isOver?" over-budget":"")} style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined}}>{r[13]?nf(r[13]):"—"}</td>
+                    {[14,15,16,17].map(c=><td key={c}>{r[c]?nf(r[c]):"—"}</td>)}
+                    <td className="col-total" style={{background:isT?"#ddd8cc":isS?"#cee6cc":undefined,borderRight:"none"}}>{r[18]?nf(r[18]):"—"}</td>
+                  </tr>
+                );})}</tbody>
+            </table>
+          </div></div>
+          <p className="sheet-info">{vis.length} of {CSR.length} rows · Tap ▾ to collapse · Swipe right for more columns</p>
+        </div>
+      )}
     </div>
   );
 }
@@ -508,7 +687,7 @@ function App(){
               <div className="logo" onClick={goHome}>T</div>
               <div className="header-text">
                 <h1 onClick={goHome}>Tod</h1>
-                <p>Project portfolio dashboard · v5</p>
+                <p>Project portfolio dashboard · v8</p>
               </div>
               <div className="header-right"><span>TERP New Projects</span><b>March 2026</b></div>
             </div>
