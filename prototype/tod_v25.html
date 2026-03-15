@@ -1133,6 +1133,34 @@ function LiveCSR({projectId}){
     return{byCode,poByCode,stats};
   }
 
+  // ── All hooks MUST be above any early return (React Rules of Hooks) ──
+  // Compute which CSR rows should be visible (project-scoped: hide empty groups)
+  // Works with budget data alone; refines when liveData arrives
+  const visibleMap=useMemo(()=>{
+    if(!csrData)return null;
+    try{
+      const show={};
+      show['GRAND TOTAL']=true;
+      for(let i=0;i<csrData.length;i++){
+        const r=csrData[i];
+        if(r[3]===0&&r[0]!=='GRAND TOTAL'){
+          const live=liveData?getLive(r[0],liveData):{aTotal:0,cTotal:0};
+          if(r[8]>0||live.aTotal>0||live.cTotal>0)show[r[0]]=true;
+        }
+      }
+      for(let i=0;i<csrData.length;i++){
+        const r=csrData[i];
+        if(r[3]!==1)continue;
+        const prefix=r[0]+'.';
+        for(let j=0;j<csrData.length;j++){
+          const c=csrData[j];
+          if(c[3]===0&&show[c[0]]&&c[0].indexOf(prefix)===0){show[r[0]]=true;break;}
+        }
+      }
+      return show;
+    }catch(e){return null;}
+  },[csrData,liveData]);
+
   // Only block on csrData (structure + budgets). Live data (JVs/POs) renders progressively.
   if(!csrData)return <div className="po-loading">{status}</div>;
 
@@ -1142,39 +1170,10 @@ function LiveCSR({projectId}){
     Object.values(liveData.byCode).forEach(v=>{grandA+=(v.aTotal||0);grandC+=(v.cTotal||0);});
   }
   const grandRow=csrData[csrData.length-1];
-  const grandBudget=grandRow?grandRow[8]:0; // GRAND TOTAL row total budget
+  const grandBudget=grandRow?grandRow[8]:0;
   const grandExposure=grandA+grandC;
   const pctColor=p=>p>=90?"#A32D2D":p>=60?"#BA7517":"#085041";
   const INDENTS=[0,16,32,48];
-
-  // Compute which CSR rows should be visible (project-scoped: hide empty groups)
-  // Works with budget data alone; refines when liveData arrives
-  const visibleMap=useMemo(()=>{
-    if(!csrData)return null;
-    try{
-      const show={};
-      show['GRAND TOTAL']=true;
-      // Pass 1: mark leaves that have budget or live data
-      for(let i=0;i<csrData.length;i++){
-        const r=csrData[i];
-        if(r[3]===0&&r[0]!=='GRAND TOTAL'){
-          const live=liveData?getLive(r[0],liveData):{aTotal:0,cTotal:0};
-          if(r[8]>0||live.aTotal>0||live.cTotal>0)show[r[0]]=true;
-        }
-      }
-      // Pass 2: mark groups that have ANY active leaf descendant
-      for(let i=0;i<csrData.length;i++){
-        const r=csrData[i];
-        if(r[3]!==1)continue; // only groups
-        const prefix=r[0]+'.';
-        for(let j=0;j<csrData.length;j++){
-          const c=csrData[j];
-          if(c[3]===0&&show[c[0]]&&c[0].indexOf(prefix)===0){show[r[0]]=true;break;}
-        }
-      }
-      return show;
-    }catch(e){return null;} // fallback: show all rows
-  },[csrData,liveData]);
 
   return(
     <div>
