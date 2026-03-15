@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: #f5f5f3;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Spreadsheet frozen columns */
+.frozen-item {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 25 !important;
+}
+.frozen-desc {
+  position: sticky !important;
+  left: 80px !important;
+  z-index: 25 !important;
+  box-shadow: 4px 0 8px -2px rgba(0,0,0,0.2) !important;
+}
+.frozen-corner {
+  z-index: 35 !important;
+}
+
+/* Spreadsheet rows */
+.row-group td {
+  font-weight: 700;
+  border-bottom: 2px solid #808080;
+}
+.row-total td {
+  font-weight: 700;
+  font-size: 12px;
+  border-bottom: 2px solid #505050;
+}
+
+/* Typing animation */
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #aaa;
+  animation: blink 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* Chat panel slide-up */
+.chat-panel-enter {
+  transform: translateY(100%);
+}
+.chat-panel-open {
+  transform: translateY(0);
+}

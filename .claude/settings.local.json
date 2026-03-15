@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && npx kill-port 5173 5174 5175 5176 5177 5178)",
+      "Bash(python --version 2>&1 || py --version 2>&1 || where python3 2>&1 || where py 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node -e \"\nconst XLSX = require\\('xlsx'\\);\nconst wb = XLSX.readFile\\('data/CSR_New_Projects.xlsx'\\);\nconsole.log\\('Sheets:', wb.SheetNames\\);\nconst ws = wb.Sheets[wb.SheetNames[0]];\nconst data = XLSX.utils.sheet_to_json\\(ws, { header: 1, defval: null }\\);\ndata.slice\\(0, 10\\).forEach\\(\\(r, i\\) => console.log\\(i, JSON.stringify\\(r\\)\\)\\);\nconsole.log\\('...'\\);\ndata.slice\\(10, 60\\).forEach\\(\\(r, i\\) => { if\\(r.some\\(v => v != null\\)\\) console.log\\(i+10, JSON.stringify\\(r\\)\\); }\\);\n\" 2>&1 | head -100)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('data/CSR_New_Projects.xlsx'\\); console.log\\('Sheets:', wb.SheetNames\\); const ws = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(ws, { header: 1, defval: null }\\); data.slice\\(0, 60\\).forEach\\(function\\(r, i\\) { if\\(r.some\\(function\\(v\\){ return v !== null; }\\)\\) console.log\\(i, JSON.stringify\\(r\\)\\); }\\);\" 2>&1 | head -120)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-xlsx.js 2>&1)",
+      "Bash(mv \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\\\\read-xlsx.js\" \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\\\\read-xlsx.cjs\" && cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-xlsx.cjs 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && npm install xlsx --save-dev 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-xlsx.cjs 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-projects.cjs 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-gvmc.cjs 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-gvmc2.cjs 2>&1 | head -200)",
+      "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && rm read-xlsx.cjs read-projects.cjs read-gvmc.cjs read-gvmc2.cjs)",
+      "Bash(cd:*)"
+    ]
+  }
+}
