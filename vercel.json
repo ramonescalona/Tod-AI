@@ -3,6 +3,6 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "redirects": [
-    { "source": "/", "destination": "/prototype/tod_v26.html", "permanent": false }
+    { "source": "/", "destination": "/prototype/tod_v27.html", "permanent": false }
   ]
 }
