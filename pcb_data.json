@@ -1,0 +1,3369 @@
+[
+  {
+    "name": "A. GENERAL REQUIREMENTS",
+    "parent_project_cost_breakdown": null,
+    "is_group": 1,
+    "lft": 1,
+    "rgt": 474
+  },
+  {
+    "name": "A.1.  MOBILIZATION",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 2,
+    "rgt": 15
+  },
+  {
+    "name": "A.1.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "parent_project_cost_breakdown": "A.1.  MOBILIZATION",
+    "is_group": 1,
+    "lft": 3,
+    "rgt": 10
+  },
+  {
+    "name": "A.1.1.1. Staff",
+    "parent_project_cost_breakdown": "A.1.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "is_group": 0,
+    "lft": 4,
+    "rgt": 5
+  },
+  {
+    "name": "A.1.1.2. Admin Workers",
+    "parent_project_cost_breakdown": "A.1.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "is_group": 0,
+    "lft": 6,
+    "rgt": 7
+  },
+  {
+    "name": "A.1.1.3. Consultants (Including per diem)",
+    "parent_project_cost_breakdown": "A.1.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "is_group": 0,
+    "lft": 8,
+    "rgt": 9
+  },
+  {
+    "name": "A.1.2. Subcontractor",
+    "parent_project_cost_breakdown": "A.1.  MOBILIZATION",
+    "is_group": 0,
+    "lft": 11,
+    "rgt": 12
+  },
+  {
+    "name": "A.1.3. Others (please specify)",
+    "parent_project_cost_breakdown": "A.1.  MOBILIZATION",
+    "is_group": 0,
+    "lft": 13,
+    "rgt": 14
+  },
+  {
+    "name": "A.2.  BONDS & INSURANCE",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 16,
+    "rgt": 37
+  },
+  {
+    "name": "A.2.1. CARI (100%)",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 17,
+    "rgt": 18
+  },
+  {
+    "name": "A.2.2. Performance Bond",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 19,
+    "rgt": 20
+  },
+  {
+    "name": "A.2.3. Surety Bond",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 21,
+    "rgt": 22
+  },
+  {
+    "name": "A.2.4. Guarantee Bond (10%)",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 23,
+    "rgt": 24
+  },
+  {
+    "name": "A.2.5. Workers Insurance",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 25,
+    "rgt": 26
+  },
+  {
+    "name": "A.2.6. Indemnity Insurance",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 27,
+    "rgt": 28
+  },
+  {
+    "name": "A.2.7. CGLI",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 29,
+    "rgt": 30
+  },
+  {
+    "name": "A.2.8. Construction Bond",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 31,
+    "rgt": 32
+  },
+  {
+    "name": "A.2.9. Subcontractor",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 33,
+    "rgt": 34
+  },
+  {
+    "name": "A.2.10. Others (please specify)",
+    "parent_project_cost_breakdown": "A.2.  BONDS & INSURANCE",
+    "is_group": 0,
+    "lft": 35,
+    "rgt": 36
+  },
+  {
+    "name": "A.3.  PERMIT & LICENSES",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 38,
+    "rgt": 67
+  },
+  {
+    "name": "A.3.1. Demolition Permit",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 39,
+    "rgt": 40
+  },
+  {
+    "name": "A.3.2. Barangay Clearance",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 41,
+    "rgt": 42
+  },
+  {
+    "name": "A.3.3. Building Permit",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 43,
+    "rgt": 44
+  },
+  {
+    "name": "A.3.4. Contractor's Tax",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 45,
+    "rgt": 46
+  },
+  {
+    "name": "A.3.5. Occupancy Permit",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 47,
+    "rgt": 48
+  },
+  {
+    "name": "A.3.6. ECC (If charge to contractor) - Include DENR Requirements",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 49,
+    "rgt": 50
+  },
+  {
+    "name": "A.3.7. DPWH Clearance",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 51,
+    "rgt": 52
+  },
+  {
+    "name": "A.3.8. Gate Pass Permits / Passway (If Necesarry)",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 53,
+    "rgt": 54
+  },
+  {
+    "name": "A.3.9. Subdivison / Homeowners Permits",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 55,
+    "rgt": 56
+  },
+  {
+    "name": "A.3.10. CAAP Clearance for Drone",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 57,
+    "rgt": 58
+  },
+  {
+    "name": "A.3.11. Subcontractor",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 0,
+    "lft": 59,
+    "rgt": 60
+  },
+  {
+    "name": "A.3.12. Others (please specify)",
+    "parent_project_cost_breakdown": "A.3.  PERMIT & LICENSES",
+    "is_group": 1,
+    "lft": 61,
+    "rgt": 66
+  },
+  {
+    "name": "A.3.12.1. Green Building Permit",
+    "parent_project_cost_breakdown": "A.3.12. Others (please specify)",
+    "is_group": 0,
+    "lft": 62,
+    "rgt": 63
+  },
+  {
+    "name": "A.3.12.2. LLDA Clearance",
+    "parent_project_cost_breakdown": "A.3.12. Others (please specify)",
+    "is_group": 0,
+    "lft": 64,
+    "rgt": 65
+  },
+  {
+    "name": "A.4.  TEMPORARY FACILITIES - TACC",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 68,
+    "rgt": 153
+  },
+  {
+    "name": "A.4.1. Construction of",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 1,
+    "lft": 69,
+    "rgt": 98
+  },
+  {
+    "name": "A.4.1.1. On Site : Site Office",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 70,
+    "rgt": 71
+  },
+  {
+    "name": "A.4.1.2. Offsite : Manpower Barracks",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 72,
+    "rgt": 73
+  },
+  {
+    "name": "A.4.1.3. Offsite : Manpower Toilet & Bath",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 74,
+    "rgt": 75
+  },
+  {
+    "name": "A.4.1.4. On Site : Temporary Fence & Gate(s)",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 76,
+    "rgt": 77
+  },
+  {
+    "name": "A.4.1.5. On Site : Fabrication Areas",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 78,
+    "rgt": 79
+  },
+  {
+    "name": "A.4.1.6. On Site : Biometric Turnstiles",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 80,
+    "rgt": 81
+  },
+  {
+    "name": "A.4.1.7. Offsite : Warehouse / Staging Area",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 82,
+    "rgt": 83
+  },
+  {
+    "name": "A.4.1.8. Messhall",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 84,
+    "rgt": 85
+  },
+  {
+    "name": "A.4.1.9. Guardhouse",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 86,
+    "rgt": 87
+  },
+  {
+    "name": "A.4.1.10. Health & Safety Offices/Clinics",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 88,
+    "rgt": 89
+  },
+  {
+    "name": "A.4.1.11. Washbay",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 90,
+    "rgt": 91
+  },
+  {
+    "name": "A.4.1.12. Fuel Depot",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 92,
+    "rgt": 93
+  },
+  {
+    "name": "A.4.1.13. Parking Area",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 94,
+    "rgt": 95
+  },
+  {
+    "name": "A.4.1.14. MRF",
+    "parent_project_cost_breakdown": "A.4.1. Construction of",
+    "is_group": 0,
+    "lft": 96,
+    "rgt": 97
+  },
+  {
+    "name": "A.4.2. Rental (off-site)",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 1,
+    "lft": 99,
+    "rgt": 108
+  },
+  {
+    "name": "A.4.2.1. Staff House",
+    "parent_project_cost_breakdown": "A.4.2. Rental (off-site)",
+    "is_group": 0,
+    "lft": 100,
+    "rgt": 101
+  },
+  {
+    "name": "A.4.2.2. Mancamp",
+    "parent_project_cost_breakdown": "A.4.2. Rental (off-site)",
+    "is_group": 0,
+    "lft": 102,
+    "rgt": 103
+  },
+  {
+    "name": "A.4.2.3. Office (If not allowed on site)",
+    "parent_project_cost_breakdown": "A.4.2. Rental (off-site)",
+    "is_group": 0,
+    "lft": 104,
+    "rgt": 105
+  },
+  {
+    "name": "A.4.2.4. Warehouse / Staging Area",
+    "parent_project_cost_breakdown": "A.4.2. Rental (off-site)",
+    "is_group": 0,
+    "lft": 106,
+    "rgt": 107
+  },
+  {
+    "name": "A.4.3. Furniture & Fixtures",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 1,
+    "lft": 109,
+    "rgt": 114
+  },
+  {
+    "name": "A.4.3.1. Office",
+    "parent_project_cost_breakdown": "A.4.3. Furniture & Fixtures",
+    "is_group": 0,
+    "lft": 110,
+    "rgt": 111
+  },
+  {
+    "name": "A.4.3.2. Staff House",
+    "parent_project_cost_breakdown": "A.4.3. Furniture & Fixtures",
+    "is_group": 0,
+    "lft": 112,
+    "rgt": 113
+  },
+  {
+    "name": "A.4.4. IT Equipments",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 1,
+    "lft": 115,
+    "rgt": 134
+  },
+  {
+    "name": "A.4.4.1. Computers, Printers, Scanner",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 116,
+    "rgt": 117
+  },
+  {
+    "name": "A.4.4.2. Biometric Devices",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 118,
+    "rgt": 119
+  },
+  {
+    "name": "A.4.4.3. Digital Camera",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 120,
+    "rgt": 121
+  },
+  {
+    "name": "A.4.4.4. CCTV (Include Monitors)",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 122,
+    "rgt": 123
+  },
+  {
+    "name": "A.4.4.5. Network Devices",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 124,
+    "rgt": 125
+  },
+  {
+    "name": "A.4.4.6. PA System",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 126,
+    "rgt": 127
+  },
+  {
+    "name": "A.4.4.7. Drones",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 128,
+    "rgt": 129
+  },
+  {
+    "name": "A.4.4.8. Software Licenses",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 0,
+    "lft": 130,
+    "rgt": 131
+  },
+  {
+    "name": "A.4.4.9. Communications Equipment",
+    "parent_project_cost_breakdown": "A.4.4. IT Equipments",
+    "is_group": 1,
+    "lft": 132,
+    "rgt": 133
+  },
+  {
+    "name": "A.4.5. Office Supplies",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 135,
+    "rgt": 136
+  },
+  {
+    "name": "A.4.6. Logistics (Ex. Container Vans, Trucks, etc.)",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 137,
+    "rgt": 138
+  },
+  {
+    "name": "A.4.7. Postage, Shipping & Handling",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 139,
+    "rgt": 140
+  },
+  {
+    "name": "A.4.8. Potable Water",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 141,
+    "rgt": 142
+  },
+  {
+    "name": "A.4.9. Maintenance & Repair",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 143,
+    "rgt": 144
+  },
+  {
+    "name": "A.4.10. Subcontractor",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 1,
+    "lft": 145,
+    "rgt": 148
+  },
+  {
+    "name": "A.4.10.1. Construction of Barracks",
+    "parent_project_cost_breakdown": "A.4.10. Subcontractor",
+    "is_group": 0,
+    "lft": 146,
+    "rgt": 147
+  },
+  {
+    "name": "A.4.11. Rest Area",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 149,
+    "rgt": 150
+  },
+  {
+    "name": "A.4.12. Others (please specify)",
+    "parent_project_cost_breakdown": "A.4.  TEMPORARY FACILITIES - TACC",
+    "is_group": 0,
+    "lft": 151,
+    "rgt": 152
+  },
+  {
+    "name": "A.5.  TEMPORARY FACILITIES - CM",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 154,
+    "rgt": 185
+  },
+  {
+    "name": "A.5.1. Construction of",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 1,
+    "lft": 155,
+    "rgt": 160
+  },
+  {
+    "name": "A.5.1.1. Site Office",
+    "parent_project_cost_breakdown": "A.5.1. Construction of",
+    "is_group": 0,
+    "lft": 156,
+    "rgt": 157
+  },
+  {
+    "name": "A.5.1.2. Parking Area",
+    "parent_project_cost_breakdown": "A.5.1. Construction of",
+    "is_group": 0,
+    "lft": 158,
+    "rgt": 159
+  },
+  {
+    "name": "A.5.2. Rental (off-site)",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 161,
+    "rgt": 162
+  },
+  {
+    "name": "A.5.3. Furniture & Fixtures",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 1,
+    "lft": 163,
+    "rgt": 166
+  },
+  {
+    "name": "A.5.3.1. Office",
+    "parent_project_cost_breakdown": "A.5.3. Furniture & Fixtures",
+    "is_group": 0,
+    "lft": 164,
+    "rgt": 165
+  },
+  {
+    "name": "A.5.4. IT Equipments",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 1,
+    "lft": 167,
+    "rgt": 172
+  },
+  {
+    "name": "A.5.4.1. Computers, Printers, Scanner",
+    "parent_project_cost_breakdown": "A.5.4. IT Equipments",
+    "is_group": 0,
+    "lft": 168,
+    "rgt": 169
+  },
+  {
+    "name": "A.5.4.2. Network Devices",
+    "parent_project_cost_breakdown": "A.5.4. IT Equipments",
+    "is_group": 0,
+    "lft": 170,
+    "rgt": 171
+  },
+  {
+    "name": "A.5.5. Office Supplies",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 173,
+    "rgt": 174
+  },
+  {
+    "name": "A.5.6. Potable Water",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 175,
+    "rgt": 176
+  },
+  {
+    "name": "A.5.7. Subcontractor",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 177,
+    "rgt": 178
+  },
+  {
+    "name": "A.5.8. Service Vehicle",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 179,
+    "rgt": 180
+  },
+  {
+    "name": "A.5.9. PPE",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 181,
+    "rgt": 182
+  },
+  {
+    "name": "A.5.10. Others (please specify)",
+    "parent_project_cost_breakdown": "A.5.  TEMPORARY FACILITIES - CM",
+    "is_group": 0,
+    "lft": 183,
+    "rgt": 184
+  },
+  {
+    "name": "A.6.  TEMPORARY UTILITIES - TACC",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 186,
+    "rgt": 223
+  },
+  {
+    "name": "A.6.1. Electricity",
+    "parent_project_cost_breakdown": "A.6.  TEMPORARY UTILITIES - TACC",
+    "is_group": 1,
+    "lft": 187,
+    "rgt": 194
+  },
+  {
+    "name": "A.6.1.1. Materials",
+    "parent_project_cost_breakdown": "A.6.1. Electricity",
+    "is_group": 0,
+    "lft": 188,
+    "rgt": 189
+  },
+  {
+    "name": "A.6.1.2. Labor",
+    "parent_project_cost_breakdown": "A.6.1. Electricity",
+    "is_group": 0,
+    "lft": 190,
+    "rgt": 191
+  },
+  {
+    "name": "A.6.1.3. Monthly Dues",
+    "parent_project_cost_breakdown": "A.6.1. Electricity",
+    "is_group": 0,
+    "lft": 192,
+    "rgt": 193
+  },
+  {
+    "name": "A.6.2. Water",
+    "parent_project_cost_breakdown": "A.6.  TEMPORARY UTILITIES - TACC",
+    "is_group": 1,
+    "lft": 195,
+    "rgt": 208
+  },
+  {
+    "name": "A.6.2.1. Materials",
+    "parent_project_cost_breakdown": "A.6.2. Water",
+    "is_group": 1,
+    "lft": 196,
+    "rgt": 203
+  },
+  {
+    "name": "A.6.2.1.1. PVC/PPR Pipes",
+    "parent_project_cost_breakdown": "A.6.2.1. Materials",
+    "is_group": 0,
+    "lft": 197,
+    "rgt": 198
+  },
+  {
+    "name": "A.6.2.1.2. Water Tapping",
+    "parent_project_cost_breakdown": "A.6.2.1. Materials",
+    "is_group": 0,
+    "lft": 199,
+    "rgt": 200
+  },
+  {
+    "name": "A.6.2.1.3. Consumables",
+    "parent_project_cost_breakdown": "A.6.2.1. Materials",
+    "is_group": 0,
+    "lft": 201,
+    "rgt": 202
+  },
+  {
+    "name": "A.6.2.2. Labor",
+    "parent_project_cost_breakdown": "A.6.2. Water",
+    "is_group": 0,
+    "lft": 204,
+    "rgt": 205
+  },
+  {
+    "name": "A.6.2.3. Monthly Dues",
+    "parent_project_cost_breakdown": "A.6.2. Water",
+    "is_group": 0,
+    "lft": 206,
+    "rgt": 207
+  },
+  {
+    "name": "A.6.3. Communication",
+    "parent_project_cost_breakdown": "A.6.  TEMPORARY UTILITIES - TACC",
+    "is_group": 1,
+    "lft": 209,
+    "rgt": 218
+  },
+  {
+    "name": "A.6.3.1. Materials",
+    "parent_project_cost_breakdown": "A.6.3. Communication",
+    "is_group": 0,
+    "lft": 210,
+    "rgt": 211
+  },
+  {
+    "name": "A.6.3.2. Labor",
+    "parent_project_cost_breakdown": "A.6.3. Communication",
+    "is_group": 0,
+    "lft": 212,
+    "rgt": 213
+  },
+  {
+    "name": "A.6.3.3. Monthly Dues",
+    "parent_project_cost_breakdown": "A.6.3. Communication",
+    "is_group": 0,
+    "lft": 214,
+    "rgt": 215
+  },
+  {
+    "name": "A.6.3.4. Potable Water",
+    "parent_project_cost_breakdown": "A.6.3. Communication",
+    "is_group": 0,
+    "lft": 216,
+    "rgt": 217
+  },
+  {
+    "name": "A.6.4. Subcontractor",
+    "parent_project_cost_breakdown": "A.6.  TEMPORARY UTILITIES - TACC",
+    "is_group": 0,
+    "lft": 219,
+    "rgt": 220
+  },
+  {
+    "name": "A.6.5. Others (please specify)",
+    "parent_project_cost_breakdown": "A.6.  TEMPORARY UTILITIES - TACC",
+    "is_group": 0,
+    "lft": 221,
+    "rgt": 222
+  },
+  {
+    "name": "A.7.  TEMPORARY UTILITIES - CM",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 224,
+    "rgt": 257
+  },
+  {
+    "name": "A.7.1. Electricity",
+    "parent_project_cost_breakdown": "A.7.  TEMPORARY UTILITIES - CM",
+    "is_group": 1,
+    "lft": 225,
+    "rgt": 232
+  },
+  {
+    "name": "A.7.1.1. Materials",
+    "parent_project_cost_breakdown": "A.7.1. Electricity",
+    "is_group": 1,
+    "lft": 226,
+    "rgt": 227
+  },
+  {
+    "name": "A.7.1.2. Labor",
+    "parent_project_cost_breakdown": "A.7.1. Electricity",
+    "is_group": 0,
+    "lft": 228,
+    "rgt": 229
+  },
+  {
+    "name": "A.7.1.3. Monthly Dues",
+    "parent_project_cost_breakdown": "A.7.1. Electricity",
+    "is_group": 0,
+    "lft": 230,
+    "rgt": 231
+  },
+  {
+    "name": "A.7.2. Water",
+    "parent_project_cost_breakdown": "A.7.  TEMPORARY UTILITIES - CM",
+    "is_group": 1,
+    "lft": 233,
+    "rgt": 240
+  },
+  {
+    "name": "A.7.2.1. Materials",
+    "parent_project_cost_breakdown": "A.7.2. Water",
+    "is_group": 1,
+    "lft": 234,
+    "rgt": 235
+  },
+  {
+    "name": "A.7.2.2. Labor",
+    "parent_project_cost_breakdown": "A.7.2. Water",
+    "is_group": 0,
+    "lft": 236,
+    "rgt": 237
+  },
+  {
+    "name": "A.7.2.3. Monthly Dues",
+    "parent_project_cost_breakdown": "A.7.2. Water",
+    "is_group": 0,
+    "lft": 238,
+    "rgt": 239
+  },
+  {
+    "name": "A.7.3. Communication",
+    "parent_project_cost_breakdown": "A.7.  TEMPORARY UTILITIES - CM",
+    "is_group": 1,
+    "lft": 241,
+    "rgt": 250
+  },
+  {
+    "name": "A.7.3.1. Materials",
+    "parent_project_cost_breakdown": "A.7.3. Communication",
+    "is_group": 0,
+    "lft": 242,
+    "rgt": 243
+  },
+  {
+    "name": "A.7.3.2. Labor",
+    "parent_project_cost_breakdown": "A.7.3. Communication",
+    "is_group": 0,
+    "lft": 244,
+    "rgt": 245
+  },
+  {
+    "name": "A.7.3.3. Monthly Dues",
+    "parent_project_cost_breakdown": "A.7.3. Communication",
+    "is_group": 0,
+    "lft": 246,
+    "rgt": 247
+  },
+  {
+    "name": "A.7.3.4. Potable Water",
+    "parent_project_cost_breakdown": "A.7.3. Communication",
+    "is_group": 0,
+    "lft": 248,
+    "rgt": 249
+  },
+  {
+    "name": "A.7.4. Subcontractor",
+    "parent_project_cost_breakdown": "A.7.  TEMPORARY UTILITIES - CM",
+    "is_group": 0,
+    "lft": 251,
+    "rgt": 252
+  },
+  {
+    "name": "A.7.5. Others (please specify)",
+    "parent_project_cost_breakdown": "A.7.  TEMPORARY UTILITIES - CM",
+    "is_group": 1,
+    "lft": 253,
+    "rgt": 256
+  },
+  {
+    "name": "A.7.5.1. Drainage and Sewage System",
+    "parent_project_cost_breakdown": "A.7.5. Others (please specify)",
+    "is_group": 0,
+    "lft": 254,
+    "rgt": 255
+  },
+  {
+    "name": "A.8.  SHOP DRAWINGS & AS-BUILT PLANS",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 258,
+    "rgt": 267
+  },
+  {
+    "name": "A.8.1. Subcontractor",
+    "parent_project_cost_breakdown": "A.8.  SHOP DRAWINGS & AS-BUILT PLANS",
+    "is_group": 0,
+    "lft": 259,
+    "rgt": 260
+  },
+  {
+    "name": "A.8.2. Others (please specify)",
+    "parent_project_cost_breakdown": "A.8.  SHOP DRAWINGS & AS-BUILT PLANS",
+    "is_group": 1,
+    "lft": 261,
+    "rgt": 266
+  },
+  {
+    "name": "A.8.2.1. Issuance of FCD Plans from Designer",
+    "parent_project_cost_breakdown": "A.8.2. Others (please specify)",
+    "is_group": 0,
+    "lft": 262,
+    "rgt": 263
+  },
+  {
+    "name": "A.8.2.2. BIM",
+    "parent_project_cost_breakdown": "A.8.2. Others (please specify)",
+    "is_group": 0,
+    "lft": 264,
+    "rgt": 265
+  },
+  {
+    "name": "A.9.  CONSTRUCTION HEALTH, SAFETY, ENVIRONMENT & SECURITY",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 268,
+    "rgt": 295
+  },
+  {
+    "name": "A.9.1. Security",
+    "parent_project_cost_breakdown": "A.9.  CONSTRUCTION HEALTH, SAFETY, ENVIRONMENT & SECURITY",
+    "is_group": 0,
+    "lft": 269,
+    "rgt": 270
+  },
+  {
+    "name": "A.9.2. Safety & Health",
+    "parent_project_cost_breakdown": "A.9.  CONSTRUCTION HEALTH, SAFETY, ENVIRONMENT & SECURITY",
+    "is_group": 1,
+    "lft": 271,
+    "rgt": 278
+  },
+  {
+    "name": "A.9.2.1. Safety Tools & Equipment",
+    "parent_project_cost_breakdown": "A.9.2. Safety & Health",
+    "is_group": 0,
+    "lft": 272,
+    "rgt": 273
+  },
+  {
+    "name": "A.9.2.2. Safety Materials",
+    "parent_project_cost_breakdown": "A.9.2. Safety & Health",
+    "is_group": 0,
+    "lft": 274,
+    "rgt": 275
+  },
+  {
+    "name": "A.9.2.3. PPE",
+    "parent_project_cost_breakdown": "A.9.2. Safety & Health",
+    "is_group": 0,
+    "lft": 276,
+    "rgt": 277
+  },
+  {
+    "name": "A.9.3. Environment",
+    "parent_project_cost_breakdown": "A.9.  CONSTRUCTION HEALTH, SAFETY, ENVIRONMENT & SECURITY",
+    "is_group": 1,
+    "lft": 279,
+    "rgt": 290
+  },
+  {
+    "name": "A.9.3.1. Housekeeping",
+    "parent_project_cost_breakdown": "A.9.3. Environment",
+    "is_group": 0,
+    "lft": 280,
+    "rgt": 281
+  },
+  {
+    "name": "A.9.3.2. Garbage Disposal",
+    "parent_project_cost_breakdown": "A.9.3. Environment",
+    "is_group": 0,
+    "lft": 282,
+    "rgt": 283
+  },
+  {
+    "name": "A.9.3.3. STP Siphoning",
+    "parent_project_cost_breakdown": "A.9.3. Environment",
+    "is_group": 0,
+    "lft": 284,
+    "rgt": 285
+  },
+  {
+    "name": "A.9.3.4. Road and Drainage Maintenance",
+    "parent_project_cost_breakdown": "A.9.3. Environment",
+    "is_group": 0,
+    "lft": 286,
+    "rgt": 287
+  },
+  {
+    "name": "A.9.3.5. General Housekeeping prior Project Turn Over",
+    "parent_project_cost_breakdown": "A.9.3. Environment",
+    "is_group": 0,
+    "lft": 288,
+    "rgt": 289
+  },
+  {
+    "name": "A.9.4. Subcontractor",
+    "parent_project_cost_breakdown": "A.9.  CONSTRUCTION HEALTH, SAFETY, ENVIRONMENT & SECURITY",
+    "is_group": 0,
+    "lft": 291,
+    "rgt": 292
+  },
+  {
+    "name": "A.9.5. Others (please specify)",
+    "parent_project_cost_breakdown": "A.9.  CONSTRUCTION HEALTH, SAFETY, ENVIRONMENT & SECURITY",
+    "is_group": 0,
+    "lft": 293,
+    "rgt": 294
+  },
+  {
+    "name": "A.10.  MATERIAL TESTING",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 296,
+    "rgt": 321
+  },
+  {
+    "name": "A.10.1. Soil Investigation Test",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 297,
+    "rgt": 298
+  },
+  {
+    "name": "A.10.2. Rebar Test (Tensilte Testing)",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 299,
+    "rgt": 300
+  },
+  {
+    "name": "A.10.3. Concrete Test (Compression Strength Testing)",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 301,
+    "rgt": 302
+  },
+  {
+    "name": "A.10.4. Field Density Test",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 303,
+    "rgt": 304
+  },
+  {
+    "name": "A.10.5. Dye Penetrating Test",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 305,
+    "rgt": 306
+  },
+  {
+    "name": "A.10.6. Welding XRAY Test",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 307,
+    "rgt": 308
+  },
+  {
+    "name": "A.10.7. CHB Test",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 309,
+    "rgt": 310
+  },
+  {
+    "name": "A.10.8. Subcontractor",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 0,
+    "lft": 311,
+    "rgt": 312
+  },
+  {
+    "name": "A.10.9. Others (please specify)",
+    "parent_project_cost_breakdown": "A.10.  MATERIAL TESTING",
+    "is_group": 1,
+    "lft": 313,
+    "rgt": 320
+  },
+  {
+    "name": "A.10.9.1. MEPFS Testing & Commisioning",
+    "parent_project_cost_breakdown": "A.10.9. Others (please specify)",
+    "is_group": 0,
+    "lft": 314,
+    "rgt": 315
+  },
+  {
+    "name": "A.10.9.2. Rebar Scanning",
+    "parent_project_cost_breakdown": "A.10.9. Others (please specify)",
+    "is_group": 0,
+    "lft": 316,
+    "rgt": 317
+  },
+  {
+    "name": "A.10.9.3. Pile Drive Analyzer (PDA) Test",
+    "parent_project_cost_breakdown": "A.10.9. Others (please specify)",
+    "is_group": 0,
+    "lft": 318,
+    "rgt": 319
+  },
+  {
+    "name": "A.11.  SUPPORT EQUIPMENT",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 322,
+    "rgt": 393
+  },
+  {
+    "name": "A.11.1. Light Equipment",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 1,
+    "lft": 323,
+    "rgt": 342
+  },
+  {
+    "name": "A.11.1.1. Water Pump (ex. Submersible)",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 324,
+    "rgt": 325
+  },
+  {
+    "name": "A.11.1.2. Power Spray",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 326,
+    "rgt": 327
+  },
+  {
+    "name": "A.11.1.3. Cutting Outfit",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 328,
+    "rgt": 329
+  },
+  {
+    "name": "A.11.1.4. Chipping Hammer",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 330,
+    "rgt": 331
+  },
+  {
+    "name": "A.11.1.5. Angle Grinders",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 332,
+    "rgt": 333
+  },
+  {
+    "name": "A.11.1.6. Welding Machine",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 334,
+    "rgt": 335
+  },
+  {
+    "name": "A.11.1.7. Industrial Blower and Ventilators",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 336,
+    "rgt": 337
+  },
+  {
+    "name": "A.11.1.8. Bar Bender",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 338,
+    "rgt": 339
+  },
+  {
+    "name": "A.11.1.9. Bar Cutter",
+    "parent_project_cost_breakdown": "A.11.1. Light Equipment",
+    "is_group": 0,
+    "lft": 340,
+    "rgt": 341
+  },
+  {
+    "name": "A.11.2. Heavy Equipment (Rental)",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 1,
+    "lft": 343,
+    "rgt": 366
+  },
+  {
+    "name": "A.11.2.1. Towercrane",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 344,
+    "rgt": 345
+  },
+  {
+    "name": "A.11.2.2. Personnel Hoist",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 346,
+    "rgt": 347
+  },
+  {
+    "name": "A.11.2.3. Mobilecrane",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 348,
+    "rgt": 349
+  },
+  {
+    "name": "A.11.2.4. Boom Truck",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 350,
+    "rgt": 351
+  },
+  {
+    "name": "A.11.2.5. Mini-Dump Truck",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 352,
+    "rgt": 353
+  },
+  {
+    "name": "A.11.2.6. Forward Dump Truck",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 354,
+    "rgt": 355
+  },
+  {
+    "name": "A.11.2.7. Generators",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 356,
+    "rgt": 357
+  },
+  {
+    "name": "A.11.2.8. Water Truck",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 358,
+    "rgt": 359
+  },
+  {
+    "name": "A.11.2.9. Skid Loader",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 360,
+    "rgt": 361
+  },
+  {
+    "name": "A.11.2.10. Backhoe",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 362,
+    "rgt": 363
+  },
+  {
+    "name": "A.11.2.11. Wing Van",
+    "parent_project_cost_breakdown": "A.11.2. Heavy Equipment (Rental)",
+    "is_group": 0,
+    "lft": 364,
+    "rgt": 365
+  },
+  {
+    "name": "A.11.3. Labor (Equipment Operator)",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 1,
+    "lft": 367,
+    "rgt": 384
+  },
+  {
+    "name": "A.11.3.1. Towercrane",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 368,
+    "rgt": 369
+  },
+  {
+    "name": "A.11.3.2. Manlift",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 370,
+    "rgt": 371
+  },
+  {
+    "name": "A.11.3.3. Mobilecrane",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 372,
+    "rgt": 373
+  },
+  {
+    "name": "A.11.3.4. Boom Truck",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 374,
+    "rgt": 375
+  },
+  {
+    "name": "A.11.3.5. Mini-Dump Truck",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 376,
+    "rgt": 377
+  },
+  {
+    "name": "A.11.3.6. Generators",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 378,
+    "rgt": 379
+  },
+  {
+    "name": "A.11.3.7. Water Truck",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 380,
+    "rgt": 381
+  },
+  {
+    "name": "A.11.3.8. Skid Loader",
+    "parent_project_cost_breakdown": "A.11.3. Labor (Equipment Operator)",
+    "is_group": 0,
+    "lft": 382,
+    "rgt": 383
+  },
+  {
+    "name": "A.11.4. Fuel , Parking & Toll Fees",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 0,
+    "lft": 385,
+    "rgt": 386
+  },
+  {
+    "name": "A.11.5. Maintenance",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 0,
+    "lft": 387,
+    "rgt": 388
+  },
+  {
+    "name": "A.11.6. Subcontractor",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 0,
+    "lft": 389,
+    "rgt": 390
+  },
+  {
+    "name": "A.11.7. Others (please specify)",
+    "parent_project_cost_breakdown": "A.11.  SUPPORT EQUIPMENT",
+    "is_group": 0,
+    "lft": 391,
+    "rgt": 392
+  },
+  {
+    "name": "A.12.  SITE MANAGEMENT",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 394,
+    "rgt": 425
+  },
+  {
+    "name": "A.12.1. Site Supervision  - Support team personnel",
+    "parent_project_cost_breakdown": "A.12.  SITE MANAGEMENT",
+    "is_group": 1,
+    "lft": 395,
+    "rgt": 416
+  },
+  {
+    "name": "A.12.1.1. Staff",
+    "parent_project_cost_breakdown": "A.12.1. Site Supervision  - Support team personnel",
+    "is_group": 1,
+    "lft": 396,
+    "rgt": 405
+  },
+  {
+    "name": "A.12.1.1.1. Salary including 13th Month Pay",
+    "parent_project_cost_breakdown": "A.12.1.1. Staff",
+    "is_group": 0,
+    "lft": 397,
+    "rgt": 398
+  },
+  {
+    "name": "A.12.1.1.2. SSS",
+    "parent_project_cost_breakdown": "A.12.1.1. Staff",
+    "is_group": 0,
+    "lft": 399,
+    "rgt": 400
+  },
+  {
+    "name": "A.12.1.1.3. Pag-Ibig",
+    "parent_project_cost_breakdown": "A.12.1.1. Staff",
+    "is_group": 0,
+    "lft": 401,
+    "rgt": 402
+  },
+  {
+    "name": "A.12.1.1.4. Philhealth",
+    "parent_project_cost_breakdown": "A.12.1.1. Staff",
+    "is_group": 0,
+    "lft": 403,
+    "rgt": 404
+  },
+  {
+    "name": "A.12.1.2. Admin Workers",
+    "parent_project_cost_breakdown": "A.12.1. Site Supervision  - Support team personnel",
+    "is_group": 1,
+    "lft": 406,
+    "rgt": 415
+  },
+  {
+    "name": "A.12.1.2.1. Salary including 13th Month Pay",
+    "parent_project_cost_breakdown": "A.12.1.2. Admin Workers",
+    "is_group": 0,
+    "lft": 407,
+    "rgt": 408
+  },
+  {
+    "name": "A.12.1.2.2. SSS",
+    "parent_project_cost_breakdown": "A.12.1.2. Admin Workers",
+    "is_group": 0,
+    "lft": 409,
+    "rgt": 410
+  },
+  {
+    "name": "A.12.1.2.3. Pag-Ibig",
+    "parent_project_cost_breakdown": "A.12.1.2. Admin Workers",
+    "is_group": 0,
+    "lft": 411,
+    "rgt": 412
+  },
+  {
+    "name": "A.12.1.2.4. Philhealth",
+    "parent_project_cost_breakdown": "A.12.1.2. Admin Workers",
+    "is_group": 0,
+    "lft": 413,
+    "rgt": 414
+  },
+  {
+    "name": "A.12.2. Personnel Trainings",
+    "parent_project_cost_breakdown": "A.12.  SITE MANAGEMENT",
+    "is_group": 0,
+    "lft": 417,
+    "rgt": 418
+  },
+  {
+    "name": "A.12.3. Team Building",
+    "parent_project_cost_breakdown": "A.12.  SITE MANAGEMENT",
+    "is_group": 0,
+    "lft": 419,
+    "rgt": 420
+  },
+  {
+    "name": "A.12.4. Subcontractor",
+    "parent_project_cost_breakdown": "A.12.  SITE MANAGEMENT",
+    "is_group": 0,
+    "lft": 421,
+    "rgt": 422
+  },
+  {
+    "name": "A.12.5. Others (please specify)",
+    "parent_project_cost_breakdown": "A.12.  SITE MANAGEMENT",
+    "is_group": 0,
+    "lft": 423,
+    "rgt": 424
+  },
+  {
+    "name": "A.13.  REPRESENTATION",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 426,
+    "rgt": 439
+  },
+  {
+    "name": "A.13.1. Weekly Coordination Meeting",
+    "parent_project_cost_breakdown": "A.13.  REPRESENTATION",
+    "is_group": 0,
+    "lft": 427,
+    "rgt": 428
+  },
+  {
+    "name": "A.13.2. Monthly Management Meeting",
+    "parent_project_cost_breakdown": "A.13.  REPRESENTATION",
+    "is_group": 0,
+    "lft": 429,
+    "rgt": 430
+  },
+  {
+    "name": "A.13.3. Marketing Expense",
+    "parent_project_cost_breakdown": "A.13.  REPRESENTATION",
+    "is_group": 0,
+    "lft": 431,
+    "rgt": 432
+  },
+  {
+    "name": "A.13.4. Project Ceremonial Activitiies",
+    "parent_project_cost_breakdown": "A.13.  REPRESENTATION",
+    "is_group": 0,
+    "lft": 433,
+    "rgt": 434
+  },
+  {
+    "name": "A.13.5. Subcontractor",
+    "parent_project_cost_breakdown": "A.13.  REPRESENTATION",
+    "is_group": 0,
+    "lft": 435,
+    "rgt": 436
+  },
+  {
+    "name": "A.13.6. Others (please specify)",
+    "parent_project_cost_breakdown": "A.13.  REPRESENTATION",
+    "is_group": 0,
+    "lft": 437,
+    "rgt": 438
+  },
+  {
+    "name": "A.14. DEMOBILIZATION",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 440,
+    "rgt": 451
+  },
+  {
+    "name": "A.14.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "parent_project_cost_breakdown": "A.14. DEMOBILIZATION",
+    "is_group": 1,
+    "lft": 441,
+    "rgt": 446
+  },
+  {
+    "name": "A.14.1.1. Staff",
+    "parent_project_cost_breakdown": "A.14.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "is_group": 0,
+    "lft": 442,
+    "rgt": 443
+  },
+  {
+    "name": "A.14.1.2. Admin Workers",
+    "parent_project_cost_breakdown": "A.14.1. Transportation and Accomodation  (Air, Sea, Lands & Hotels)",
+    "is_group": 0,
+    "lft": 444,
+    "rgt": 445
+  },
+  {
+    "name": "A.14.2. Subcontractor",
+    "parent_project_cost_breakdown": "A.14. DEMOBILIZATION",
+    "is_group": 0,
+    "lft": 447,
+    "rgt": 448
+  },
+  {
+    "name": "A.14.3. Others (please specify)",
+    "parent_project_cost_breakdown": "A.14. DEMOBILIZATION",
+    "is_group": 0,
+    "lft": 449,
+    "rgt": 450
+  },
+  {
+    "name": "A.15. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "A. GENERAL REQUIREMENTS",
+    "is_group": 1,
+    "lft": 452,
+    "rgt": 473
+  },
+  {
+    "name": "A.15.1. Professional Fees - Architectural Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 453,
+    "rgt": 454
+  },
+  {
+    "name": "A.15.2. Professional Fees - Civil Works Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 455,
+    "rgt": 456
+  },
+  {
+    "name": "A.15.3. Professional Fees - Structural Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 457,
+    "rgt": 458
+  },
+  {
+    "name": "A.15.4. Professional Fees - Electrical Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 459,
+    "rgt": 460
+  },
+  {
+    "name": "A.15.5. Professional Fees - Plumbing & Sanitary Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 461,
+    "rgt": 462
+  },
+  {
+    "name": "A.15.6. Professional Fees - Mechanical Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 463,
+    "rgt": 464
+  },
+  {
+    "name": "A.15.7. Professional Fees - Hydraulics and Hydrology Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 465,
+    "rgt": 466
+  },
+  {
+    "name": "A.15.8. Professional Fees - Geotechnical Consultant",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 467,
+    "rgt": 468
+  },
+  {
+    "name": "A.15.9. Professional Fees - Materials Engineer",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 469,
+    "rgt": 470
+  },
+  {
+    "name": "A.15.10. Subcontractor",
+    "parent_project_cost_breakdown": "A.15. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 471,
+    "rgt": 472
+  },
+  {
+    "name": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 477,
+    "rgt": 584
+  },
+  {
+    "name": "B.1. DEMOLITION WORKS",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 478,
+    "rgt": 487
+  },
+  {
+    "name": "B.1.1. Manual Demolition",
+    "parent_project_cost_breakdown": "B.1. DEMOLITION WORKS",
+    "is_group": 0,
+    "lft": 479,
+    "rgt": 480
+  },
+  {
+    "name": "B.1.2. Controlled (Machinery) Demolition",
+    "parent_project_cost_breakdown": "B.1. DEMOLITION WORKS",
+    "is_group": 0,
+    "lft": 481,
+    "rgt": 482
+  },
+  {
+    "name": "B.1.3. Blasting",
+    "parent_project_cost_breakdown": "B.1. DEMOLITION WORKS",
+    "is_group": 0,
+    "lft": 483,
+    "rgt": 484
+  },
+  {
+    "name": "B.1.4. Subcontractor",
+    "parent_project_cost_breakdown": "B.1. DEMOLITION WORKS",
+    "is_group": 0,
+    "lft": 485,
+    "rgt": 486
+  },
+  {
+    "name": "B.2. STAKING AND LAYOUT",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 488,
+    "rgt": 499
+  },
+  {
+    "name": "B.2.1. Materials",
+    "parent_project_cost_breakdown": "B.2. STAKING AND LAYOUT",
+    "is_group": 1,
+    "lft": 489,
+    "rgt": 496
+  },
+  {
+    "name": "B.2.1.1. Total Station",
+    "parent_project_cost_breakdown": "B.2.1. Materials",
+    "is_group": 0,
+    "lft": 490,
+    "rgt": 491
+  },
+  {
+    "name": "B.2.1.2. GPS Equipment",
+    "parent_project_cost_breakdown": "B.2.1. Materials",
+    "is_group": 0,
+    "lft": 492,
+    "rgt": 493
+  },
+  {
+    "name": "B.2.1.3. Leveling Staff",
+    "parent_project_cost_breakdown": "B.2.1. Materials",
+    "is_group": 0,
+    "lft": 494,
+    "rgt": 495
+  },
+  {
+    "name": "B.2.2. Subcontractor",
+    "parent_project_cost_breakdown": "B.2. STAKING AND LAYOUT",
+    "is_group": 0,
+    "lft": 497,
+    "rgt": 498
+  },
+  {
+    "name": "B.3. EARTHWORKS AND SITE GRADING",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 500,
+    "rgt": 525
+  },
+  {
+    "name": "B.3.1. Clearing & Grubbing",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 501,
+    "rgt": 502
+  },
+  {
+    "name": "B.3.2. Cutting of Trees",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 503,
+    "rgt": 504
+  },
+  {
+    "name": "B.3.3. Balling of Trees",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 505,
+    "rgt": 506
+  },
+  {
+    "name": "B.3.4. Cut (Earth)",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 507,
+    "rgt": 508
+  },
+  {
+    "name": "B.3.5. Imported Fill (Material)",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 509,
+    "rgt": 510
+  },
+  {
+    "name": "B.3.6. Backfill & Compaction",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 511,
+    "rgt": 512
+  },
+  {
+    "name": "B.3.7. Haul-out of unstuitable Materials",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 513,
+    "rgt": 514
+  },
+  {
+    "name": "B.3.8. Soil Poisoning",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 515,
+    "rgt": 516
+  },
+  {
+    "name": "B.3.9. Lean Concrete",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 517,
+    "rgt": 518
+  },
+  {
+    "name": "B.3.10. Gravel Bedding",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 519,
+    "rgt": 520
+  },
+  {
+    "name": "B.3.11. Vapor Barrier",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 521,
+    "rgt": 522
+  },
+  {
+    "name": "B.3.12. Subcontractor",
+    "parent_project_cost_breakdown": "B.3. EARTHWORKS AND SITE GRADING",
+    "is_group": 0,
+    "lft": 523,
+    "rgt": 524
+  },
+  {
+    "name": "B.4. ROAD PREPARATION",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 526,
+    "rgt": 551
+  },
+  {
+    "name": "B.4.1. Sub-Grade Preparation",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 527,
+    "rgt": 528
+  },
+  {
+    "name": "B.4.2. Base Preparation",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 529,
+    "rgt": 530
+  },
+  {
+    "name": "B.4.3. Sub Base Course (Item 200)",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 531,
+    "rgt": 532
+  },
+  {
+    "name": "B.4.4. Ready Mix Concrete ( psi)",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 1,
+    "lft": 533,
+    "rgt": 540
+  },
+  {
+    "name": "B.4.4.1. Cement In BULK",
+    "parent_project_cost_breakdown": "B.4.4. Ready Mix Concrete ( psi)",
+    "is_group": 0,
+    "lft": 534,
+    "rgt": 535
+  },
+  {
+    "name": "B.4.4.2. Batching Cost (Aggregate Portion Only)",
+    "parent_project_cost_breakdown": "B.4.4. Ready Mix Concrete ( psi)",
+    "is_group": 0,
+    "lft": 536,
+    "rgt": 537
+  },
+  {
+    "name": "B.4.4.3. Batching Cost (All In)",
+    "parent_project_cost_breakdown": "B.4.4. Ready Mix Concrete ( psi)",
+    "is_group": 0,
+    "lft": 538,
+    "rgt": 539
+  },
+  {
+    "name": "B.4.5. Curbs and Gutter",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 541,
+    "rgt": 542
+  },
+  {
+    "name": "B.4.6. Asphalt",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 543,
+    "rgt": 544
+  },
+  {
+    "name": "B.4.7. Pavement Marking",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 545,
+    "rgt": 546
+  },
+  {
+    "name": "B.4.8. Wheel Stopper",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 547,
+    "rgt": 548
+  },
+  {
+    "name": "B.4.9. Subcontractor",
+    "parent_project_cost_breakdown": "B.4. ROAD PREPARATION",
+    "is_group": 0,
+    "lft": 549,
+    "rgt": 550
+  },
+  {
+    "name": "B.5. DRAINAGE SYSTEM",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 552,
+    "rgt": 553
+  },
+  {
+    "name": "B.6. PERMANENT FENCE",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 554,
+    "rgt": 555
+  },
+  {
+    "name": "B.7. MAIN STRUCTURE WORKS",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 556,
+    "rgt": 577
+  },
+  {
+    "name": "B.7.1. Soil Protection Works",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 0,
+    "lft": 557,
+    "rgt": 558
+  },
+  {
+    "name": "B.7.2. Pile Works  (Bored Pile, Concrete Pile, Diaphram Wall)",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 0,
+    "lft": 559,
+    "rgt": 560
+  },
+  {
+    "name": "B.7.2. Pile Hacking",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 0,
+    "lft": 561,
+    "rgt": 562
+  },
+  {
+    "name": "B.7.3. Excavation Works",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 1,
+    "lft": 563,
+    "rgt": 570
+  },
+  {
+    "name": "B.7.3.1. Manual Excavation",
+    "parent_project_cost_breakdown": "B.7.3. Excavation Works",
+    "is_group": 0,
+    "lft": 564,
+    "rgt": 565
+  },
+  {
+    "name": "B.7.3.2. Excavation using heavy equipment",
+    "parent_project_cost_breakdown": "B.7.3. Excavation Works",
+    "is_group": 0,
+    "lft": 566,
+    "rgt": 567
+  },
+  {
+    "name": "B.7.3.3. Blasting",
+    "parent_project_cost_breakdown": "B.7.3. Excavation Works",
+    "is_group": 0,
+    "lft": 568,
+    "rgt": 569
+  },
+  {
+    "name": "B.7.4. Dewatering",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 0,
+    "lft": 571,
+    "rgt": 572
+  },
+  {
+    "name": "B.7.5. Manual Trimming",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 0,
+    "lft": 573,
+    "rgt": 574
+  },
+  {
+    "name": "B.7.6. Subcontractor",
+    "parent_project_cost_breakdown": "B.7. MAIN STRUCTURE WORKS",
+    "is_group": 0,
+    "lft": 575,
+    "rgt": 576
+  },
+  {
+    "name": "B.8. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "B. CIVIL WORKS and SITE DEVELOPMENT WORKS",
+    "is_group": 1,
+    "lft": 578,
+    "rgt": 583
+  },
+  {
+    "name": "B.8.1. Soft and Hard Landscape",
+    "parent_project_cost_breakdown": "B.8. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 579,
+    "rgt": 580
+  },
+  {
+    "name": "B.8.2. Guard Rails",
+    "parent_project_cost_breakdown": "B.8. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 581,
+    "rgt": 582
+  },
+  {
+    "name": "C. STRUCTURAL WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 585,
+    "rgt": 824
+  },
+  {
+    "name": "C.1. CONCRETING WORKS",
+    "parent_project_cost_breakdown": "C. STRUCTURAL WORKS",
+    "is_group": 1,
+    "lft": 586,
+    "rgt": 665
+  },
+  {
+    "name": "C.1.1. Materials",
+    "parent_project_cost_breakdown": "C.1. CONCRETING WORKS",
+    "is_group": 1,
+    "lft": 587,
+    "rgt": 602
+  },
+  {
+    "name": "C.1.1.1. Ready Mix Concrete ( psi) -",
+    "parent_project_cost_breakdown": "C.1.1. Materials",
+    "is_group": 1,
+    "lft": 588,
+    "rgt": 595
+  },
+  {
+    "name": "C.1.1.1.1. Cement",
+    "parent_project_cost_breakdown": "C.1.1.1. Ready Mix Concrete ( psi) -",
+    "is_group": 0,
+    "lft": 589,
+    "rgt": 590
+  },
+  {
+    "name": "C.1.1.1.2. Batching Cost (Aggregate Portion Only)",
+    "parent_project_cost_breakdown": "C.1.1.1. Ready Mix Concrete ( psi) -",
+    "is_group": 0,
+    "lft": 591,
+    "rgt": 592
+  },
+  {
+    "name": "C.1.1.1.3. Batching Cost (All In)",
+    "parent_project_cost_breakdown": "C.1.1.1. Ready Mix Concrete ( psi) -",
+    "is_group": 0,
+    "lft": 593,
+    "rgt": 594
+  },
+  {
+    "name": "C.1.1.2. Curing Materials",
+    "parent_project_cost_breakdown": "C.1.1. Materials",
+    "is_group": 1,
+    "lft": 596,
+    "rgt": 601
+  },
+  {
+    "name": "C.1.1.2.1. Abacca Sacks",
+    "parent_project_cost_breakdown": "C.1.1.2. Curing Materials",
+    "is_group": 0,
+    "lft": 597,
+    "rgt": 598
+  },
+  {
+    "name": "C.1.1.2.2. Curing Compound",
+    "parent_project_cost_breakdown": "C.1.1.2. Curing Materials",
+    "is_group": 0,
+    "lft": 599,
+    "rgt": 600
+  },
+  {
+    "name": "C.1.2. Tools & Equipments",
+    "parent_project_cost_breakdown": "C.1. CONCRETING WORKS",
+    "is_group": 1,
+    "lft": 603,
+    "rgt": 640
+  },
+  {
+    "name": "C.1.2.1. Concrete Bucket",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 604,
+    "rgt": 605
+  },
+  {
+    "name": "C.1.2.2. Connector Embeds",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 606,
+    "rgt": 607
+  },
+  {
+    "name": "C.1.2.3. Power Spray",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 608,
+    "rgt": 609
+  },
+  {
+    "name": "C.1.2.4. Water Container / Drum",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 610,
+    "rgt": 611
+  },
+  {
+    "name": "C.1.2.5. Chipping Hammer",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 612,
+    "rgt": 613
+  },
+  {
+    "name": "C.1.2.6. Chisel",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 614,
+    "rgt": 615
+  },
+  {
+    "name": "C.1.2.7. Grinder 4\"",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 616,
+    "rgt": 617
+  },
+  {
+    "name": "C.1.2.8. Grinder 7\"",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 618,
+    "rgt": 619
+  },
+  {
+    "name": "C.1.2.9. Levelling Laser",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 620,
+    "rgt": 621
+  },
+  {
+    "name": "C.1.2.10. Chipping Hammer",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 622,
+    "rgt": 623
+  },
+  {
+    "name": "C.1.2.11. Power Trowel",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 624,
+    "rgt": 625
+  },
+  {
+    "name": "C.1.2.12. Magnesium Float",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 626,
+    "rgt": 627
+  },
+  {
+    "name": "C.1.2.13. Pointed Trowel",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 628,
+    "rgt": 629
+  },
+  {
+    "name": "C.1.2.14. Vibrator",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 630,
+    "rgt": 631
+  },
+  {
+    "name": "C.1.2.15. TO DEFINE",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 632,
+    "rgt": 633
+  },
+  {
+    "name": "C.1.2.16. Pumpcrete ( Boom Type )",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 634,
+    "rgt": 635
+  },
+  {
+    "name": "C.1.2.17. Line Pump",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 636,
+    "rgt": 637
+  },
+  {
+    "name": "C.1.2.18. Spider Placing boom",
+    "parent_project_cost_breakdown": "C.1.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 638,
+    "rgt": 639
+  },
+  {
+    "name": "C.1.3. Consummables",
+    "parent_project_cost_breakdown": "C.1. CONCRETING WORKS",
+    "is_group": 1,
+    "lft": 641,
+    "rgt": 658
+  },
+  {
+    "name": "C.1.3.1. Carbon Brush",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 642,
+    "rgt": 643
+  },
+  {
+    "name": "C.1.3.2. Grinder 4\"",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 644,
+    "rgt": 645
+  },
+  {
+    "name": "C.1.3.3. Grinder 7\"",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 646,
+    "rgt": 647
+  },
+  {
+    "name": "C.1.3.4. Cup Wheel 4\"",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 648,
+    "rgt": 649
+  },
+  {
+    "name": "C.1.3.5. Cup Wheel 7\"",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 650,
+    "rgt": 651
+  },
+  {
+    "name": "C.1.3.6. Float Pan",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 652,
+    "rgt": 653
+  },
+  {
+    "name": "C.1.3.7. Finishing Blades",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 654,
+    "rgt": 655
+  },
+  {
+    "name": "C.1.3.8. Handscreen",
+    "parent_project_cost_breakdown": "C.1.3. Consummables",
+    "is_group": 0,
+    "lft": 656,
+    "rgt": 657
+  },
+  {
+    "name": "C.1.4. Subcontractor",
+    "parent_project_cost_breakdown": "C.1. CONCRETING WORKS",
+    "is_group": 1,
+    "lft": 659,
+    "rgt": 662
+  },
+  {
+    "name": "C.1.4.1. Area Builders",
+    "parent_project_cost_breakdown": "C.1.4. Subcontractor",
+    "is_group": 0,
+    "lft": 660,
+    "rgt": 661
+  },
+  {
+    "name": "C.1.5. Others (Please Specify)",
+    "parent_project_cost_breakdown": "C.1. CONCRETING WORKS",
+    "is_group": 0,
+    "lft": 663,
+    "rgt": 664
+  },
+  {
+    "name": "C.2. REINFORCING STEEL BARS",
+    "parent_project_cost_breakdown": "C. STRUCTURAL WORKS",
+    "is_group": 1,
+    "lft": 666,
+    "rgt": 695
+  },
+  {
+    "name": "C.2.1. Materials",
+    "parent_project_cost_breakdown": "C.2. REINFORCING STEEL BARS",
+    "is_group": 1,
+    "lft": 667,
+    "rgt": 674
+  },
+  {
+    "name": "C.2.1.1. Grade 40",
+    "parent_project_cost_breakdown": "C.2.1. Materials",
+    "is_group": 0,
+    "lft": 668,
+    "rgt": 669
+  },
+  {
+    "name": "C.2.1.2. Grade 60",
+    "parent_project_cost_breakdown": "C.2.1. Materials",
+    "is_group": 0,
+    "lft": 670,
+    "rgt": 671
+  },
+  {
+    "name": "C.2.1.3. Tie Wire @ 28kg/roll",
+    "parent_project_cost_breakdown": "C.2.1. Materials",
+    "is_group": 0,
+    "lft": 672,
+    "rgt": 673
+  },
+  {
+    "name": "C.2.2. Tools & Equipments",
+    "parent_project_cost_breakdown": "C.2. REINFORCING STEEL BARS",
+    "is_group": 1,
+    "lft": 675,
+    "rgt": 688
+  },
+  {
+    "name": "C.2.2.1. Bar Bender 42",
+    "parent_project_cost_breakdown": "C.2.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 676,
+    "rgt": 677
+  },
+  {
+    "name": "C.2.2.2. Bar Cutter 35",
+    "parent_project_cost_breakdown": "C.2.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 678,
+    "rgt": 679
+  },
+  {
+    "name": "C.2.2.3. Portable Bar Cutter",
+    "parent_project_cost_breakdown": "C.2.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 680,
+    "rgt": 681
+  },
+  {
+    "name": "C.2.2.4. Cut-off Machine",
+    "parent_project_cost_breakdown": "C.2.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 682,
+    "rgt": 683
+  },
+  {
+    "name": "C.2.2.5. Cut-off Blade ( 14\" )",
+    "parent_project_cost_breakdown": "C.2.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 684,
+    "rgt": 685
+  },
+  {
+    "name": "C.2.2.6. Rebar Tier",
+    "parent_project_cost_breakdown": "C.2.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 686,
+    "rgt": 687
+  },
+  {
+    "name": "C.2.3. Subcontractor",
+    "parent_project_cost_breakdown": "C.2. REINFORCING STEEL BARS",
+    "is_group": 1,
+    "lft": 689,
+    "rgt": 692
+  },
+  {
+    "name": "C.2.3.1. MELBERT NOVAL",
+    "parent_project_cost_breakdown": "C.2.3. Subcontractor",
+    "is_group": 0,
+    "lft": 690,
+    "rgt": 691
+  },
+  {
+    "name": "C.2.4. Others (Please Specify)",
+    "parent_project_cost_breakdown": "C.2. REINFORCING STEEL BARS",
+    "is_group": 0,
+    "lft": 693,
+    "rgt": 694
+  },
+  {
+    "name": "C.3. FORMWORKS",
+    "parent_project_cost_breakdown": "C. STRUCTURAL WORKS",
+    "is_group": 1,
+    "lft": 696,
+    "rgt": 803
+  },
+  {
+    "name": "C.3.1. Materials",
+    "parent_project_cost_breakdown": "C.3. FORMWORKS",
+    "is_group": 1,
+    "lft": 697,
+    "rgt": 750
+  },
+  {
+    "name": "C.3.1.1. Phenolic",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 698,
+    "rgt": 699
+  },
+  {
+    "name": "C.3.1.2. Threaded Rod",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 700,
+    "rgt": 701
+  },
+  {
+    "name": "C.3.1.3. RSB 12mm",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 702,
+    "rgt": 703
+  },
+  {
+    "name": "C.3.1.4. Wing Nut",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 704,
+    "rgt": 705
+  },
+  {
+    "name": "C.3.1.5. PVC Gray",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 706,
+    "rgt": 707
+  },
+  {
+    "name": "C.3.1.6. Twin Pipe",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 708,
+    "rgt": 709
+  },
+  {
+    "name": "C.3.1.7. Concrete waler",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 1,
+    "lft": 710,
+    "rgt": 717
+  },
+  {
+    "name": "C.3.1.7.1. 2m",
+    "parent_project_cost_breakdown": "C.3.1.7. Concrete waler",
+    "is_group": 0,
+    "lft": 711,
+    "rgt": 712
+  },
+  {
+    "name": "C.3.1.7.2. 3m",
+    "parent_project_cost_breakdown": "C.3.1.7. Concrete waler",
+    "is_group": 0,
+    "lft": 713,
+    "rgt": 714
+  },
+  {
+    "name": "C.3.1.7.3. 6m",
+    "parent_project_cost_breakdown": "C.3.1.7. Concrete waler",
+    "is_group": 0,
+    "lft": 715,
+    "rgt": 716
+  },
+  {
+    "name": "C.3.1.8. Form Oil",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 718,
+    "rgt": 719
+  },
+  {
+    "name": "C.3.1.9. Concrete Nail 2\"",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 720,
+    "rgt": 721
+  },
+  {
+    "name": "C.3.1.10. Common Nail 2 \"",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 722,
+    "rgt": 723
+  },
+  {
+    "name": "C.3.1.11. Concrete Spacer",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 1,
+    "lft": 724,
+    "rgt": 731
+  },
+  {
+    "name": "C.3.1.11.1. Cement",
+    "parent_project_cost_breakdown": "C.3.1.11. Concrete Spacer",
+    "is_group": 0,
+    "lft": 725,
+    "rgt": 726
+  },
+  {
+    "name": "C.3.1.11.2. Sand",
+    "parent_project_cost_breakdown": "C.3.1.11. Concrete Spacer",
+    "is_group": 0,
+    "lft": 727,
+    "rgt": 728
+  },
+  {
+    "name": "C.3.1.11.3. Tie Wire",
+    "parent_project_cost_breakdown": "C.3.1.11. Concrete Spacer",
+    "is_group": 0,
+    "lft": 729,
+    "rgt": 730
+  },
+  {
+    "name": "C.3.1.12. Shoring Jack",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 0,
+    "lft": 732,
+    "rgt": 733
+  },
+  {
+    "name": "C.3.1.13. Painting Materials (for markings)",
+    "parent_project_cost_breakdown": "C.3.1. Materials",
+    "is_group": 1,
+    "lft": 734,
+    "rgt": 749
+  },
+  {
+    "name": "C.3.1.13.1. Enamel Blue",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 735,
+    "rgt": 736
+  },
+  {
+    "name": "C.3.1.13.2. Enamel Yellow",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 737,
+    "rgt": 738
+  },
+  {
+    "name": "C.3.1.13.3. Enamel Green",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 739,
+    "rgt": 740
+  },
+  {
+    "name": "C.3.1.13.4. Enamel Red",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 741,
+    "rgt": 742
+  },
+  {
+    "name": "C.3.1.13.5. Enamel Orange",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 743,
+    "rgt": 744
+  },
+  {
+    "name": "C.3.1.13.6. Laquer thinner",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 745,
+    "rgt": 746
+  },
+  {
+    "name": "C.3.1.13.7. Paint Brush",
+    "parent_project_cost_breakdown": "C.3.1.13. Painting Materials (for markings)",
+    "is_group": 0,
+    "lft": 747,
+    "rgt": 748
+  },
+  {
+    "name": "C.3.2. Tools & Equipments",
+    "parent_project_cost_breakdown": "C.3. FORMWORKS",
+    "is_group": 1,
+    "lft": 751,
+    "rgt": 792
+  },
+  {
+    "name": "C.3.2.1. Table Saw",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 752,
+    "rgt": 753
+  },
+  {
+    "name": "C.3.2.2. Cut-off Machine",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 754,
+    "rgt": 755
+  },
+  {
+    "name": "C.3.2.3. Welding Machine",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 756,
+    "rgt": 757
+  },
+  {
+    "name": "C.3.2.4. Circular Saw",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 758,
+    "rgt": 759
+  },
+  {
+    "name": "C.3.2.5. Grinder",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 760,
+    "rgt": 761
+  },
+  {
+    "name": "C.3.2.6. Hand drill",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 762,
+    "rgt": 763
+  },
+  {
+    "name": "C.3.2.7. Extension Wire",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 764,
+    "rgt": 765
+  },
+  {
+    "name": "C.3.2.8. Consummables",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 1,
+    "lft": 766,
+    "rgt": 785
+  },
+  {
+    "name": "C.3.2.8.1. Carbon Brush",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 767,
+    "rgt": 768
+  },
+  {
+    "name": "C.3.2.8.2. Cut-off Machine",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 769,
+    "rgt": 770
+  },
+  {
+    "name": "C.3.2.8.3. Circular Saw",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 771,
+    "rgt": 772
+  },
+  {
+    "name": "C.3.2.8.4. Grinder 4\"",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 773,
+    "rgt": 774
+  },
+  {
+    "name": "C.3.2.8.5. Hand drill",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 775,
+    "rgt": 776
+  },
+  {
+    "name": "C.3.2.8.6. Cutting Disc 14\"",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 777,
+    "rgt": 778
+  },
+  {
+    "name": "C.3.2.8.7. Cutting Disc 4\"",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 779,
+    "rgt": 780
+  },
+  {
+    "name": "C.3.2.8.8. Saw Blade ( Table Saw )",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 781,
+    "rgt": 782
+  },
+  {
+    "name": "C.3.2.8.9. Saw Blade ( Circular Saw )",
+    "parent_project_cost_breakdown": "C.3.2.8. Consummables",
+    "is_group": 0,
+    "lft": 783,
+    "rgt": 784
+  },
+  {
+    "name": "C.3.2.9. Wing Van ( MOB )",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 786,
+    "rgt": 787
+  },
+  {
+    "name": "C.3.2.10. Wing Van ( DEMOB )",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 788,
+    "rgt": 789
+  },
+  {
+    "name": "C.3.2.11. Compressor",
+    "parent_project_cost_breakdown": "C.3.2. Tools & Equipments",
+    "is_group": 0,
+    "lft": 790,
+    "rgt": 791
+  },
+  {
+    "name": "C.3.3. Subcontractor",
+    "parent_project_cost_breakdown": "C.3. FORMWORKS",
+    "is_group": 1,
+    "lft": 793,
+    "rgt": 800
+  },
+  {
+    "name": "C.3.3.1. EFCO PHILS",
+    "parent_project_cost_breakdown": "C.3.3. Subcontractor",
+    "is_group": 0,
+    "lft": 794,
+    "rgt": 795
+  },
+  {
+    "name": "C.3.3.2. FWD",
+    "parent_project_cost_breakdown": "C.3.3. Subcontractor",
+    "is_group": 0,
+    "lft": 796,
+    "rgt": 797
+  },
+  {
+    "name": "C.3.3.3. AREA BUILDERS",
+    "parent_project_cost_breakdown": "C.3.3. Subcontractor",
+    "is_group": 0,
+    "lft": 798,
+    "rgt": 799
+  },
+  {
+    "name": "C.3.4. Others (Please Specify)",
+    "parent_project_cost_breakdown": "C.3. FORMWORKS",
+    "is_group": 0,
+    "lft": 801,
+    "rgt": 802
+  },
+  {
+    "name": "C.4. STRUCTURAL STEEL WORKS",
+    "parent_project_cost_breakdown": "C. STRUCTURAL WORKS",
+    "is_group": 1,
+    "lft": 804,
+    "rgt": 811
+  },
+  {
+    "name": "C.4.1. Structural Steel Roof Framing Materials",
+    "parent_project_cost_breakdown": "C.4. STRUCTURAL STEEL WORKS",
+    "is_group": 0,
+    "lft": 805,
+    "rgt": 806
+  },
+  {
+    "name": "C.4.2. Subcontractor",
+    "parent_project_cost_breakdown": "C.4. STRUCTURAL STEEL WORKS",
+    "is_group": 0,
+    "lft": 807,
+    "rgt": 808
+  },
+  {
+    "name": "C.4.3. Others (Please Specify)",
+    "parent_project_cost_breakdown": "C.4. STRUCTURAL STEEL WORKS",
+    "is_group": 0,
+    "lft": 809,
+    "rgt": 810
+  },
+  {
+    "name": "C.5. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "C. STRUCTURAL WORKS",
+    "is_group": 1,
+    "lft": 812,
+    "rgt": 823
+  },
+  {
+    "name": "C.5.1. Steel Decking",
+    "parent_project_cost_breakdown": "C.5. OTHERS (PLEASE SPECIFY)",
+    "is_group": 1,
+    "lft": 813,
+    "rgt": 820
+  },
+  {
+    "name": "C.5.1.1. Materials",
+    "parent_project_cost_breakdown": "C.5.1. Steel Decking",
+    "is_group": 0,
+    "lft": 814,
+    "rgt": 815
+  },
+  {
+    "name": "C.5.1.2. Tools & Equipments",
+    "parent_project_cost_breakdown": "C.5.1. Steel Decking",
+    "is_group": 0,
+    "lft": 816,
+    "rgt": 817
+  },
+  {
+    "name": "C.5.1.3. Subcontractor",
+    "parent_project_cost_breakdown": "C.5.1. Steel Decking",
+    "is_group": 0,
+    "lft": 818,
+    "rgt": 819
+  },
+  {
+    "name": "C.5.2. Rectification Works",
+    "parent_project_cost_breakdown": "C.5. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 821,
+    "rgt": 822
+  },
+  {
+    "name": "F. ELECTRICAL WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 827,
+    "rgt": 836
+  },
+  {
+    "name": "F.1. MATERIALS",
+    "parent_project_cost_breakdown": "F. ELECTRICAL WORKS",
+    "is_group": 0,
+    "lft": 828,
+    "rgt": 829
+  },
+  {
+    "name": "F.2. TOOLS & EQUIPMENTS",
+    "parent_project_cost_breakdown": "F. ELECTRICAL WORKS",
+    "is_group": 0,
+    "lft": 830,
+    "rgt": 831
+  },
+  {
+    "name": "F.3. SUBCONTRACTOR",
+    "parent_project_cost_breakdown": "F. ELECTRICAL WORKS",
+    "is_group": 0,
+    "lft": 832,
+    "rgt": 833
+  },
+  {
+    "name": "F.4. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "F. ELECTRICAL WORKS",
+    "is_group": 0,
+    "lft": 834,
+    "rgt": 835
+  },
+  {
+    "name": "G. PLUMBING & SANITARY WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 837,
+    "rgt": 846
+  },
+  {
+    "name": "G.1. MATERIALS",
+    "parent_project_cost_breakdown": "G. PLUMBING & SANITARY WORKS",
+    "is_group": 0,
+    "lft": 838,
+    "rgt": 839
+  },
+  {
+    "name": "G.2. TOOLS & EQUIPMENTS",
+    "parent_project_cost_breakdown": "G. PLUMBING & SANITARY WORKS",
+    "is_group": 0,
+    "lft": 840,
+    "rgt": 841
+  },
+  {
+    "name": "G.3. SUBCONTRACTOR",
+    "parent_project_cost_breakdown": "G. PLUMBING & SANITARY WORKS",
+    "is_group": 0,
+    "lft": 842,
+    "rgt": 843
+  },
+  {
+    "name": "G.4. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "G. PLUMBING & SANITARY WORKS",
+    "is_group": 0,
+    "lft": 844,
+    "rgt": 845
+  },
+  {
+    "name": "H. FIRE PROTECTION WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 847,
+    "rgt": 856
+  },
+  {
+    "name": "H.1. MATERIALS",
+    "parent_project_cost_breakdown": "H. FIRE PROTECTION WORKS",
+    "is_group": 0,
+    "lft": 848,
+    "rgt": 849
+  },
+  {
+    "name": "H.2. TOOLS & EQUIPMENTS",
+    "parent_project_cost_breakdown": "H. FIRE PROTECTION WORKS",
+    "is_group": 0,
+    "lft": 850,
+    "rgt": 851
+  },
+  {
+    "name": "H.3. SUBCONTRACTOR",
+    "parent_project_cost_breakdown": "H. FIRE PROTECTION WORKS",
+    "is_group": 0,
+    "lft": 852,
+    "rgt": 853
+  },
+  {
+    "name": "H.4. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "H. FIRE PROTECTION WORKS",
+    "is_group": 0,
+    "lft": 854,
+    "rgt": 855
+  },
+  {
+    "name": "I. AUXILLIARY WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 857,
+    "rgt": 866
+  },
+  {
+    "name": "I.1. MATERIALS",
+    "parent_project_cost_breakdown": "I. AUXILLIARY WORKS",
+    "is_group": 0,
+    "lft": 858,
+    "rgt": 859
+  },
+  {
+    "name": "I.2. TOOLS & EQUIPMENTS",
+    "parent_project_cost_breakdown": "I. AUXILLIARY WORKS",
+    "is_group": 0,
+    "lft": 860,
+    "rgt": 861
+  },
+  {
+    "name": "I.3. SUBCONTRACTOR",
+    "parent_project_cost_breakdown": "I. AUXILLIARY WORKS",
+    "is_group": 0,
+    "lft": 862,
+    "rgt": 863
+  },
+  {
+    "name": "I.4. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "I. AUXILLIARY WORKS",
+    "is_group": 0,
+    "lft": 864,
+    "rgt": 865
+  },
+  {
+    "name": "D. ARCHITECTURAL WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 867,
+    "rgt": 956
+  },
+  {
+    "name": "D.1. MASONRY WORKS",
+    "parent_project_cost_breakdown": "D. ARCHITECTURAL WORKS",
+    "is_group": 1,
+    "lft": 868,
+    "rgt": 891
+  },
+  {
+    "name": "D.1.1. Materials",
+    "parent_project_cost_breakdown": "D.1. MASONRY WORKS",
+    "is_group": 1,
+    "lft": 869,
+    "rgt": 884
+  },
+  {
+    "name": "D.1.1.1. CHB 6\"",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 870,
+    "rgt": 871
+  },
+  {
+    "name": "D.1.1.2. Cement",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 872,
+    "rgt": 873
+  },
+  {
+    "name": "D.1.1.3. White Sand",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 874,
+    "rgt": 875
+  },
+  {
+    "name": "D.1.1.4. Gravel",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 876,
+    "rgt": 877
+  },
+  {
+    "name": "D.1.1.5. CHB 4\"",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 878,
+    "rgt": 879
+  },
+  {
+    "name": "D.1.1.6. Phenolic Plywood",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 880,
+    "rgt": 881
+  },
+  {
+    "name": "D.1.1.7. Vibro Sand",
+    "parent_project_cost_breakdown": "D.1.1. Materials",
+    "is_group": 0,
+    "lft": 882,
+    "rgt": 883
+  },
+  {
+    "name": "D.1.2. Tools & Equipment",
+    "parent_project_cost_breakdown": "D.1. MASONRY WORKS",
+    "is_group": 0,
+    "lft": 885,
+    "rgt": 886
+  },
+  {
+    "name": "D.1.3. Subcontractor",
+    "parent_project_cost_breakdown": "D.1. MASONRY WORKS",
+    "is_group": 0,
+    "lft": 887,
+    "rgt": 888
+  },
+  {
+    "name": "D.1.4. Others (Please Specify)",
+    "parent_project_cost_breakdown": "D.1. MASONRY WORKS",
+    "is_group": 0,
+    "lft": 889,
+    "rgt": 890
+  },
+  {
+    "name": "D.2. PLASTERING WORKS",
+    "parent_project_cost_breakdown": "D. ARCHITECTURAL WORKS",
+    "is_group": 1,
+    "lft": 892,
+    "rgt": 905
+  },
+  {
+    "name": "D.2.1. Materials",
+    "parent_project_cost_breakdown": "D.2. PLASTERING WORKS",
+    "is_group": 1,
+    "lft": 893,
+    "rgt": 898
+  },
+  {
+    "name": "D.2.1.1. Cement",
+    "parent_project_cost_breakdown": "D.2.1. Materials",
+    "is_group": 0,
+    "lft": 894,
+    "rgt": 895
+  },
+  {
+    "name": "D.2.1.2. Sand",
+    "parent_project_cost_breakdown": "D.2.1. Materials",
+    "is_group": 0,
+    "lft": 896,
+    "rgt": 897
+  },
+  {
+    "name": "D.2.2. Tools & Equipment",
+    "parent_project_cost_breakdown": "D.2. PLASTERING WORKS",
+    "is_group": 0,
+    "lft": 899,
+    "rgt": 900
+  },
+  {
+    "name": "D.2.3. Subcontractor",
+    "parent_project_cost_breakdown": "D.2. PLASTERING WORKS",
+    "is_group": 0,
+    "lft": 901,
+    "rgt": 902
+  },
+  {
+    "name": "D.2.4. Others (Please Specify)",
+    "parent_project_cost_breakdown": "D.2. PLASTERING WORKS",
+    "is_group": 0,
+    "lft": 903,
+    "rgt": 904
+  },
+  {
+    "name": "D.3. FLOOR FINISHES",
+    "parent_project_cost_breakdown": "D. ARCHITECTURAL WORKS",
+    "is_group": 1,
+    "lft": 906,
+    "rgt": 921
+  },
+  {
+    "name": "D.3.1. Materials",
+    "parent_project_cost_breakdown": "D.3. FLOOR FINISHES",
+    "is_group": 1,
+    "lft": 907,
+    "rgt": 914
+  },
+  {
+    "name": "D.3.1.1. Tiling Works",
+    "parent_project_cost_breakdown": "D.3.1. Materials",
+    "is_group": 0,
+    "lft": 908,
+    "rgt": 909
+  },
+  {
+    "name": "D.3.1.2. Tile Adhesive",
+    "parent_project_cost_breakdown": "D.3.1. Materials",
+    "is_group": 0,
+    "lft": 910,
+    "rgt": 911
+  },
+  {
+    "name": "D.3.1.3. Tile Grout",
+    "parent_project_cost_breakdown": "D.3.1. Materials",
+    "is_group": 0,
+    "lft": 912,
+    "rgt": 913
+  },
+  {
+    "name": "D.3.2. Tools & Equipment",
+    "parent_project_cost_breakdown": "D.3. FLOOR FINISHES",
+    "is_group": 0,
+    "lft": 915,
+    "rgt": 916
+  },
+  {
+    "name": "D.3.3. Subcontractor",
+    "parent_project_cost_breakdown": "D.3. FLOOR FINISHES",
+    "is_group": 0,
+    "lft": 917,
+    "rgt": 918
+  },
+  {
+    "name": "D.3.4. Others (Please Specify)",
+    "parent_project_cost_breakdown": "D.3. FLOOR FINISHES",
+    "is_group": 0,
+    "lft": 919,
+    "rgt": 920
+  },
+  {
+    "name": "D.4. WALL FINISHES",
+    "parent_project_cost_breakdown": "D. ARCHITECTURAL WORKS",
+    "is_group": 1,
+    "lft": 922,
+    "rgt": 947
+  },
+  {
+    "name": "D.4.1. Materials",
+    "parent_project_cost_breakdown": "D.4. WALL FINISHES",
+    "is_group": 1,
+    "lft": 923,
+    "rgt": 940
+  },
+  {
+    "name": "D.4.1.1. Tiling Works",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 924,
+    "rgt": 925
+  },
+  {
+    "name": "D.4.1.2. Tile Adhesive",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 926,
+    "rgt": 927
+  },
+  {
+    "name": "D.4.1.3. Tile Grout",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 928,
+    "rgt": 929
+  },
+  {
+    "name": "D.4.1.4. Breeze Block Wall 4'",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 930,
+    "rgt": 931
+  },
+  {
+    "name": "D.4.1.5. a Breeze Block 4\"",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 932,
+    "rgt": 933
+  },
+  {
+    "name": "D.4.1.6. Cement",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 934,
+    "rgt": 935
+  },
+  {
+    "name": "D.4.1.7. Sand",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 936,
+    "rgt": 937
+  },
+  {
+    "name": "D.4.1.8. Skimcoat",
+    "parent_project_cost_breakdown": "D.4.1. Materials",
+    "is_group": 0,
+    "lft": 938,
+    "rgt": 939
+  },
+  {
+    "name": "D.4.2. Tools & Equipment",
+    "parent_project_cost_breakdown": "D.4. WALL FINISHES",
+    "is_group": 0,
+    "lft": 941,
+    "rgt": 942
+  },
+  {
+    "name": "D.4.3. Subcontractor",
+    "parent_project_cost_breakdown": "D.4. WALL FINISHES",
+    "is_group": 0,
+    "lft": 943,
+    "rgt": 944
+  },
+  {
+    "name": "D.4.4. Others (Please Specify)",
+    "parent_project_cost_breakdown": "D.4. WALL FINISHES",
+    "is_group": 0,
+    "lft": 945,
+    "rgt": 946
+  },
+  {
+    "name": "D.5. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "D. ARCHITECTURAL WORKS",
+    "is_group": 1,
+    "lft": 948,
+    "rgt": 955
+  },
+  {
+    "name": "D.5.1. Materials",
+    "parent_project_cost_breakdown": "D.5. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 949,
+    "rgt": 950
+  },
+  {
+    "name": "D.5.2. Tools & Equipment",
+    "parent_project_cost_breakdown": "D.5. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 951,
+    "rgt": 952
+  },
+  {
+    "name": "D.5.3. Subcontractor",
+    "parent_project_cost_breakdown": "D.5. OTHERS (PLEASE SPECIFY)",
+    "is_group": 0,
+    "lft": 953,
+    "rgt": 954
+  },
+  {
+    "name": "E. MECHANICAL WORKS",
+    "parent_project_cost_breakdown": "",
+    "is_group": 1,
+    "lft": 957,
+    "rgt": 966
+  },
+  {
+    "name": "E.1. MATERIALS",
+    "parent_project_cost_breakdown": "E. MECHANICAL WORKS",
+    "is_group": 0,
+    "lft": 958,
+    "rgt": 959
+  },
+  {
+    "name": "E.2. TOOLS & EQUIPMENTS",
+    "parent_project_cost_breakdown": "E. MECHANICAL WORKS",
+    "is_group": 0,
+    "lft": 960,
+    "rgt": 961
+  },
+  {
+    "name": "E.3. SUBCONTRACTOR",
+    "parent_project_cost_breakdown": "E. MECHANICAL WORKS",
+    "is_group": 0,
+    "lft": 962,
+    "rgt": 963
+  },
+  {
+    "name": "E.4. OTHERS (PLEASE SPECIFY)",
+    "parent_project_cost_breakdown": "E. MECHANICAL WORKS",
+    "is_group": 0,
+    "lft": 964,
+    "rgt": 965
+  }
+]
