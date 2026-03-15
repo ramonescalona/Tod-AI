@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tod">
-<title>Tod v10 — AI Project Dashboard</title>
+<title>Tod v11 — AI Project Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -333,6 +333,33 @@ Full project data: ${JSON.stringify(MANAGERS.map(m=>({mgr:m.mgr,contract:m.contr
 
 RULES: Always use ₱ (Philippine Peso). Be concise — max 800 tokens. Proactively flag risks. Answer only from the data above. If data is not available, say so clearly.`;
 
+/* ─── ERP FETCH HELPER ───────────────────────────────────── */
+// Safe fetch: detects when proxy is unavailable (returns HTML 404 instead of JSON)
+async function erpFetch(url){
+  const r=await fetch(url);
+  const text=await r.text();
+  if(text.trimStart().startsWith('<')){
+    throw new Error('ERP_UNAVAILABLE');
+  }
+  const d=JSON.parse(text);
+  if(d.exc_type||d.exc){
+    const isPermErr=(d.exc_type==='PermissionError')||(d.exc&&d.exc.includes('PermissionError'));
+    if(isPermErr)throw new Error('PERMISSION_ERROR:'+d.exc_type);
+    throw new Error(d.exc_type||d.exc||'ERP error');
+  }
+  return Array.isArray(d.data)?d.data:(d.data?[d.data]:[]);
+}
+async function erpFetchDoc(url){
+  const r=await fetch(url);
+  const text=await r.text();
+  if(text.trimStart().startsWith('<'))throw new Error('ERP_UNAVAILABLE');
+  const d=JSON.parse(text);
+  if(d.exc_type||d.exc)throw new Error(d.exc_type||'ERP error');
+  return d.data||d;
+}
+const ERP_UNAVAIL_MSG='Live ERP data is only available when running locally (npm run dev) or deployed to Vercel. GitHub Pages cannot connect to the ERP proxy.';
+const PERM_MSG='Permission denied. Ask your ERPNext admin to grant Read access via Setup → Role Permissions Manager.';
+
 /* Module-level cache — updated when LivePOs loads */
 let _liveGvmcPOs = null;
 
@@ -368,7 +395,7 @@ function ApiKeyModal({onSave}){
     <div className="modal-backdrop">
       <div className="modal">
         <div className="tod-logo">T</div>
-        <h2>Welcome to Tod v10</h2>
+        <h2>Welcome to Tod v11</h2>
         <p>Enter your Anthropic API key to activate the AI chat assistant. Your key is stored only in your browser — never sent anywhere else.</p>
         {err&&<div className="error">{err}</div>}
         <input type="password" placeholder="sk-ant-api03-..." value={key} onChange={e=>setKey(e.target.value)} onKeyDown={onKey} autoFocus/>
@@ -501,28 +528,29 @@ function LivePOs(){
   const[poDetails,setPoDetails]=useState({}); // cache: {poName: {items,loading,error}}
 
   useEffect(()=>{
-    fetch("/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22,%22supplier%22,%22supplier_name%22,%22grand_total%22,%22status%22,%22transaction_date%22,%22per_received%22,%22per_billed%22,%22total_qty%22]&limit=500")
-      .then(r=>r.json())
-      .then(d=>{
-        if(d.exc_type||d.error)throw new Error(d.exc||d.error||"ERP error");
-        const data=d.data||[];
+    erpFetch("/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22,%22supplier%22,%22supplier_name%22,%22grand_total%22,%22status%22,%22transaction_date%22,%22per_received%22,%22per_billed%22,%22total_qty%22]&limit=500")
+      .then(data=>{
         setPos(data);
         _liveGvmcPOs=data;
       })
-      .catch(e=>setErr(e.message));
+      .catch(e=>{
+        if(e.message==='ERP_UNAVAILABLE')setErr(ERP_UNAVAIL_MSG);
+        else if(e.message.startsWith('PERMISSION_ERROR'))setErr(PERM_MSG);
+        else setErr(e.message);
+      });
   },[]);
 
   const fetchPODetail=useCallback((poName)=>{
     if(poDetails[poName])return; // already cached
     setPoDetails(p=>({...p,[poName]:{items:[],loading:true,error:""}}));
-    fetch(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(poName)}`)
-      .then(r=>r.json())
-      .then(d=>{
-        if(d.exc_type||d.error)throw new Error(d.exc||d.error||"ERP error");
-        const doc=d.data||d;
+    erpFetchDoc(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(poName)}`)
+      .then(doc=>{
         setPoDetails(p=>({...p,[poName]:{items:doc.items||[],loading:false,error:""}}));
       })
-      .catch(e=>setPoDetails(p=>({...p,[poName]:{items:[],loading:false,error:e.message}})));
+      .catch(e=>{
+        const msg=e.message==='ERP_UNAVAILABLE'?ERP_UNAVAIL_MSG:e.message.startsWith('PERMISSION_ERROR')?PERM_MSG:e.message;
+        setPoDetails(p=>({...p,[poName]:{items:[],loading:false,error:msg}}));
+      });
   },[poDetails]);
 
   const togglePO=useCallback((poName)=>{
@@ -685,67 +713,58 @@ function LiveCSR(){
 
   useEffect(()=>{loadAll();},[key]);
 
-  async function erpGet(url){
-    const r=await fetch(url);
-    const d=await r.json();
-    if(d.exc_type||d.error)throw new Error(d.exc||d.error||"ERP error");
-    return Array.isArray(d.data)?d.data:d.data?[d.data]:[];
-  }
-
   async function loadAll(){
     setRows(null);setErr("");setWarnings([]);
     const warns=[];
     let budgets=[],jvDocs=[],poDocs=[],jvCount=0,poCount=0;
+
+    const safeGet=async(url,label)=>{
+      try{return await erpFetch(url);}
+      catch(e){
+        if(e.message==='ERP_UNAVAILABLE'){warns.push('🌐 '+ERP_UNAVAIL_MSG);return null;}
+        if(e.message.startsWith('PERMISSION_ERROR'))warns.push('🔒 '+label+': '+PERM_MSG);
+        else warns.push('❌ '+label+' failed: '+e.message);
+        return[];
+      }
+    };
+
     try{
       // 1. Budget
       setStatus("Loading budget data (1/3)...");
-      try{
-        budgets=await erpGet('/api/erp?resource=Budgetary%20Cost&filters=[[%22project%22,%22=%22,%22PROJ-0020%22]]&fields=[%22cost_breakdown%22,%22material_cost%22,%22labor_cost%22,%22equipment_cost%22,%22other_cost%22,%22total_cost%22]&limit=500');
-      }catch(e){
-        const isPermErr=e.message&&e.message.includes("PermissionError");
-        warns.push((isPermErr?"🔒 Permission denied on Budgetary Cost doctype. Ask your ERPNext admin to grant Read access to the API user role under Setup → Role Permissions Manager → Budgetary Cost.":"❌ Budget load failed: "+e.message));
-      }
+      const b=await safeGet('/api/erp?resource=Budgetary%20Cost&filters=[[%22project%22,%22=%22,%22PROJ-0020%22]]&fields=[%22cost_breakdown%22,%22material_cost%22,%22labor_cost%22,%22equipment_cost%22,%22other_cost%22,%22total_cost%22]&limit=500','Budgetary Cost');
+      if(b===null){setWarnings(warns);setRows([]);return;} // proxy unavailable — stop all
+      budgets=b;
 
-      // 2. JV list — try "project" field first
+      // 2. JV list
       setStatus("Loading journal entries (2/3)...");
-      let jvList=[];
-      try{
-        jvList=await erpGet('/api/erp?resource=Journal%20Entry&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');
-      }catch(e){
-        const isPermErr=e.message&&e.message.includes("PermissionError");
-        if(isPermErr)warns.push("🔒 Permission denied on Journal Entry. Grant Read access via Role Permissions Manager → Journal Entry.");
+      let jvList=await safeGet('/api/erp?resource=Journal%20Entry&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500','Journal Entry');
+      if(jvList&&jvList.length===0){
+        // fallback: try custom_project
+        try{jvList=await erpFetch('/api/erp?resource=Journal%20Entry&filters=[[%22custom_project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');}catch(e){jvList=[];}
       }
-      if(jvList.length===0&&!warns.some(w=>w.includes("Journal Entry"))){
-        try{
-          jvList=await erpGet('/api/erp?resource=Journal%20Entry&filters=[[%22custom_project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');
-        }catch(e){}
+      if(!jvList||jvList.length===0){
+        if(!warns.some(w=>w.includes('Journal Entry')))warns.push('⚠️ No journal entries found for PROJ-0020 — JV actuals show ₱0.');
+        jvList=[];
       }
-      if(jvList.length===0&&!warns.some(w=>w.includes("Journal Entry")))
-        warns.push("⚠️ No journal entries found for PROJ-0020 — JV actuals show ₱0. The project field name on Journal Entry may differ.");
       jvCount=jvList.length;
 
       // 3. Fetch each JV doc in parallel
       jvDocs=await Promise.all(jvList.map(j=>
-        fetch(`/api/erp?resource=Journal%20Entry&docname=${encodeURIComponent(j.name)}`).then(r=>r.json()).catch(()=>({}))
+        erpFetchDoc(`/api/erp?resource=Journal%20Entry&docname=${encodeURIComponent(j.name)}`).catch(()=>({}))
       ));
 
       // 4. PO list
       setStatus("Loading purchase orders (3/3)...");
-      let poList=[];
-      try{
-        poList=await erpGet('/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');
-      }catch(e){
-        const isPermErr=e.message&&e.message.includes("PermissionError");
-        warns.push((isPermErr?"🔒 Permission denied on Purchase Order.":"❌ PO load failed: "+e.message));
-      }
+      const pl=await safeGet('/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500','Purchase Order');
+      const poList=pl||[];
       poCount=poList.length;
 
       // 5. Fetch each PO doc in parallel
       poDocs=await Promise.all(poList.map(p=>
-        fetch(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(p.name)}`).then(r=>r.json()).catch(()=>({}))
+        erpFetchDoc(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(p.name)}`).catch(()=>({}))
       ));
 
-    }catch(e){warns.push("❌ Unexpected error: "+e.message);}
+    }catch(e){warns.push('❌ Unexpected error: '+e.message);}
 
     setStatus("Building report...");
     setWarnings(warns);
@@ -1043,7 +1062,7 @@ function App(){
               <div className="logo" onClick={goHome}>T</div>
               <div className="header-text">
                 <h1 onClick={goHome}>Tod</h1>
-                <p>Project portfolio dashboard · v10</p>
+                <p>Project portfolio dashboard · v11</p>
               </div>
               <div className="header-right"><span>TERP New Projects</span><b>March 2026</b></div>
             </div>
