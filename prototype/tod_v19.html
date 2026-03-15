@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tod">
+<title>Tod v19 — AI Project Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Nunito Sans',sans-serif;background:#f5f5f3;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+.app{max-width:1200px;margin:0 auto;padding:16px;padding-bottom:100px}
+.header{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid #ddd}
+.logo{width:48px;height:48px;border-radius:14px;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#5DCAA5;cursor:pointer;flex-shrink:0}
+.header-text{flex:1}
+.header-text h1{font-size:19px;font-weight:700;cursor:pointer}
+.header-text p{font-size:13px;color:#888;margin-top:2px}
+.header-right{text-align:right;font-size:12px;color:#888}
+.header-right b{color:#1a1a1a;display:block;margin-top:2px}
+.breadcrumb{display:flex;align-items:center;gap:6px;padding:12px 0;flex-wrap:wrap}
+.breadcrumb span{font-size:13px;cursor:pointer;color:#085041;font-weight:600}
+.breadcrumb span.current{color:#1a1a1a;cursor:default}
+.breadcrumb .sep{color:#aaa;font-size:12px;cursor:default}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.kpi{background:#fff;border-radius:12px;padding:18px 20px}
+.kpi label{font-size:13px;color:#888;display:block;margin-bottom:8px}
+.kpi .val{font-size:26px;font-weight:700}
+.search-box{position:relative;margin-bottom:14px}
+.search-box input{width:100%;padding:13px 16px 13px 44px;border:1.5px solid #ddd;border-radius:12px;font-size:15px;font-family:inherit;outline:none;background:#fff}
+.search-box input:focus{border-color:#085041}
+.search-box svg{position:absolute;left:15px;top:16px;opacity:.35}
+.search-box .clear{position:absolute;right:12px;top:10px;background:none;border:none;font-size:22px;color:#888;cursor:pointer;padding:4px}
+.pills{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.pill{padding:9px 18px;border:1.5px solid #ddd;border-radius:24px;font-size:13px;font-family:inherit;cursor:pointer;background:transparent;color:#888;font-weight:400;white-space:nowrap}
+.pill.active{font-weight:600}
+.controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap}
+.tab-bar{display:flex;background:#eee;border-radius:10px;padding:3px}
+.tab-bar button{padding:8px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;background:transparent;color:#888}
+.tab-bar button.active{background:#fff;color:#1a1a1a;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sort-btn{padding:9px 16px;border:1px solid #ddd;border-radius:10px;font-size:12px;font-family:inherit;cursor:pointer;background:#fff;color:#1a1a1a;font-weight:500}
+.clear-btn{font-size:12px;color:#A32D2D;background:#FCEBEB;border:none;border-radius:20px;padding:7px 16px;cursor:pointer;font-family:inherit;font-weight:600}
+.sort-menu{position:absolute;right:0;top:calc(100% + 4px);background:#fff;border:1px solid #ccc;border-radius:12px;padding:6px;z-index:100;min-width:210px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.sort-menu button{display:block;width:100%;text-align:left;padding:11px 14px;border:none;border-radius:8px;font-size:13px;font-family:inherit;cursor:pointer;background:transparent;color:#1a1a1a}
+.sort-menu button.active{background:#f0f0ee;color:#085041;font-weight:600}
+.mgr-card{background:#fff;border:1px solid #e5e5e3;border-radius:14px;padding:18px 22px;cursor:pointer;margin-bottom:10px;transition:transform .15s}
+.mgr-card:active{transform:scale(.98)}
+.mgr-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.mgr-info{display:flex;align-items:center;gap:12px}
+.mgr-avatar{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.mgr-name{font-size:15px;font-weight:600}
+.mgr-sub{font-size:12px;color:#888;margin-top:2px}
+.mgr-pct{font-size:24px;font-weight:700;text-align:right}
+.mgr-pct small{font-size:11px;color:#888;display:block;font-weight:400;margin-top:2px}
+.progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;transition:width .5s}
+.pkg-card{background:#fff;border:1px solid #e5e5e3;border-radius:12px;padding:15px 18px;cursor:pointer;margin-bottom:6px}
+.pkg-card:active{transform:scale(.98)}
+.pkg-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pkg-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pkg-meta{font-size:12px;color:#888;margin-top:2px}
+.pkg-pct{font-size:20px;font-weight:700;flex-shrink:0;margin-left:12px}
+.sub-header{font-size:14px;font-weight:600;color:#888;margin-bottom:8px;margin-top:16px}
+.csr-label{margin-top:8px;font-size:12px;color:#085041;font-weight:600}
+.empty-state{text-align:center;padding:40px;color:#888}
+.empty-state .icon{font-size:48px;margin-bottom:12px}
+.empty-state h3{font-size:16px;font-weight:600;margin-bottom:6px;color:#1a1a1a}
+.summary{margin-top:24px;padding:16px 20px;background:#fff;border-radius:12px}
+.summary h4{font-size:13px;font-weight:600;margin-bottom:10px}
+.summary-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee;font-size:13px}
+.summary-row .label{color:#888}
+.summary-row .value{font-weight:600}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:1px solid #ddd;border-radius:10px;font-size:14px;font-family:inherit;cursor:pointer;background:#fff;color:#1a1a1a;font-weight:600;margin-bottom:16px}
+
+/* CSR SHEET */
+.sheet-wrap{position:relative;border:2px solid #505050;border-radius:4px;overflow:hidden}
+.sheet-scroll{overflow-x:auto;overflow-y:auto;max-height:70vh;-webkit-overflow-scrolling:touch}
+.sheet-scroll table{border-collapse:separate;border-spacing:0;font-size:11px;font-family:'Courier New',monospace;table-layout:fixed}
+.sheet-scroll th,.sheet-scroll td{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet-scroll thead th{position:sticky;top:0;z-index:20;color:#fff;font-weight:600;padding:8px 10px;text-align:center;letter-spacing:.3px;border-bottom:2px solid #505050;border-right:1px solid rgba(255,255,255,.2)}
+.sheet-scroll thead tr:nth-child(2) th{top:32px;font-size:9px;font-weight:500}
+.frozen-item{position:sticky!important;left:0!important;z-index:25!important}
+.frozen-desc{position:sticky!important;left:80px!important;z-index:25!important;box-shadow:4px 0 8px -2px rgba(0,0,0,.2)!important}
+.frozen-corner{z-index:35!important}
+.sheet-scroll td{padding:6px 12px;text-align:right;border-bottom:1px solid #c0c0c0;border-right:1px solid #c0c0c0;font-size:11px;color:#1a1a1a}
+.sheet-scroll td.col-total{font-weight:700;border-right:2px solid #505050}
+.sheet-scroll td.frozen-item,.sheet-scroll td.frozen-desc{text-align:left}
+.sheet-scroll tr.row-group{background:#dceeda!important}
+.sheet-scroll tr.row-group td{font-weight:700;border-bottom:2px solid #808080}
+.sheet-scroll tr.row-total{background:#e8e4da!important}
+.sheet-scroll tr.row-total td{font-weight:700;font-size:12px;border-bottom:2px solid #505050}
+.sheet-scroll tr.row-total td.col-total{background:#ddd8cc}
+.sheet-scroll tr.row-group td.col-total{background:#cee6cc}
+.sheet-scroll tr:nth-child(even):not(.row-group):not(.row-total){background:#f7f7f5}
+.sheet-scroll tr:nth-child(odd):not(.row-group):not(.row-total){background:#ffffff}
+td.over-budget{color:#A32D2D!important;font-weight:700!important}
+.section-pills{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.section-pills button{padding:6px 14px;border:1px solid #ddd;border-radius:20px;font-size:11px;font-family:inherit;cursor:pointer;background:transparent;color:#888;font-weight:400}
+.section-pills button.active{border-color:#085041;background:#08504114;color:#085041;font-weight:600}
+.collapse-toggle{display:inline-block;width:16px;font-size:10px;color:#888;cursor:pointer;text-align:center}
+.sheet-info{margin-top:8px;font-size:11px;color:#888}
+
+/* CHAT */
+.chat-fab{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#085041;border:none;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:transform .2s}
+.chat-fab:active{transform:scale(.92)}
+.chat-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:300;opacity:0;transition:opacity .3s;pointer-events:none}
+.chat-backdrop.open{opacity:1;pointer-events:auto}
+.chat-panel{position:fixed;bottom:0;left:0;right:0;max-width:600px;margin:0 auto;height:75vh;max-height:680px;background:#fff;border-radius:20px 20px 0 0;z-index:301;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,.72,.37,1.12);display:flex;flex-direction:column;box-shadow:0 -8px 40px rgba(0,0,0,.15)}
+.chat-panel.open{transform:translateY(0)}
+.chat-handle{width:40px;height:4px;border-radius:2px;background:#ccc;margin:10px auto 0}
+.chat-head{display:flex;align-items:center;gap:10px;padding:12px 20px;border-bottom:1px solid #eee;flex-shrink:0}
+.chat-head .av{width:32px;height:32px;border-radius:50%;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#5DCAA5}
+.chat-head .info{flex:1}
+.chat-head .info h3{font-size:15px;font-weight:700}
+.chat-head .info p{font-size:11px;color:#888}
+.chat-head .close-btn{width:32px;height:32px;border-radius:50%;border:none;background:#f0f0ee;cursor:pointer;font-size:18px;color:#888;display:flex;align-items:center;justify-content:center}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px 20px;-webkit-overflow-scrolling:touch}
+.chat-msg{margin-bottom:14px;display:flex;gap:8px}
+.chat-msg.user{flex-direction:row-reverse}
+.chat-msg .bubble{max-width:85%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.chat-msg.user .bubble{background:#085041;color:#fff;border-bottom-right-radius:4px}
+.chat-msg.bot .bubble{background:#f0f0ee;color:#1a1a1a;border-bottom-left-radius:4px}
+.chat-msg .bot-av{width:24px;height:24px;border-radius:50%;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;color:#5DCAA5;flex-shrink:0;margin-top:2px}
+.chat-suggestions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chat-suggestions button{padding:8px 14px;border:1px solid #ddd;border-radius:20px;font-size:12px;font-family:inherit;cursor:pointer;background:#fff;color:#1a1a1a;text-align:left;line-height:1.3}
+.chat-suggestions button:active{background:#f0f0ee}
+.chat-input-bar{display:flex;gap:8px;padding:12px 16px;border-top:1px solid #eee;flex-shrink:0;background:#fff}
+.chat-input-bar textarea{flex:1;border:1.5px solid #ddd;border-radius:12px;padding:10px 14px;font-size:14px;font-family:inherit;resize:none;outline:none;line-height:1.4;max-height:80px}
+.chat-input-bar textarea:focus{border-color:#085041}
+.chat-input-bar .send{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:8px 0}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#aaa;animation:blink 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+
+/* API KEY MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:#fff;border-radius:20px;padding:32px 28px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal .tod-logo{width:56px;height:56px;border-radius:16px;background:#085041;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;color:#5DCAA5;margin:0 auto 16px}
+.modal h2{font-size:20px;font-weight:700;text-align:center;margin-bottom:8px}
+.modal p{font-size:13px;color:#666;text-align:center;line-height:1.6;margin-bottom:24px}
+.modal input{width:100%;padding:13px 16px;border:1.5px solid #ddd;border-radius:12px;font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;letter-spacing:.03em}
+.modal input:focus{border-color:#085041}
+.modal .primary-btn{width:100%;padding:14px;background:#085041;color:#fff;border:none;border-radius:12px;font-size:15px;font-family:inherit;font-weight:700;cursor:pointer}
+.modal .primary-btn:hover{background:#0a6b55}
+.modal .note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;line-height:1.5}
+.modal .error{font-size:12px;color:#A32D2D;margin-bottom:10px;text-align:center}
+.key-badge{display:inline-flex;align-items:center;gap:6px;background:#08504114;border:1px solid #08504130;border-radius:20px;padding:4px 10px 4px 8px;font-size:11px;color:#085041;font-weight:600;cursor:pointer}
+.key-badge:hover{background:#08504122}
+
+/* LIVE PO PANEL */
+.po-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.po-kpi{background:#fff;border:1px solid #e5e5e3;border-radius:12px;padding:14px 16px}
+.po-kpi label{font-size:11px;color:#888;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.po-kpi .val{font-size:20px;font-weight:700}
+.po-table-wrap{background:#fff;border:1px solid #e5e5e3;border-radius:12px;overflow:hidden}
+.po-table{width:100%;border-collapse:collapse;font-size:13px}
+.po-table th{background:#f5f5f3;padding:10px 14px;text-align:left;font-weight:600;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #e5e5e3}
+.po-table th.right{text-align:right}
+.po-table td{padding:12px 14px;border-bottom:1px solid #f0f0ee;vertical-align:top}
+.po-table td.right{text-align:right;font-family:'Courier New',monospace;font-size:12px}
+.po-table tr:last-child td{border-bottom:none}
+.po-status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.po-status.received{background:#08504114;color:#085041}
+.po-status.partial{background:#BA751714;color:#BA7517}
+.po-status.pending{background:#D85A3014;color:#D85A30}
+.po-status.billed{background:#1D9E7514;color:#1D9E75}
+.po-loading{text-align:center;padding:32px;color:#888;font-size:13px}
+.po-error{text-align:center;padding:24px;color:#A32D2D;font-size:13px;background:#FCEBEB;border-radius:12px}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:#08504114;border:1px solid #08504130;border-radius:20px;padding:3px 10px;font-size:11px;color:#085041;font-weight:600;margin-left:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#085041;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* PO DRILL-DOWN */
+.po-table tr.po-row{cursor:pointer}
+.po-table tr.po-row:hover td{background:#f9f9f7}
+.po-table tr.po-row.expanded td{background:#f0f7f4;font-weight:600}
+.po-expand-row td{padding:0!important;border-bottom:2px solid #085041!important}
+.po-expand-inner{padding:16px 20px;background:#f8fdfb;border-top:1px solid #d0e8df}
+.po-expand-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.po-expand-header h4{font-size:14px;font-weight:700;color:#085041}
+.po-expand-header p{font-size:12px;color:#888;margin-top:2px}
+.items-table{width:100%;border-collapse:collapse;font-size:12px;font-family:'Courier New',monospace}
+.items-table th{background:#085041;color:#fff;padding:7px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.items-table th.right{text-align:right}
+.items-table td{padding:8px 10px;border-bottom:1px solid #e0ede8;vertical-align:top;font-family:'Nunito Sans',sans-serif;font-size:12px}
+.items-table td.right{text-align:right;font-family:'Courier New',monospace}
+.items-table tr:nth-child(even) td{background:#f0f7f4}
+.items-table tr:last-child td{border-bottom:none}
+.bd-code{display:inline-block;background:#08504114;color:#085041;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:700;white-space:nowrap}
+.bd-cat{display:inline-block;background:#eee;color:#666;border-radius:4px;padding:2px 7px;font-size:10px;margin-left:4px;white-space:nowrap}
+.po-loading-inline{padding:20px;text-align:center;color:#888;font-size:12px}
+.items-total-row td{font-weight:700;background:#dceeda!important;border-top:2px solid #085041}
+
+/* LOGIN SCREEN */
+.login-screen{position:fixed;inset:0;background:linear-gradient(160deg,#085041 0%,#063328 60%,#041f18 100%);display:flex;align-items:center;justify-content:center;padding:24px;z-index:1000;transition:opacity .35s ease,visibility .35s ease}
+.login-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.login-card{background:#fff;border-radius:24px;padding:40px 36px;max-width:420px;width:100%;box-shadow:0 32px 80px rgba(0,0,0,.35)}
+.login-logo-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:28px}
+.login-company-logo{width:80px;height:80px;border-radius:20px;background:#085041;display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:0 8px 24px rgba(8,80,65,.3)}
+.login-company-logo svg{width:52px;height:52px}
+.login-company-name{font-size:13px;font-weight:700;color:#085041;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px}
+.login-company-sub{font-size:11px;color:#aaa;letter-spacing:.5px}
+.login-divider{width:40px;height:3px;background:#085041;border-radius:2px;margin:16px auto}
+.login-title{font-size:22px;font-weight:700;text-align:center;color:#1a1a1a;margin-bottom:4px}
+.login-subtitle{font-size:13px;color:#888;text-align:center;margin-bottom:28px}
+.login-field{margin-bottom:14px}
+.login-field label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.login-field input{width:100%;padding:14px 16px;border:1.5px solid #ddd;border-radius:12px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.login-field input:focus{border-color:#085041}
+.login-btn{width:100%;padding:15px;background:#085041;color:#fff;border:none;border-radius:12px;font-size:16px;font-family:inherit;font-weight:700;cursor:pointer;margin-top:6px;transition:background .2s}
+.login-btn:hover{background:#0a6b55}
+.login-btn:active{background:#063328}
+.login-error{background:#FCEBEB;color:#A32D2D;border-radius:10px;padding:10px 14px;font-size:13px;text-align:center;margin-bottom:14px}
+.login-footer{text-align:center;margin-top:20px;font-size:11px;color:#bbb}
+.logout-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1px solid #ddd;border-radius:8px;font-size:11px;font-family:inherit;cursor:pointer;background:#fff;color:#888;font-weight:500}
+.logout-btn:hover{background:#f5f5f3;color:#1a1a1a}
+
+/* LIVE CSR HIERARCHY TABLE */
+.lcsr-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.lcsr-table{width:100%;border-collapse:collapse;min-width:960px}
+.lcsr-table thead th{background:#085041;color:#fff;padding:9px 12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.12);font-family:'Nunito Sans',sans-serif}
+.lcsr-table thead th.right{text-align:right}
+/* Division rows (A, B, D...) */
+.lcsr-table tr.lcsr-div td{background:#085041;color:#fff;padding:10px 12px;font-weight:700;font-size:13px;border-bottom:1px solid #0a6b55}
+.lcsr-table tr.lcsr-div:hover td{background:#0a6b55;cursor:pointer}
+/* Section rows (A.1, A.2...) */
+.lcsr-table tr.lcsr-sec td{background:#dceeda;padding:8px 12px;font-weight:600;font-size:12px;border-bottom:1px solid #c0dfc8}
+.lcsr-table tr.lcsr-sec:hover td{background:#cce8d4;cursor:pointer}
+/* Category rows (A.1.1...) */
+.lcsr-table tr.lcsr-cat td{background:#f4faf6;padding:7px 12px;font-size:12px;border-bottom:1px solid #e8f0ea}
+.lcsr-table tr.lcsr-cat:hover td{background:#eaf5ee}
+/* Line item rows (A.1.1.1...) */
+.lcsr-table tr.lcsr-item td{background:#fff;padding:6px 12px;font-size:12px;border-bottom:1px solid #f0f0ee}
+.lcsr-table tr.lcsr-item:nth-child(even) td{background:#fafaf8}
+.lcsr-table tr.lcsr-item:hover td{background:#f0f7f4}
+/* Grand total */
+.lcsr-table tr.lcsr-total td{background:#e8e4da;font-weight:700;font-size:13px;border-top:2px solid #505050;border-bottom:2px solid #505050;padding:10px 12px}
+/* Number cells */
+.lcsr-table td.num{text-align:right;font-family:'Courier New',monospace;font-size:11px;white-space:nowrap}
+.lcsr-table td.num.over-budget{color:#A32D2D!important;font-weight:700!important}
+/* Expanded PO detail row */
+.lcsr-table tr.lcsr-expand-row td{padding:0!important;border-bottom:2px solid #085041!important}
+.lcsr-expand-inner{background:#f8fdfb;padding:14px 18px;border-top:1px solid #c0e0d8}
+.lcsr-expand-inner h4{font-size:12px;font-weight:700;color:#085041;margin-bottom:10px}
+/* Collapse toggle icon */
+.lcsr-toggle{display:inline-block;width:16px;font-size:10px;color:inherit;cursor:pointer;text-align:center;opacity:.7;flex-shrink:0}
+/* PO pill badge — inline with work description */
+.lcsr-po-pill{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;background:#e8f5f0;color:#085041;border:1px solid #c0e0d8;cursor:pointer;font-family:'Nunito Sans',sans-serif}
+.lcsr-po-pill.open{background:#085041;color:#fff;border-color:#085041}
+.lcsr-has-po:hover td{background:#f0f7f4!important;}
+/* Shared utility */
+.pct-bar-wrap{display:flex;align-items:center;gap:6px}
+.pct-bar{height:6px;border-radius:3px;background:#eee;flex:1;min-width:36px;overflow:hidden}
+.pct-bar-fill{height:100%;border-radius:3px}
+.csr-warning{background:#FFF8E6;border:1px solid #F5C518;border-radius:10px;padding:12px 16px;font-size:12px;color:#7A5B00;margin-bottom:12px}
+.csr-refresh{padding:7px 16px;border:1px solid #085041;border-radius:8px;font-size:12px;font-family:inherit;cursor:pointer;background:#fff;color:#085041;font-weight:600}
+.csr-refresh:hover{background:#f0f7f4}
+
+@media(max-width:768px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi .val{font-size:20px}
+  .mgr-pct{font-size:20px}
+  .chat-panel{max-width:100%}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const{useState,useMemo,useRef,useEffect,useCallback}=React;
+const APP_VERSION="v19";
+
+/* ─── DATA ─────────────────────────────────────────────── */
+const MANAGERS=[
+  {id:1,mgr:"Jun David",contract:561326636.24,projects:[{id:"1.1",name:"JIL Tower",subs:[{id:"1.1.1",name:"Structural Works Package 1",contract:72000000,pct:.5891},{id:"1.1.2",name:"Retrofitting Works Package 2",contract:42448917.24,pct:.7608},{id:"1.1.3",name:"Retrofitting Works Pkg 3 (Steel Jacket)",contract:49400000,pct:.3874},{id:"1.1.4",name:"Electrical Roughing-ins",contract:540000,pct:.48},{id:"1.1.5",name:"Controlled Demolition",contract:1437719,pct:.3423}]},{id:"1.2",name:"Woodsville Crest Residences",subs:[{id:"1.2.1",name:"Woodsville Tower 3",contract:276000000,pct:.4045},{id:"1.2.2",name:"Woodsville Site Dev",contract:54500000,pct:.4909},{id:"1.2.3",name:"Tower 1 Architectural Fit-out",contract:65000000,pct:.3661}]}]},
+  {id:2,mgr:"Ramel De Castro",contract:537320631.83,projects:[{id:"2.1",name:"Sierra Valley Gardens",subs:[{id:"2.1.1",name:"Sierra Tower 4",contract:439320631.83,pct:.3154},{id:"2.1.2",name:"Sierra Tower 1 Fit-out",contract:98000000,pct:.552}]}]},
+  {id:3,mgr:"Godfrey Aranzaso",contract:1049051525.1,projects:[{id:"3.1",name:"Great Valley Medical Center",subs:[{id:"3.1.1",name:"GVMC Architectural",contract:640000000,pct:.1472,hasCSR:true},{id:"3.1.2",name:"GVMC Phase I (12-15Fa)",contract:126000000,pct:.989},{id:"3.1.3",name:"GVMC Phase II (12-15Fb)",contract:101000000,pct:.769}]},{id:"3.2",name:"Tarlac Hall of Justice",subs:[{id:"3.2.1",name:"Tarlac Hall of Justice",contract:182051525.1,pct:.9942}]}]},
+  {id:4,mgr:"Alfhie Masinadiong",contract:588645185.91,projects:[{id:"4.1",name:"One Tolentino East",subs:[{id:"4.1.1",name:"Main Contract",contract:499000000,pct:.8129},{id:"4.1.2",name:"Sealant Application",contract:7200000,pct:.4275},{id:"4.1.3",name:"Precast Exterior Wall",contract:66145185.91,pct:.6349},{id:"4.1.4",name:"Sealant & PU Foam",contract:7700000,pct:.7504},{id:"4.1.5",name:"RSB Fabrication T2",contract:1800000,pct:.6332},{id:"4.1.6",name:"Lintel Beam & Stiffener",contract:6800000,pct:.8339}]}]},
+  {id:5,mgr:"Ryan Legaspi",contract:1550000000,projects:[{id:"5.1",name:"Mantawi Residences",subs:[{id:"5.1.1",name:"Mantawi Residences - Cebu",contract:1550000000,pct:.1821}]}]},
+  {id:6,mgr:"Mark Tumpalan",contract:339052142.2,projects:[{id:"6.1",name:"Philsouth - Dumaguete",subs:[{id:"6.1.1",name:"Dumaguete Medical City",contract:219000000,pct:.3442},{id:"6.1.2",name:"Dumaguete Gov Center",contract:81552142.2,pct:.9981},{id:"6.1.3",name:"Koko Hotel Dumaguete",contract:38500000,pct:.9388},{id:"6.1.4",name:"4-Storey Parking",contract:0,pct:.6227}]}]},
+  {id:7,mgr:"Reymark La Guardia",contract:25000000,projects:[{id:"7.1",name:"Amisa Residences",subs:[{id:"7.1.1",name:"Interior Painting Works",contract:25000000,pct:.1107}]}]},
+  {id:8,mgr:"Giselle Gerardo",contract:43412965.6,projects:[{id:"8.1",name:"Lolo Uweng Phase 2",subs:[{id:"8.1.1",name:"Lolo Uweng Phase 2",contract:28080020.08,pct:.8742}]},{id:"8.2",name:"Belfry Tower",subs:[{id:"8.2.1",name:"Sacred Heart Parish",contract:15332945.52,pct:.1469}]}]},
+  {id:9,mgr:"Dolphy Esteban",contract:206800000,projects:[{id:"9.1",name:"Fili Bridgetown",subs:[{id:"9.1.1",name:"Service Elevator ABWF",contract:8800000,pct:.9175}]},{id:"9.2",name:"Grand Summit",subs:[{id:"9.2.1",name:"Grand Summit Pangasinan",contract:198000000,pct:.0418}]}]},
+  {id:10,mgr:"Rowell Clarin",contract:102000000,projects:[{id:"10.1",name:"Maribago Mercado Resort",subs:[{id:"10.1.1",name:"Maribago Mercado Resort",contract:102000000,pct:0}]}]},
+];
+
+/* CSR structure loaded dynamically from ERP — see loadCSRFromERP() below */
+
+/* ─── HELPERS ───────────────────────────────────────────── */
+const TC=5002609086.88;
+const f=v=>{if(!v&&v!==0)return"—";if(Math.abs(v)>=1e9)return"₱"+(v/1e9).toFixed(2)+"B";if(Math.abs(v)>=1e6)return"₱"+(v/1e6).toFixed(1)+"M";if(Math.abs(v)>=1e3)return"₱"+(v/1e3).toFixed(0)+"K";return"₱"+Math.round(v).toLocaleString();};
+const nf=v=>v?v.toLocaleString("en",{minimumFractionDigits:2,maximumFractionDigits:2}):"—";
+const fp=v=>v||v===0?"₱"+v.toLocaleString("en",{minimumFractionDigits:2,maximumFractionDigits:2}):"—";
+const sc=p=>p>=.9?"#085041":p>=.6?"#1D9E75":p>=.3?"#BA7517":"#D85A30";
+const sl=p=>p>=.9?"Nearly done":p>=.6?"On track":p>=.3?"In progress":"Early stage";
+const ss=p=>p>=.9?"nd":p>=.6?"ot":p>=.3?"ip":"es";
+const pb=v=>Math.max(0,Math.min(100,v*100));
+const ms=m=>{const a=m.projects.flatMap(p=>p.subs),t=a.reduce((s,x)=>s+(x.contract||0),0),w=t>0?a.reduce((s,x)=>s+x.pct*(x.contract||0),0)/t:0;return{allSubs:a,totalC:t,wPct:w,count:a.length};};
+const SORTS=[{k:"ch",l:"Highest contract"},{k:"cl",l:"Lowest contract"},{k:"ph",l:"Most progress"},{k:"pl",l:"Least progress"},{k:"na",l:"Name A → Z"},{k:"pk",l:"Most packages"}];
+const STAGES=[{k:"all",l:"All",c:"#555"},{k:"es",l:"Early",c:"#D85A30"},{k:"ip",l:"In progress",c:"#BA7517"},{k:"ot",l:"On track",c:"#1D9E75"},{k:"nd",l:"Nearly done",c:"#085041"}];
+const SUGGESTIONS=["Give me a portfolio overview","Which projects are at risk?","Summarize the GVMC cost status","Who has the most packages?","What's Mechanical Works status?","Explain the ₱102M Other costs"];
+
+const SYS_PROMPT=`You are Tod, an AI construction ERP analyst for TERP (Terp Asia / The Asian Construction Company). You are a knowledgeable, concise, and proactive analyst.
+
+PORTFOLIO OVERVIEW: 10 project managers, ₱5.0B gross contract, ~35% weighted progress.
+
+MANAGERS (sorted by contract):
+1. Ryan Legaspi — ₱1.55B — Mantawi Residences Cebu (18.2%) — 1 package
+2. Godfrey Aranzaso — ₱1.05B — GVMC Architectural (14.7%, has CSR), GVMC Phase I (98.9%), GVMC Phase II (76.9%), Tarlac Hall of Justice (99.4%) — 4 packages
+3. Alfhie Masinadiong — ₱589M — One Tolentino East 6 packages avg 81% — Nearly done
+4. Jun David — ₱561M — JIL Tower 5 packages, Woodsville 3 packages — avg 45%
+5. Ramel De Castro — ₱537M — Sierra Tower 4 (31.5%), Sierra Tower 1 Fit-out (55.2%) — 2 packages
+6. Mark Tumpalan — ₱339M — Dumaguete Medical City (34.4%), Gov Center (99.8%), Koko Hotel (93.9%), 4-Storey Parking (62.3%) — 4 packages
+7. Dolphy Esteban — ₱207M — Fili Elevator (91.8%), Grand Summit Pangasinan (4.2%) — 2 packages
+8. Rowell Clarin — ₱102M — Maribago Mercado Resort (0%) — Not started
+9. Giselle Gerardo — ₱43M — Lolo Uweng Phase 2 (87.4%), Sacred Heart Parish (14.7%) — 2 packages
+10. Reymark La Guardia — ₱25M — Amisa Interior Painting (11.1%) — 1 package
+
+GVMC ARCHITECTURAL CSR (PROJ-0020) — Only project with full cost data:
+Budget: ₱531.6M | Actual spend: ₱130.5M (24.5%) | Remaining: ₱401.1M
+Divisions:
+- A. General Requirements: Budget ₱87.2M, Actual ₱6.2M (7.2%)
+- B. Civil Works: Budget ₱0, Actual ₱15K (unbudgeted)
+- D. Architectural Works: Budget ₱164.9M, Actual ₱56.1M (34%)
+- E. Mechanical Works: Budget ₱69.3M, Actual ₱51.9M (74.9%) — HIGH RISK
+- F. Electrical Works: Budget ₱37.4M, Actual ₱0.5M (1.3%)
+- G. Plumbing & Sanitary: Budget ₱21.1M, Actual ₱0.24M (1.1%)
+- H. Fire Protection: Budget ₱21.5M, Actual ₱0 (0%)
+- I. Auxiliary Works: Budget ₱130.3M, Actual ₱15.5M (11.9%)
+
+KEY RISKS:
+1. Mechanical Works at 74.9% budget consumed — risk of overrun at only 14.7% overall progress
+2. "Other costs" ₱102.4M with ₱0 budget — unplanned expenditures
+3. CHB 6" overspent: budget ₱1.74M, actual ₱2.3M (+31.9% over budget)
+4. D.1.3 Masonry Subcontractor: ₱35.9M actual vs ₱47M budget, but ₱34.6M in "Other" column
+5. Staff salary: ₱5.72M of ₱9.75M budget consumed (58.6%)
+6. Grand Summit Pangasinan: only 4.2% — very early stage for a ₱198M contract
+7. Rowell Clarin / Maribago Resort: 0% progress on ₱102M contract
+
+PORTFOLIO FINANCIALS:
+- Gross contract: ₱5,002,609,086.88
+- 5% Tax: ₱250,130,454.34
+- After tax: ₱4,752,478,632.54
+- 15% Target profit: ₱750,391,363.03
+- Target direct cost: ₱4,002,087,269.50
+
+Full project data: ${JSON.stringify(MANAGERS.map(m=>({mgr:m.mgr,contract:m.contract,projects:m.projects})))}
+
+RULES: Always use ₱ (Philippine Peso). Be concise — max 800 tokens. Proactively flag risks. Answer only from the data above. If data is not available, say so clearly.`;
+
+/* ─── ERP FETCH HELPER ───────────────────────────────────── */
+// Safe fetch: detects when proxy is unavailable (returns HTML 404 instead of JSON)
+async function erpFetch(url){
+  const r=await fetch(url);
+  const text=await r.text();
+  if(text.trimStart().startsWith('<')){
+    throw new Error('ERP_UNAVAILABLE');
+  }
+  const d=JSON.parse(text);
+  if(d.exc_type||d.exc){
+    const isPermErr=(d.exc_type==='PermissionError')||(d.exc&&d.exc.includes('PermissionError'));
+    if(isPermErr)throw new Error('PERMISSION_ERROR:'+d.exc_type);
+    throw new Error(d.exc_type||d.exc||'ERP error');
+  }
+  return Array.isArray(d.data)?d.data:(d.data?[d.data]:[]);
+}
+async function erpFetchDoc(url){
+  const r=await fetch(url);
+  const text=await r.text();
+  if(text.trimStart().startsWith('<'))throw new Error('ERP_UNAVAILABLE');
+  const d=JSON.parse(text);
+  if(d.exc_type||d.exc)throw new Error(d.exc_type||'ERP error');
+  return d.data||d;
+}
+const ERP_UNAVAIL_MSG='Live ERP data is only available when running locally (npm run dev) or deployed to Vercel. GitHub Pages cannot connect to the ERP proxy.';
+const PERM_MSG='Permission denied. Ask your ERPNext admin to grant Read access via Setup → Role Permissions Manager.';
+
+/* ─── DYNAMIC CSR STRUCTURE FROM ERP ────────────────────── */
+let _csrCache=null;
+
+async function loadCSRFromERP(){
+  if(_csrCache)return _csrCache;
+  try{
+    const enc=s=>encodeURIComponent(s);
+    const pcbFields=enc('["name","parent_project_cost_breakdown","is_group"]');
+    const bgtFields=enc('["cost_breakdown","material_cost","labor_cost","equipment_cost","other_cost","total_cost"]');
+    const bgtFilter=enc('[["project","=","PROJ-0020"]]');
+    const[pcbList,bgtList]=await Promise.all([
+      erpFetch(`/api/erp?resource=Project%20Cost%20Breakdown&limit=500&fields=${pcbFields}&order_by=lft%20asc`),
+      erpFetch(`/api/erp?resource=Budgetary%20Cost&limit=500&filters=${bgtFilter}&fields=${bgtFields}`)
+    ]);
+    // Build budget map: code -> [mat,lab,eqp,oth,total]
+    const bmap={};
+    bgtList.forEach(b=>{
+      const code=codeOnly(b.cost_breakdown);
+      if(!code)return;
+      bmap[code]=[parseFloat(b.material_cost)||0,parseFloat(b.labor_cost)||0,parseFloat(b.equipment_cost)||0,parseFloat(b.other_cost)||0,parseFloat(b.total_cost)||0];
+    });
+    // Build rows in lft order (tree order)
+    const rows=[];
+    const rlookup={};
+    pcbList.forEach(item=>{
+      const code=codeOnly(item.name);
+      if(!code)return;
+      const desc=item.name.replace(/^[A-Z](?:\.\d+)*\.?\s*/,'').trim();
+      const level=code.split('.').length-1;
+      const isGroup=item.is_group?1:0;
+      const b=bmap[code]||[0,0,0,0,0];
+      const row=[code,desc,level,isGroup,b[0],b[1],b[2],b[3],b[4]];
+      rows.push(row);
+      rlookup[code]=row;
+    });
+    // Rollup budgets for group rows (sum all leaf descendants, no double-count)
+    rows.filter(r=>r[3]===1).forEach(r=>{
+      let mat=0,lab=0,eqp=0,oth=0,tot=0;
+      rows.forEach(c=>{if(c[3]===0&&c[0]!==r[0]&&c[0].startsWith(r[0]+'.')){mat+=c[4];lab+=c[5];eqp+=c[6];oth+=c[7];tot+=c[8];}});
+      r[4]=mat;r[5]=lab;r[6]=eqp;r[7]=oth;r[8]=tot;
+    });
+    // Grand total from top-level division sums
+    const grandTot=rows.filter(r=>r[3]===1&&!r[0].includes('.')).reduce((s,r)=>s+r[8],0);
+    rows.push(['GRAND TOTAL','GRAND TOTAL',0,2,0,0,0,0,grandTot]);
+    _csrCache=rows;
+    return rows;
+  }catch(e){
+    if(e.message==='ERP_UNAVAILABLE'||e.message.startsWith('PERMISSION_ERROR'))return null;
+    throw e;
+  }
+}
+
+/* ─── CHAT ERP CACHE ─────────────────────────────────────── */
+// null = not fetched | {loading:true} | {data:{...}} | {error:string}
+let _chatErpCache = null;
+
+async function loadChatErpData(){
+  if(_chatErpCache && !_chatErpCache.loading) return _chatErpCache;
+  _chatErpCache={loading:true};
+  try{
+    // 1. JV list
+    let jvList=[];
+    try{jvList=await erpFetch('/api/erp?resource=Journal%20Entry&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');}catch(e){
+      if(e.message==='ERP_UNAVAILABLE'){_chatErpCache={error:'ERP_UNAVAILABLE'};return _chatErpCache;}
+    }
+    if(!jvList||jvList.length===0){
+      try{jvList=await erpFetch('/api/erp?resource=Journal%20Entry&filters=[[%22custom_project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');}catch(e){jvList=[];}
+    }
+    // 2. PO list
+    let poList=[];
+    try{poList=await erpFetch('/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22,%22supplier%22,%22supplier_name%22,%22grand_total%22,%22status%22,%22transaction_date%22]&limit=500');}catch(e){
+      if(e.message==='ERP_UNAVAILABLE'){_chatErpCache={error:'ERP_UNAVAILABLE'};return _chatErpCache;}
+    }
+    // 3. Fetch all docs in parallel
+    const[jvDocs,poDocs]=await Promise.all([
+      Promise.all((jvList||[]).map(j=>erpFetchDoc(`/api/erp?resource=Journal%20Entry&docname=${encodeURIComponent(j.name)}`).catch(()=>({})))),
+      Promise.all((poList||[]).map(p=>erpFetchDoc(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(p.name)}`).catch(()=>({}))))
+    ]);
+    // 4. Build byCode from JV actuals
+    const byCode={};
+    const ensure=code=>{if(!byCode[code])byCode[code]={aTotal:0,cTotal:0};};
+    jvDocs.forEach(res=>{
+      const doc=(res&&res.data)?res.data:res;if(!doc||!doc.accounts)return;
+      doc.accounts.forEach(acc=>{
+        const fc=acc.custom_default_cost_breakdown;if(!fc)return;
+        const code=codeOnly(fc);if(!code)return;
+        const amt=(parseFloat(acc.debit)||0)-(parseFloat(acc.credit)||0);if(amt<=0)return;
+        ensure(code);byCode[code].aTotal+=amt;
+      });
+    });
+    // 5. Build byCode from PO committed + PO summary
+    const poSummary=[];
+    poDocs.forEach(res=>{
+      const doc=(res&&res.data)?res.data:res;if(!doc||!doc.name)return;
+      poSummary.push({po:doc.name,supplier:doc.supplier_name||doc.supplier,amount:doc.grand_total,status:doc.status,date:doc.transaction_date});
+      if(!doc.items)return;
+      doc.items.forEach(it=>{
+        const fc=it.custom_cost_breakdown;if(!fc)return;
+        const code=codeOnly(fc);if(!code)return;
+        const amt=parseFloat(it.amount)||0;if(amt<=0)return;
+        ensure(code);byCode[code].cTotal+=amt;
+      });
+    });
+    _chatErpCache={data:{byCode,poSummary,jvCount:(jvList||[]).length,poCount:(poList||[]).length,loadedAt:new Date().toLocaleTimeString()}};
+  }catch(e){
+    _chatErpCache={error:e.message};
+  }
+  return _chatErpCache;
+}
+
+function buildSysPrompt(erpData){
+  let p=SYS_PROMPT;
+  if(!erpData){
+    p+='\n\nLIVE ERP DATA: Not yet loaded. Answering from static data above.';
+    return p;
+  }
+  if(erpData.error){
+    p+=`\n\nLIVE ERP DATA: Unavailable (${erpData.error}). Answering from static data above.`;
+    return p;
+  }
+  const{byCode,poSummary,jvCount,poCount,loadedAt}=erpData;
+  // Helper: rollup for a code and all descendants
+  const rollup=code=>{let a=0,c=0;Object.entries(byCode).forEach(([k,v])=>{if(k===code||k.startsWith(code+'.')){a+=(v.aTotal||0);c+=(v.cTotal||0);}});return{a,c};};
+  // Division-level summary
+  let divLines='';
+  (_csrCache||[]).filter(r=>r[3]===1).forEach(r=>{
+    const{a,c}=rollup(r[0]);
+    const budget=r[8];const exposure=a+c;
+    const pct=budget>0?(exposure/budget*100).toFixed(1)+'%':'N/A';
+    const flag=budget>0&&exposure>budget?' ⚠️ OVER BUDGET':'';
+    divLines+=`${r[0]}. ${r[1]}: Budget ₱${(budget/1e6).toFixed(2)}M | JV Actual ₱${(a/1e6).toFixed(2)}M | PO Committed ₱${(c/1e6).toFixed(2)}M | ${pct} exposure${flag}\n`;
+  });
+  // Over-budget line items
+  const overBudget=[];
+  (_csrCache||[]).filter(r=>r[2]===3&&r[8]>0).forEach(r=>{
+    const v=byCode[r[0]]||{aTotal:0,cTotal:0};
+    const exposure=(v.aTotal||0)+(v.cTotal||0);
+    if(exposure>r[8])overBudget.push(`  ${r[0]} ${r[1]}: budget ${fp(r[8])}, exposure ${fp(exposure)} (+${((exposure-r[8])/r[8]*100).toFixed(1)}%)`);
+  });
+  const totalPO=poSummary.reduce((s,po)=>s+(po.amount||0),0);
+  const totalJV=Object.values(byCode).reduce((s,v)=>s+(v.aTotal||0),0);
+  p+=`\n\nLIVE ERP DATA — GVMC (PROJ-0020) as of ${loadedAt}:
+${jvCount} journal entries (JV Actuals) | ${poCount} purchase orders
+Total JV Actual: ₱${(totalJV/1e6).toFixed(2)}M | Total PO Committed: ₱${(totalPO/1e6).toFixed(2)}M | Total Exposure: ₱${((totalJV+totalPO)/1e6).toFixed(2)}M
+
+COST STATUS BY DIVISION (live):
+${divLines}`;
+  if(overBudget.length)p+=`\nOVER-BUDGET LINE ITEMS (${overBudget.length}):\n${overBudget.join('\n')}\n`;
+  p+=`\nPURCHASE ORDERS (${poCount} total, ₱${(totalPO/1e6).toFixed(2)}M):
+${JSON.stringify(poSummary)}`;
+  return p;
+}
+
+/* ─── AUTH ───────────────────────────────────────────────── */
+// To add/remove users: update this object { username: password }
+const APP_USERS = {
+  "admin":  "Terp2026",
+  "ramon":  "TodViewer1",
+};
+
+function LoginScreen({show,onLogin}){
+  const[user,setUser]=useState("");
+  const[pass,setPass]=useState("");
+  const[err,setErr]=useState("");
+  const[showPass,setShowPass]=useState(false);
+
+  const attempt=()=>{
+    const u=user.trim().toLowerCase();
+    const p=pass;
+    if(!u||!p){setErr("Please enter your username and password.");return;}
+    if(APP_USERS[u]&&APP_USERS[u]===p){
+      sessionStorage.setItem("tod_user",u);
+      onLogin(u);
+    } else {
+      setErr("Incorrect username or password. Please try again.");
+      setPass("");
+    }
+  };
+  const onKey=e=>{if(e.key==="Enter")attempt();};
+
+  return(
+    <div className={"login-screen"+(show?"":" hidden")}>
+      <div className="login-card">
+        <div className="login-logo-wrap">
+          {/* TACC / Terp Asia company logo */}
+          <div className="login-company-logo">
+            <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="52" height="52" rx="12" fill="#085041"/>
+              <text x="26" y="34" textAnchor="middle" fontFamily="'Nunito Sans',sans-serif" fontWeight="700" fontSize="22" fill="#5DCAA5">TACC</text>
+            </svg>
+          </div>
+          <div className="login-company-name">Terp Asia</div>
+          <div className="login-company-sub">The Asian Construction Company</div>
+          <div className="login-divider"/>
+        </div>
+        <div className="login-title">Tod</div>
+        <div className="login-subtitle">AI Project Dashboard · {APP_VERSION}</div>
+        {err&&<div className="login-error">{err}</div>}
+        <div className="login-field">
+          <label>Username</label>
+          <input type="text" placeholder="Enter your username" value={user} onChange={e=>{setUser(e.target.value);setErr("");}} onKeyDown={onKey} autoFocus autoCapitalize="none" autoCorrect="off"/>
+        </div>
+        <div className="login-field">
+          <label>Password</label>
+          <input type={showPass?"text":"password"} placeholder="Enter your password" value={pass} onChange={e=>{setPass(e.target.value);setErr("");}} onKeyDown={onKey}/>
+        </div>
+        <div style={{textAlign:"right",marginTop:-8,marginBottom:14}}>
+          <button onClick={()=>setShowPass(s=>!s)} style={{background:"none",border:"none",fontSize:12,color:"#888",cursor:"pointer",fontFamily:"inherit"}}>{showPass?"Hide":"Show"} password</button>
+        </div>
+        <button className="login-btn" onClick={attempt}>Sign In</button>
+        <div className="login-footer">Internal use only · TACC Project Portfolio</div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── API KEY MODAL ──────────────────────────────────────── */
+function ApiKeyModal({onSave}){
+  const[key,setKey]=useState("");
+  const[err,setErr]=useState("");
+  const save=()=>{
+    const k=key.trim();
+    if(!k.startsWith("sk-ant-")){setErr("Key must start with sk-ant-");return;}
+    localStorage.setItem("tod_api_key",k);
+    onSave(k);
+  };
+  const onKey=e=>{if(e.key==="Enter")save();};
+  return(
+    <div className="modal-backdrop">
+      <div className="modal">
+        <div className="tod-logo">T</div>
+        <h2>Welcome to Tod {APP_VERSION}</h2>
+        <p>Enter your Anthropic API key to activate the AI chat assistant. Your key is stored only in your browser — never sent anywhere else.</p>
+        {err&&<div className="error">{err}</div>}
+        <input type="password" placeholder="sk-ant-api03-..." value={key} onChange={e=>setKey(e.target.value)} onKeyDown={onKey} autoFocus/>
+        <button className="primary-btn" onClick={save}>Activate Tod AI</button>
+        <p className="note">Get your key at console.anthropic.com · Stored locally in your browser</p>
+      </div>
+    </div>
+  );
+}
+
+/* ─── CHAT PANEL ─────────────────────────────────────────── */
+function ChatPanel({open,onClose,apiKey,onChangeKey}){
+  const[msgs,setMsgs]=useState([]);
+  const[input,setInput]=useState("");
+  const[loading,setLoading]=useState(false);
+  const[erpStatus,setErpStatus]=useState('idle'); // 'idle'|'loading'|'ready'|'error'
+  const endRef=useRef(null);
+  const inputRef=useRef(null);
+
+  useEffect(()=>{endRef.current?.scrollIntoView({behavior:"smooth"});},[msgs,loading]);
+  useEffect(()=>{if(open)setTimeout(()=>inputRef.current?.focus(),400);},[open]);
+
+  // Load ERP data when chat first opens
+  useEffect(()=>{
+    if(!open)return;
+    if(_chatErpCache&&!_chatErpCache.loading){setErpStatus(_chatErpCache.error?'error':'ready');return;}
+    setErpStatus('loading');
+    loadChatErpData().then(result=>{setErpStatus(result.error?'error':'ready');});
+  },[open]);
+
+  const send=async(text)=>{
+    const msg=text||input.trim();
+    if(!msg||loading)return;
+    setInput("");
+    const newMsgs=[...msgs,{role:"user",content:msg}];
+    setMsgs(newMsgs);
+    setLoading(true);
+    // Use cached ERP data (may still be loading — use whatever is available)
+    const erpData=(_chatErpCache&&!_chatErpCache.loading)?_chatErpCache.data||_chatErpCache:null;
+    try{
+      const res=await fetch("https://api.anthropic.com/v1/messages",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "x-api-key":apiKey,
+          "anthropic-version":"2023-06-01",
+          "anthropic-dangerous-direct-browser-access":"true"
+        },
+        body:JSON.stringify({
+          model:"claude-sonnet-4-20250514",
+          max_tokens:1000,
+          system:buildSysPrompt(erpData),
+          messages:newMsgs.map(m=>({role:m.role,content:m.content}))
+        })
+      });
+      const data=await res.json();
+      if(data.error)throw new Error(data.error.message);
+      const reply=data.content?.map(b=>b.type==="text"?b.text:"").filter(Boolean).join("\n")||"Sorry, I couldn't process that.";
+      setMsgs([...newMsgs,{role:"assistant",content:reply}]);
+    }catch(e){
+      setMsgs([...newMsgs,{role:"assistant",content:"Error: "+e.message}]);
+    }finally{setLoading(false);}
+  };
+
+  const onKey=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}};
+
+  const erpBadge=erpStatus==='loading'
+    ?<span style={{fontSize:10,color:"#BA7517",marginLeft:4}}>⟳ Loading ERP…</span>
+    :erpStatus==='ready'
+    ?<span style={{fontSize:10,color:"#1D9E75",marginLeft:4}}>● ERP connected · {_chatErpCache?.data?.jvCount} JVs · {_chatErpCache?.data?.poCount} POs</span>
+    :erpStatus==='error'
+    ?<span style={{fontSize:10,color:"#A32D2D",marginLeft:4}}>● ERP offline · static data only</span>
+    :null;
+
+  const welcomeErpNote=erpStatus==='ready'
+    ?`Live ERP data loaded (${_chatErpCache?.data?.loadedAt}) — ${_chatErpCache?.data?.jvCount} journal entries, ${_chatErpCache?.data?.poCount} purchase orders. `
+    :erpStatus==='error'
+    ?"Running on static data (ERP not reachable). "
+    :"Loading live ERP data… ";
+
+  return(
+    <React.Fragment>
+      <div className={"chat-backdrop"+(open?" open":"")} onClick={onClose}/>
+      <div className={"chat-panel"+(open?" open":"")}>
+        <div className="chat-handle"/>
+        <div className="chat-head">
+          <div className="av">T</div>
+          <div className="info">
+            <h3>Ask Tod</h3>
+            <p>AI project analyst · Claude Sonnet{erpBadge}</p>
+          </div>
+          <button className="key-badge" onClick={onChangeKey} title="Change API key">🔑 API Key</button>
+          <button className="close-btn" onClick={onClose} style={{marginLeft:8}}>✕</button>
+        </div>
+        <div className="chat-msgs">
+          {msgs.length===0&&(
+            <div>
+              <div style={{padding:"12px 0 16px"}}>
+                <p style={{fontSize:14,color:"#888",lineHeight:1.6}}>{welcomeErpNote}Ask me anything about the portfolio — budgets, progress, risks, any project or manager.</p>
+              </div>
+              <div className="chat-suggestions">
+                {SUGGESTIONS.map((s,i)=><button key={i} onClick={()=>send(s)}>{s}</button>)}
+              </div>
+            </div>
+          )}
+          {msgs.map((m,i)=>(
+            <div key={i} className={"chat-msg "+(m.role==="user"?"user":"bot")}>
+              {m.role==="assistant"&&<div className="bot-av">T</div>}
+              <div className="bubble">{m.content}</div>
+            </div>
+          ))}
+          {loading&&<div className="chat-msg bot"><div className="bot-av">T</div><div className="bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}
+          <div ref={endRef}/>
+        </div>
+        <div className="chat-input-bar">
+          <textarea ref={inputRef} value={input} onChange={e=>setInput(e.target.value)} onKeyDown={onKey} placeholder="Ask about any project..." rows={1}/>
+          <button className="send" onClick={()=>send()} style={{background:input.trim()&&!loading?"#085041":"#eee"}}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={input.trim()&&!loading?"#fff":"#aaa"} strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+/* ─── LIVE PO PANEL ──────────────────────────────────────── */
+const PO_STATUS_MAP={
+  "To Receive and Bill":{label:"Pending",cls:"pending"},
+  "To Bill":{cls:"partial",label:"Received"},
+  "Completed":{cls:"billed",label:"Completed"},
+  "Closed":{cls:"received",label:"Closed"},
+  "Cancelled":{cls:"pending",label:"Cancelled"},
+};
+
+const naturalCmp=(a,b)=>{
+  const ax=a.replace(/(\d+)/g,n=>n.padStart(6,"0"));
+  const bx=b.replace(/(\d+)/g,n=>n.padStart(6,"0"));
+  return ax.localeCompare(bx);
+};
+
+// Extract cost breakdown code: "A.1.1.1. Staff" → "A.1.1.1"
+const codeOnly=s=>{if(!s)return"";const m=s.match(/^([A-Z](?:\.\d+)+)/);return m?m[1]:s.split(".")[0];};
+// Extract description: "A.1.1.1. Staff" → "Staff"
+const descOnly=s=>{if(!s)return"";const stripped=s.replace(/^[A-Z](?:\.\d+)*\.?\s*/,"").trim();return stripped||s;};
+// Map category string to column key prefix
+const catKey=(cat,pre)=>{const c=(cat||"").toLowerCase();if(c.includes("material"))return pre+"Mat";if(c.includes("labor")||c.includes("labour"))return pre+"Lab";if(c.includes("equip"))return pre+"Eqp";return pre+"Oth";};
+
+function LivePOs(){
+  const[pos,setPos]=useState(null);
+  const[err,setErr]=useState("");
+  const[search,setSearch]=useState("");
+  const[sortCol,setSortCol]=useState("po");
+  const[sortDir,setSortDir]=useState(1);
+  const[expandedPO,setExpandedPO]=useState(null); // currently open PO name
+  const[poDetails,setPoDetails]=useState({}); // cache: {poName: {items,loading,error}}
+
+  useEffect(()=>{
+    erpFetch("/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22,%22supplier%22,%22supplier_name%22,%22grand_total%22,%22status%22,%22transaction_date%22,%22per_received%22,%22per_billed%22,%22total_qty%22]&limit=500")
+      .then(data=>{
+        setPos(data);
+      })
+      .catch(e=>{
+        if(e.message==='ERP_UNAVAILABLE')setErr(ERP_UNAVAIL_MSG);
+        else if(e.message.startsWith('PERMISSION_ERROR'))setErr(PERM_MSG);
+        else setErr(e.message);
+      });
+  },[]);
+
+  const fetchPODetail=useCallback((poName)=>{
+    if(poDetails[poName])return; // already cached
+    setPoDetails(p=>({...p,[poName]:{items:[],loading:true,error:""}}));
+    erpFetchDoc(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(poName)}`)
+      .then(doc=>{
+        setPoDetails(p=>({...p,[poName]:{items:doc.items||[],loading:false,error:""}}));
+      })
+      .catch(e=>{
+        const msg=e.message==='ERP_UNAVAILABLE'?ERP_UNAVAIL_MSG:e.message.startsWith('PERMISSION_ERROR')?PERM_MSG:e.message;
+        setPoDetails(p=>({...p,[poName]:{items:[],loading:false,error:msg}}));
+      });
+  },[poDetails]);
+
+  const togglePO=useCallback((poName)=>{
+    if(expandedPO===poName){setExpandedPO(null);return;}
+    setExpandedPO(poName);
+    fetchPODetail(poName);
+  },[expandedPO,fetchPODetail]);
+
+  const toggleSort=col=>{
+    if(sortCol===col)setSortDir(s=>-s);
+    else{setSortCol(col);setSortDir(1);}
+  };
+
+  const sorted=useMemo(()=>{
+    if(!pos)return[];
+    const q=search.trim().toLowerCase();
+    let list=q?pos.filter(p=>p.name.toLowerCase().includes(q)||p.supplier.toLowerCase().includes(q)):pos;
+    return [...list].sort((a,b)=>{
+      if(sortCol==="po")return sortDir*naturalCmp(a.name,b.name);
+      if(sortCol==="date")return sortDir*(a.transaction_date||"").localeCompare(b.transaction_date||"");
+      if(sortCol==="amount")return sortDir*(a.grand_total-b.grand_total);
+      if(sortCol==="status")return sortDir*(a.status||"").localeCompare(b.status||"");
+      if(sortCol==="supplier")return sortDir*(a.supplier||"").localeCompare(b.supplier||"");
+      return 0;
+    });
+  },[pos,search,sortCol,sortDir]);
+
+  const totalCommitted=useMemo(()=>pos?pos.reduce((s,p)=>s+p.grand_total,0):0,[pos]);
+  const totalPending=useMemo(()=>pos?pos.filter(p=>p.per_billed<100).length:0,[pos]);
+
+  if(err)return <div className="po-error">Could not load live PO data: {err}</div>;
+  if(!pos)return <div className="po-loading">Loading live purchase orders from ERP...</div>;
+
+  const SortTh=({col,children,right})=>{
+    const active=sortCol===col;
+    return(
+      <th className={right?"right":""} onClick={()=>toggleSort(col)} style={{cursor:"pointer",userSelect:"none",whiteSpace:"nowrap"}}>
+        {children}<span style={{opacity:active?1:.25,fontSize:10,marginLeft:3}}>{active?(sortDir===1?"▲":"▼"):"↕"}</span>
+      </th>
+    );
+  };
+
+  const POItemsPanel=({poName,po})=>{
+    const detail=poDetails[poName];
+    if(!detail)return null;
+    if(detail.loading)return <div className="po-loading-inline">Loading items...</div>;
+    if(detail.error)return <div style={{color:"#A32D2D",fontSize:12,padding:12}}>Error: {detail.error}</div>;
+    const items=detail.items;
+    const itemTotal=items.reduce((s,it)=>s+it.amount,0);
+    return(
+      <div className="po-expand-inner">
+        <div className="po-expand-header">
+          <div>
+            <h4>{poName} — {po.supplier_name||po.supplier}</h4>
+            <p>Date: {po.transaction_date} · Status: {po.status} · {items.length} line item{items.length!==1?"s":""}</p>
+          </div>
+          <span className={"po-status "+(PO_STATUS_MAP[po.status]?.cls||"pending")}>{PO_STATUS_MAP[po.status]?.label||po.status}</span>
+        </div>
+        <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch"}}>
+          <table className="items-table" style={{minWidth:700}}>
+            <thead>
+              <tr>
+                <th style={{width:30}}>#</th>
+                <th>Item Description</th>
+                <th className="right">Qty</th>
+                <th>UOM</th>
+                <th className="right">Unit Rate</th>
+                <th className="right">Amount</th>
+                <th>Cost Breakdown</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((it,i)=>(
+                <tr key={it.name||i}>
+                  <td style={{color:"#aaa",fontSize:10}}>{i+1}</td>
+                  <td style={{maxWidth:220,whiteSpace:"normal",lineHeight:1.4}}>{it.item_name||it.description||it.item_code}</td>
+                  <td className="right">{it.qty?.toLocaleString("en",{maximumFractionDigits:2})}</td>
+                  <td style={{color:"#888"}}>{it.uom}</td>
+                  <td className="right">{fp(it.rate)}</td>
+                  <td className="right" style={{fontWeight:600}}>{fp(it.amount)}</td>
+                  <td>{it.custom_cost_breakdown?<span className="bd-code">{it.custom_cost_breakdown}</span>:<span style={{color:"#ccc",fontSize:10}}>—</span>}</td>
+                  <td>{it.custom_breakdown_category?<span className="bd-cat">{it.custom_breakdown_category}</span>:<span style={{color:"#ccc",fontSize:10}}>—</span>}</td>
+                </tr>
+              ))}
+              <tr className="items-total-row">
+                <td colSpan={5} style={{textAlign:"right",fontSize:12}}>PO Total</td>
+                <td className="right">{fp(itemTotal)}</td>
+                <td colSpan={2}></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
+
+  return(
+    <div>
+      <div className="po-kpis">
+        <div className="po-kpi"><label>Total POs</label><div className="val">{pos.length}</div></div>
+        <div className="po-kpi"><label>Total Committed</label><div className="val" style={{fontSize:15}}>{fp(totalCommitted)}</div></div>
+        <div className="po-kpi"><label>Pending Billing</label><div className="val" style={{color:"#BA7517"}}>{totalPending}</div></div>
+      </div>
+      <div style={{position:"relative",marginBottom:12}}>
+        <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search PO number or supplier..." style={{width:"100%",padding:"10px 14px 10px 38px",border:"1.5px solid #ddd",borderRadius:10,fontSize:13,fontFamily:"inherit",outline:"none",background:"#fff"}}/>
+        <svg style={{position:"absolute",left:12,top:12,opacity:.35}} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div className="po-table-wrap">
+        <table className="po-table">
+          <thead>
+            <tr>
+              <th style={{width:28}}></th>
+              <SortTh col="po">PO Number</SortTh>
+              <SortTh col="supplier">Supplier</SortTh>
+              <SortTh col="date">Date</SortTh>
+              <SortTh col="status">Status</SortTh>
+              <SortTh col="amount" right>Amount (₱)</SortTh>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.length===0&&<tr><td colSpan={6} style={{textAlign:"center",color:"#888",padding:24}}>No purchase orders found</td></tr>}
+            {sorted.map(po=>{
+              const st=PO_STATUS_MAP[po.status]||{label:po.status,cls:"pending"};
+              const isOpen=expandedPO===po.name;
+              return(
+                <React.Fragment key={po.name}>
+                  <tr className={"po-row"+(isOpen?" expanded":"")} onClick={()=>togglePO(po.name)}>
+                    <td style={{textAlign:"center",color:"#085041",fontWeight:700,fontSize:14,width:28}}>{isOpen?"▾":"▸"}</td>
+                    <td style={{fontWeight:600,fontSize:13,whiteSpace:"nowrap",color:"#085041"}}>{po.name}</td>
+                    <td style={{color:"#555",fontSize:12,maxWidth:200,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{po.supplier}</td>
+                    <td style={{color:"#888",fontSize:12,whiteSpace:"nowrap"}}>{po.transaction_date}</td>
+                    <td><span className={"po-status "+st.cls}>{st.label}</span></td>
+                    <td className="right">{fp(po.grand_total)}</td>
+                  </tr>
+                  {isOpen&&(
+                    <tr className="po-expand-row">
+                      <td colSpan={6}><POItemsPanel poName={po.name} po={po}/></td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p style={{marginTop:8,fontSize:11,color:"#888"}}>{sorted.length} of {pos.length} POs · PROJ-0020 · Tap a row to view items · Live from ERPNext</p>
+    </div>
+  );
+}
+
+/* ─── LIVE CSR ───────────────────────────────────────────── */
+function LiveCSR(){
+  const[csrData,setCsrData]=useState(null);
+  const[liveData,setLiveData]=useState(null);
+  const[status,setStatus]=useState("Initialising...");
+  const[warnings,setWarnings]=useState([]);
+  const[collapsed,setCollapsed]=useState({});
+  const[expandedRows,setExpandedRows]=useState({});
+  const[refreshKey,setRefreshKey]=useState(0);
+
+  useEffect(()=>{loadAll();},[refreshKey]);
+
+  const toggleCollapse=code=>setCollapsed(p=>({...p,[code]:!p[code]}));
+  const toggleExpand=(e,code)=>{e.stopPropagation();setExpandedRows(p=>({...p,[code]:!p[code]}));};
+  const hasKids=id=>(csrData||[]).some(r=>r[0]!==id&&r[0].startsWith(id+"."));
+  const isVisible=id=>{
+    if(id==="GRAND TOTAL")return true;
+    let code=id;
+    while(code.includes(".")){code=code.substring(0,code.lastIndexOf("."));if(collapsed[code])return false;}
+    return true;
+  };
+  // Rollup: sum all live entries whose code starts with this code
+  const getLive=(code,data)=>{
+    if(!data)return{aTotal:0,cTotal:0};
+    let a=0,c=0;
+    Object.entries(data.byCode).forEach(([k,v])=>{if(k===code||k.startsWith(code+".")){{a+=(v.aTotal||0);c+=(v.cTotal||0);}}});
+    return{aTotal:a,cTotal:c};
+  };
+  // Get all PO items for this code (direct + children)
+  const getPOItems=(code,data)=>{
+    if(!data)return[];
+    const items=[];
+    Object.entries(data.poByCode).forEach(([k,v])=>{if(k===code||k.startsWith(code+"."))items.push(...v);});
+    return items;
+  };
+
+  async function loadAll(){
+    setLiveData(null);setCsrData(null);setWarnings([]);
+    const warns=[];let jvDocs=[],poDocs=[],jvCount=0,poCount=0;
+    const safeGet=async(url,label)=>{
+      try{return await erpFetch(url);}
+      catch(e){
+        if(e.message==='ERP_UNAVAILABLE'){warns.push('🌐 '+ERP_UNAVAIL_MSG);return null;}
+        if(e.message.startsWith('PERMISSION_ERROR'))warns.push('🔒 '+label+': '+PERM_MSG);
+        else warns.push('❌ '+label+' failed: '+e.message);
+        return[];
+      }
+    };
+    try{
+      setStatus("Loading CSR structure from ERP (1/3)...");
+      const csrRows=await loadCSRFromERP().catch(e=>{warns.push('⚠️ CSR structure: '+e.message);return null;});
+      if(csrRows){setCsrData(csrRows);}
+      else{warns.push('⚠️ Could not load CSR structure — check ERP connection.');setWarnings(warns);setLiveData({byCode:{},poByCode:{},stats:{}});return;}
+
+      setStatus("Loading journal entries (2/3)...");
+      let jvList=await safeGet('/api/erp?resource=Journal%20Entry&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500','Journal Entry')||[];
+      if(jvList===null){setWarnings(warns);setLiveData({byCode:{},poByCode:{},stats:{}});return;}
+      if(jvList.length===0){
+        try{jvList=await erpFetch('/api/erp?resource=Journal%20Entry&filters=[[%22custom_project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500');}catch(e){jvList=[];}
+      }
+      if(!jvList||jvList.length===0){if(!warns.some(w=>w.includes('journal')))warns.push('⚠️ No journal entries found for PROJ-0020 — JV actuals show ₱0.');jvList=[];}
+      jvCount=jvList.length;
+      jvDocs=await Promise.all(jvList.map(j=>erpFetchDoc(`/api/erp?resource=Journal%20Entry&docname=${encodeURIComponent(j.name)}`).catch(()=>({}))));
+
+      setStatus("Loading purchase orders (3/3)...");
+      const pl=await safeGet('/api/erp?resource=Purchase%20Order&filters=[[%22project%22,%22=%22,%22PROJ-0020%22],[%22docstatus%22,%22=%22,1]]&fields=[%22name%22]&limit=500','Purchase Order')||[];
+      poCount=pl.length;
+      poDocs=await Promise.all(pl.map(p=>erpFetchDoc(`/api/erp?resource=Purchase%20Order&docname=${encodeURIComponent(p.name)}`).catch(()=>({}))));
+    }catch(e){warns.push('❌ Unexpected error: '+e.message);}
+    setStatus("Building report...");
+    setWarnings(warns);
+    setLiveData(buildData(jvDocs,poDocs,{jvCount,poCount}));
+  }
+
+  function buildData(jvDocs,poDocs,stats){
+    const byCode={};
+    const ensure=code=>{if(!byCode[code])byCode[code]={aTotal:0,cTotal:0};};
+    jvDocs.forEach(res=>{
+      const doc=(res&&res.data)?res.data:res;if(!doc||!doc.accounts)return;
+      doc.accounts.forEach(acc=>{
+        const fc=acc.custom_default_cost_breakdown;if(!fc)return;
+        const code=codeOnly(fc);if(!code)return;
+        const amt=(parseFloat(acc.debit)||0)-(parseFloat(acc.credit)||0);if(amt<=0)return;
+        ensure(code);byCode[code].aTotal+=amt;
+      });
+    });
+    const poByCode={};
+    poDocs.forEach(res=>{
+      const doc=(res&&res.data)?res.data:res;if(!doc||!doc.items)return;
+      doc.items.forEach(it=>{
+        const fc=it.custom_cost_breakdown;if(!fc)return;
+        const code=codeOnly(fc);if(!code)return;
+        const amt=parseFloat(it.amount)||0;if(amt<=0)return;
+        ensure(code);byCode[code].cTotal+=amt;
+        if(!poByCode[code])poByCode[code]=[];
+        poByCode[code].push({poName:doc.name,supplier:doc.supplier_name||doc.supplier,itemName:it.item_name||it.description||it.item_code||'—',qty:it.qty,uom:it.uom,rate:it.rate,amount:amt,date:doc.transaction_date,category:it.custom_breakdown_category,status:doc.status});
+      });
+    });
+    return{byCode,poByCode,stats};
+  }
+
+  if(!liveData||!csrData)return <div className="po-loading">{status}</div>;
+
+  // Grand totals — sum all leaf-level codes (no double-counting since byCode is leaf-only)
+  let grandA=0,grandC=0;
+  Object.values(liveData.byCode).forEach(v=>{grandA+=(v.aTotal||0);grandC+=(v.cTotal||0);});
+  const grandRow=csrData[csrData.length-1];
+  const grandBudget=grandRow?grandRow[8]:0; // GRAND TOTAL row total budget
+  const grandExposure=grandA+grandC;
+  const pctColor=p=>p>=90?"#A32D2D":p>=60?"#BA7517":"#085041";
+  const INDENTS=[0,16,32,48];
+
+  return(
+    <div>
+      {warnings.map((w,i)=><div key={i} className="csr-warning">{w}</div>)}
+
+      <div className="po-kpis" style={{gridTemplateColumns:"repeat(4,1fr)",marginBottom:16}}>
+        <div className="po-kpi"><label>Budget (CSR)</label><div className="val" style={{fontSize:14}}>{fp(grandBudget)}</div></div>
+        <div className="po-kpi"><label>JV Actuals</label><div className="val" style={{fontSize:14,color:"#085041"}}>{fp(grandA)}</div></div>
+        <div className="po-kpi"><label>PO Committed</label><div className="val" style={{fontSize:14,color:"#BA7517"}}>{fp(grandC)}</div></div>
+        <div className="po-kpi"><label>Total Exposure</label><div className="val" style={{fontSize:14,color:grandExposure>grandBudget?"#A32D2D":"#1D9E75"}}>{fp(grandExposure)}</div></div>
+      </div>
+
+      <div style={{display:"flex",alignItems:"center",marginBottom:12,gap:8,flexWrap:"wrap"}}>
+        <div style={{flex:1,fontSize:11,color:"#888"}}>
+          {liveData.stats.jvCount} journal entries · {liveData.stats.poCount} purchase orders · Click division row to collapse · Click any row with a <strong>▸ PO badge</strong> to view purchase orders
+          <span style={{color:"#BA7517",marginLeft:8}}>⚠️ Purchase Invoices not yet included</span>
+        </div>
+        <button className="csr-refresh" onClick={()=>setRefreshKey(k=>k+1)}>↻ Refresh</button>
+      </div>
+
+      <div className="po-table-wrap lcsr-wrap">
+        <table className="lcsr-table">
+          <thead>
+            <tr>
+              <th style={{width:110,textAlign:"left",paddingLeft:12}}>Item No.</th>
+              <th style={{minWidth:260,textAlign:"left"}}>Work Description</th>
+              <th className="right" style={{width:130}}>Budget</th>
+              <th className="right" style={{width:125}}>JV Actual</th>
+              <th className="right" style={{width:125}}>PO Committed</th>
+              <th className="right" style={{width:125}}>Exposure</th>
+              <th className="right" style={{width:115}}>Variance</th>
+              <th style={{width:130}}>% Used</th>
+            </tr>
+          </thead>
+          <tbody>
+            {csrData.map((r,i)=>{
+              const[id,desc,lvl,isGrp]=r;
+              // Hide rows with no budget AND no live data (keep group rows + grand total always)
+              if(isGrp===0&&id!=='GRAND TOTAL'){
+                const{aTotal,cTotal}=getLive(id,liveData);
+                if(!r[8]&&!aTotal&&!cTotal)return null;
+              }
+              if(!isVisible(id))return null;
+              const isTotal=id==="GRAND TOTAL";
+              const kids=!isTotal&&hasKids(id);
+              const isCollapsed=collapsed[id];
+              const budgetVal=r[8]||0;
+              const{aTotal,cTotal}=isTotal?{aTotal:grandA,cTotal:grandC}:getLive(id,liveData);
+              const exposure=aTotal+cTotal;
+              const variance=budgetVal-exposure;
+              const pctUsed=budgetVal>0?(exposure/budgetVal*100):null;
+              const isOver=budgetVal>0&&exposure>budgetVal;
+              const poItems=isTotal?[]:getPOItems(id,liveData);
+              const hasPOs=poItems.length>0;
+              const isExpanded=expandedRows[id];
+              const rowCls=isTotal?"lcsr-total":lvl===0&&isGrp===1?"lcsr-div":lvl===1?"lcsr-sec":lvl===2?"lcsr-cat":"lcsr-item";
+              const indent=isTotal?0:(INDENTS[lvl]||0);
+              const rowClick=hasPOs&&!isTotal?(e)=>toggleExpand(e,id):kids?()=>toggleCollapse(id):undefined;
+              return(
+                <React.Fragment key={id+i}>
+                  <tr className={rowCls+(hasPOs&&!isTotal?" lcsr-has-po":"")} onClick={rowClick} style={{cursor:(hasPOs&&!isTotal)||kids?"pointer":"default"}}>
+                    <td style={{paddingLeft:8+indent}}>
+                      <div style={{display:"flex",alignItems:"center",gap:4}}>
+                        {kids&&<span className="lcsr-toggle">{isCollapsed?"▸":"▾"}</span>}
+                        <span style={{fontFamily:"'Courier New',monospace",fontSize:isGrp===1?12:11,fontWeight:600,color:isGrp===1?"#5DCAA5":lvl===1?"#085041":"#999",whiteSpace:"nowrap"}}>{isTotal?"":id}</span>
+                      </div>
+                    </td>
+                    <td style={{paddingLeft:4+indent,fontWeight:isGrp===1?700:lvl<=1?600:400,fontSize:isGrp===1?13:12,color:isGrp===1?"#fff":lvl===1?"#1a1a1a":"#444",maxWidth:300,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
+                      <div style={{display:"flex",alignItems:"center",gap:6}}>
+                        <span style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{isTotal?"GRAND TOTAL":desc}</span>
+                        {hasPOs&&!isTotal&&(
+                          <span className={"lcsr-po-pill"+(isExpanded?" open":"")} title="Click to view Purchase Orders">
+                            {isExpanded?"▾":"▸"} {poItems.length} PO{poItems.length!==1?"s":""}
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="num">{budgetVal?nf(budgetVal):"—"}</td>
+                    <td className="num" style={{color:aTotal>0?(isGrp===1?"#5DCAA5":"#085041"):"#ccc"}}>{aTotal?nf(aTotal):"—"}</td>
+                    <td className="num" style={{color:cTotal>0?(isGrp===1?"#ffc66d":"#BA7517"):"#ccc"}}>{cTotal?nf(cTotal):"—"}</td>
+                    <td className={"num"+(isOver?" over-budget":"")} style={{fontWeight:600}}>{exposure?nf(exposure):"—"}</td>
+                    <td className="num" style={{color:budgetVal?(variance<0?"#A32D2D":"#1D9E75"):"#ccc"}}>{budgetVal?nf(variance):"—"}</td>
+                    <td style={{paddingRight:10}}>
+                      {pctUsed!==null?(
+                        <div className="pct-bar-wrap">
+                          <div className="pct-bar"><div className="pct-bar-fill" style={{width:Math.min(100,pctUsed)+"%",background:isGrp===1?"#5DCAA5":pctColor(pctUsed)}}/></div>
+                          <span style={{fontSize:10,fontWeight:700,color:isGrp===1?"#5DCAA5":pctColor(pctUsed),minWidth:36,textAlign:"right"}}>{pctUsed.toFixed(1)}%</span>
+                        </div>
+                      ):"—"}
+                    </td>
+                  </tr>
+                  {isExpanded&&hasPOs&&(()=>{
+                    // Group PO items by PO name for cleaner display
+                    const poGroups=[];const pgMap={};
+                    poItems.forEach(it=>{
+                      if(!pgMap[it.poName]){const g={poName:it.poName,supplier:it.supplier,status:it.status,date:it.date,items:[],total:0};pgMap[it.poName]=g;poGroups.push(g);}
+                      pgMap[it.poName].items.push(it);pgMap[it.poName].total+=it.amount;
+                    });
+                    const grandTotal=poItems.reduce((s,it)=>s+it.amount,0);
+                    const stCls=s=>s==="Completed"?"billed":s==="To Bill"?"partial":"pending";
+                    const stLbl=s=>s==="To Receive and Bill"?"Pending":s==="To Bill"?"Received":s==="Completed"?"Completed":s==="Closed"?"Closed":s||"—";
+                    return(
+                      <tr className="lcsr-expand-row">
+                        <td colSpan={8}>
+                          <div className="lcsr-expand-inner">
+                            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
+                              <h4 style={{margin:0}}>{id} · {desc}</h4>
+                              <span style={{fontSize:12,color:"#555"}}>{poGroups.length} PO{poGroups.length!==1?"s":""} · {poItems.length} line item{poItems.length!==1?"s":""} · <strong>{fp(grandTotal)}</strong></span>
+                            </div>
+                            {poGroups.map((grp,gi)=>(
+                              <div key={grp.poName} style={{marginBottom:gi<poGroups.length-1?14:0}}>
+                                <div style={{display:"flex",alignItems:"center",gap:10,background:"#f0f4f0",borderRadius:6,padding:"6px 10px",marginBottom:4}}>
+                                  <span style={{fontWeight:700,fontSize:12,color:"#085041",fontFamily:"'Courier New',monospace"}}>{grp.poName}</span>
+                                  <span style={{fontSize:11,color:"#555",flex:1}}>{grp.supplier}</span>
+                                  <span className={"po-status "+stCls(grp.status)} style={{fontSize:10}}>{stLbl(grp.status)}</span>
+                                  <span style={{fontSize:11,color:"#888"}}>{grp.date}</span>
+                                  <span style={{fontWeight:700,fontSize:12,color:"#085041"}}>{fp(grp.total)}</span>
+                                </div>
+                                <div style={{overflowX:"auto"}}>
+                                  <table className="items-table" style={{minWidth:680}}>
+                                    <thead>
+                                      <tr>
+                                        <th>#</th>
+                                        <th>Item Description</th>
+                                        <th className="right">Qty</th>
+                                        <th>UOM</th>
+                                        <th className="right">Unit Rate</th>
+                                        <th className="right">Amount</th>
+                                        <th>Category</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {grp.items.map((it,ii)=>(
+                                        <tr key={ii}>
+                                          <td style={{color:"#aaa",fontSize:10,width:24}}>{ii+1}</td>
+                                          <td style={{maxWidth:240,whiteSpace:"normal",lineHeight:1.4,fontSize:11}}>{it.itemName}</td>
+                                          <td className="right" style={{fontSize:11}}>{it.qty?.toLocaleString("en",{maximumFractionDigits:2})}</td>
+                                          <td style={{color:"#888",fontSize:11}}>{it.uom}</td>
+                                          <td className="right" style={{fontSize:11}}>{fp(it.rate)}</td>
+                                          <td className="right" style={{fontWeight:600,fontSize:11}}>{fp(it.amount)}</td>
+                                          <td>{it.category?<span className="bd-cat">{it.category}</span>:<span style={{color:"#ccc",fontSize:10}}>—</span>}</td>
+                                        </tr>
+                                      ))}
+                                      <tr className="items-total-row">
+                                        <td colSpan={4} style={{textAlign:"right",fontSize:11,color:"#888"}}>PO subtotal</td>
+                                        <td colSpan={2} className="right">{fp(grp.total)}</td>
+                                        <td></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            ))}
+                            <div style={{textAlign:"right",fontSize:12,fontWeight:700,color:"#085041",paddingTop:8,borderTop:"1px solid #ddd",marginTop:6}}>
+                              Grand Total: {fp(grandTotal)}
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })()}
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/* ─── CSR SPREADSHEET ────────────────────────────────────── */
+function Sheet({onBack}){
+  const[tab,setTab]=useState("live");
+  return(
+    <div>
+      <button className="back-btn" onClick={onBack}>← Back to projects</button>
+      <div style={{marginBottom:12,display:"flex",alignItems:"center",flexWrap:"wrap",gap:8}}>
+        <div>
+          <h2 style={{fontSize:18}}>GVMC Architectural Works</h2>
+          <p style={{fontSize:13,color:"#888",marginTop:4}}>PROJ-0020 · Great Valley Medical Center</p>
+        </div>
+        <span className="live-badge"><span className="live-dot"/>Live ERP</span>
+      </div>
+
+      <div className="tab-bar" style={{marginBottom:16,display:"inline-flex"}}>
+        <button className={tab==="live"?"active":""} onClick={()=>setTab("live")}>
+          Live CSR <span style={{display:"inline-block",width:6,height:6,borderRadius:"50%",background:"#5DCAA5",marginLeft:5,verticalAlign:"middle",animation:"pulse 2s infinite"}}/>
+        </button>
+        <button className={tab==="po"?"active":""} onClick={()=>setTab("po")}>Purchase Orders</button>
+      </div>
+
+      {tab==="live"&&<LiveCSR/>}
+      {tab==="po"&&<LivePOs/>}
+    </div>
+  );
+}
+
+/* ─── MAIN APP ───────────────────────────────────────────── */
+function App(){
+  const[loggedIn,setLoggedIn]=useState(()=>!!sessionStorage.getItem("tod_user"));
+  const[currentUser,setCurrentUser]=useState(()=>sessionStorage.getItem("tod_user")||"");
+  const[apiKey,setApiKey]=useState(()=>localStorage.getItem("tod_api_key")||"");
+  const[showKeyModal,setShowKeyModal]=useState(!localStorage.getItem("tod_api_key"));
+
+  const handleLogin=u=>{setLoggedIn(true);setCurrentUser(u);};
+  const handleLogout=()=>{sessionStorage.removeItem("tod_user");setLoggedIn(false);setCurrentUser("");};
+  const[path,setPath]=useState([]);
+  const[sortBy,setSortBy]=useState("ch");
+  const[stage,setStage]=useState("all");
+  const[search,setSearch]=useState("");
+  const[showSort,setShowSort]=useState(false);
+  const[view,setView]=useState("managers");
+  const[showCSR,setShowCSR]=useState(false);
+  const[chatOpen,setChatOpen]=useState(false);
+
+  const nav=item=>setPath(p=>[...p,item]);
+  const goHome=()=>{setPath([]);setShowCSR(false);};
+  const goTo=idx=>setPath(p=>p.slice(0,idx+1));
+  const current=path[path.length-1];
+  const level=path.length;
+
+  const handleSaveKey=k=>{setApiKey(k);setShowKeyModal(false);};
+  const handleChangeKey=()=>{setShowKeyModal(true);setChatOpen(false);};
+
+  const enriched=useMemo(()=>MANAGERS.map(m=>({...m,...ms(m)})),[]);
+  const allPkgs=useMemo(()=>{const p=[];MANAGERS.forEach(m=>m.projects.forEach(pr=>pr.subs.forEach(s=>p.push({...s,mn:m.mgr,mi:m.id,pn:pr.name}))));return p;},[]);
+  const sort=(a,b)=>({ch:(b.totalC||b.contract||0)-(a.totalC||a.contract||0),cl:(a.totalC||a.contract||0)-(b.totalC||b.contract||0),ph:(b.wPct??b.pct??0)-(a.wPct??a.pct??0),pl:(a.wPct??a.pct??0)-(b.wPct??b.pct??0),na:(a.mgr||a.name||"").localeCompare(b.mgr||b.name||""),pk:(b.count||0)-(a.count||0)}[sortBy]||0);
+  const fM=useMemo(()=>{let l=[...enriched];if(search){const q=search.toLowerCase();l=l.filter(m=>m.mgr.toLowerCase().includes(q)||m.projects.some(p=>p.name.toLowerCase().includes(q)||p.subs.some(s=>s.name.toLowerCase().includes(q))));}if(stage!=="all")l=l.filter(m=>ss(m.wPct)===stage);l.sort(sort);return l;},[enriched,sortBy,stage,search]);
+  const fP=useMemo(()=>{let l=[...allPkgs];if(search){const q=search.toLowerCase();l=l.filter(s=>s.name.toLowerCase().includes(q)||s.mn.toLowerCase().includes(q));}if(stage!=="all")l=l.filter(s=>ss(s.pct)===stage);l.sort(sort);return l;},[allPkgs,sortBy,stage,search]);
+  const wP=useMemo(()=>{let t=0,s=0;MANAGERS.forEach(m=>m.projects.forEach(p=>p.subs.forEach(x=>{if(x.contract>0){t+=x.contract;s+=x.pct*x.contract;}})));return t>0?s/t:0;},[]);
+  const aC=useMemo(()=>{let c=0;MANAGERS.forEach(m=>m.projects.forEach(p=>p.subs.forEach(s=>{if(s.pct>0&&s.pct<1)c++;})));return c;},[]);
+  const sC=useMemo(()=>{const c={es:0,ip:0,ot:0,nd:0};allPkgs.forEach(s=>c[ss(s.pct)]++);return c;},[allPkgs]);
+  const hasF=sortBy!=="ch"||stage!=="all"||search;
+
+  return(
+    <React.Fragment>
+      <LoginScreen show={!loggedIn} onLogin={handleLogin}/>
+      {showKeyModal&&<ApiKeyModal onSave={handleSaveKey}/>}
+
+      <div className="app">
+        {showCSR?(
+          <div>
+            <Sheet onBack={()=>setShowCSR(false)}/>
+          </div>
+        ):(
+          <div>
+            <div className="header">
+              <div className="logo" onClick={goHome}>T</div>
+              <div className="header-text">
+                <h1 onClick={goHome}>Tod</h1>
+                <p>Project portfolio dashboard · {APP_VERSION}</p>
+              </div>
+              <div className="header-right" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:6}}>
+                <div style={{fontSize:12,color:"#888"}}><b style={{color:"#1a1a1a"}}>March 2026</b></div>
+                <button className="logout-btn" onClick={handleLogout}>👤 {currentUser} · Sign out</button>
+              </div>
+            </div>
+
+            {level>0&&(
+              <div className="breadcrumb">
+                <span onClick={goHome}>All Projects</span>
+                {path.map((p,i)=>(
+                  <React.Fragment key={i}>
+                    <span className="sep">›</span>
+                    <span className={i===path.length-1?"current":""} onClick={()=>i<path.length-1&&goTo(i)}>{p.name||p.mgr}</span>
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
+
+            {level===0&&(
+              <div>
+                <div className="kpis">
+                  <div className="kpi"><label>Gross contract</label><div className="val">{f(TC)}</div></div>
+                  <div className="kpi"><label>Active packages</label><div className="val">{aC}</div></div>
+                  <div className="kpi"><label>Weighted progress</label><div className="val" style={{color:"#085041"}}>{(wP*100).toFixed(1)}%</div></div>
+                </div>
+                <div className="search-box">
+                  <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search manager, project, or package..."/>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  {search&&<button className="clear" onClick={()=>setSearch("")}>×</button>}
+                </div>
+                <div className="pills">
+                  {STAGES.map(s=>{
+                    const a=stage===s.k;
+                    const ct=s.k==="all"?allPkgs.length:sC[s.k]||0;
+                    return <button key={s.k} className={"pill"+(a?" active":"")} style={a?{borderColor:s.c,background:s.c+"14",color:s.c}:{}} onClick={()=>setStage(stage===s.k&&s.k!=="all"?"all":s.k)}>{s.l} ({ct})</button>;
+                  })}
+                </div>
+                <div className="controls">
+                  <div className="tab-bar">
+                    <button className={view==="managers"?"active":""} onClick={()=>setView("managers")}>By manager</button>
+                    <button className={view==="packages"?"active":""} onClick={()=>setView("packages")}>All packages</button>
+                  </div>
+                  <div style={{display:"flex",gap:8,alignItems:"center"}}>
+                    {hasF&&<button className="clear-btn" onClick={()=>{setSortBy("ch");setStage("all");setSearch("");}}>Clear</button>}
+                    <div style={{position:"relative"}}>
+                      <button className="sort-btn" onClick={()=>setShowSort(!showSort)}>{SORTS.find(o=>o.k===sortBy)?.l} ▾</button>
+                      {showSort&&(
+                        <React.Fragment>
+                          <div onClick={()=>setShowSort(false)} style={{position:"fixed",inset:0,zIndex:99}}/>
+                          <div className="sort-menu">
+                            {SORTS.map(o=><button key={o.k} className={sortBy===o.k?"active":""} onClick={()=>{setSortBy(o.k);setShowSort(false);}}>{o.l}</button>)}
+                          </div>
+                        </React.Fragment>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {view==="managers"&&(
+                  <div>
+                    {fM.map(m=>(
+                      <div key={m.id} className="mgr-card" onClick={()=>nav(m)}>
+                        <div className="mgr-row">
+                          <div className="mgr-info">
+                            <div className="mgr-avatar" style={{background:sc(m.wPct)+"18",color:sc(m.wPct)}}>{m.mgr.split(" ").map(w=>w[0]).join("")}</div>
+                            <div><div className="mgr-name">{m.mgr}</div><div className="mgr-sub">{m.count} pkg{m.count>1?"s":""} · {f(m.totalC)}</div></div>
+                          </div>
+                          <div className="mgr-pct" style={{color:sc(m.wPct)}}>{(m.wPct*100).toFixed(0)}%<small>{sl(m.wPct)}</small></div>
+                        </div>
+                        <div className="progress-bar"><div className="progress-fill" style={{width:pb(m.wPct)+"%",background:sc(m.wPct)}}/></div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {view==="packages"&&(
+                  <div>
+                    {fP.map((s,i)=>(
+                      <div key={s.id+i} className="pkg-card" onClick={()=>{const m=MANAGERS.find(x=>x.id===s.mi);if(m)nav({...m,...ms(m)});}}>
+                        <div className="pkg-row">
+                          <div style={{flex:1,minWidth:0}}>
+                            <div className="pkg-name">{s.name}</div>
+                            <div className="pkg-meta">{s.mn} · {s.pn}{s.contract>0&&" · "+f(s.contract)}</div>
+                          </div>
+                          <div className="pkg-pct" style={{color:sc(s.pct)}}>{(s.pct*100).toFixed(1)}%</div>
+                        </div>
+                        <div className="progress-bar" style={{height:6}}><div className="progress-fill" style={{width:pb(s.pct)+"%",background:sc(s.pct)}}/></div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="summary">
+                  <h4>Portfolio summary</h4>
+                  {[["Gross contract",f(TC)],["5% Tax",f(250130454.344)],["After tax",f(4752478632.536)],["15% Target profit",f(750391363.032)],["Target direct cost",f(4002087269.504)]].map(([l,v],i)=>(
+                    <div key={i} className="summary-row"><span className="label">{l}</span><span className="value">{v}</span></div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {level===1&&current&&(
+              <div>
+                <div style={{margin:"16px 0 20px"}}>
+                  <h2 style={{fontSize:18}}>{current.mgr}</h2>
+                  <p style={{fontSize:13,color:"#888",marginTop:4}}>Total contract: {f(current.contract)}</p>
+                </div>
+                {current.projects.map(p=>(
+                  <div key={p.id}>
+                    <div className="sub-header">{p.name}</div>
+                    {p.subs.map(s=>(
+                      <div key={s.id} className="pkg-card" onClick={()=>{if(s.hasCSR)setShowCSR(true);else nav({...s,parentProject:p.name});}}>
+                        <div className="pkg-row">
+                          <div><div className="pkg-name">{s.name}</div><div className="pkg-meta">{f(s.contract)}</div></div>
+                          <div className="pkg-pct" style={{color:sc(s.pct),fontSize:24}}>{(s.pct*100).toFixed(1)}%</div>
+                        </div>
+                        <div className="progress-bar"><div className="progress-fill" style={{width:pb(s.pct)+"%",background:sc(s.pct)}}/></div>
+                        {s.hasCSR&&<div className="csr-label">📊 Open detailed Cost Status Report</div>}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {level===2&&current&&(
+              <div className="empty-state">
+                <div className="icon">📋</div>
+                <h3>Detailed CSR not yet available</h3>
+                <p>{(current.pct*100).toFixed(1)}% complete · {f(current.contract)}</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        <button className="chat-fab" onClick={()=>apiKey?setChatOpen(true):setShowKeyModal(true)}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5DCAA5" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+
+        {apiKey&&(
+          <ChatPanel
+            open={chatOpen}
+            onClose={()=>setChatOpen(false)}
+            apiKey={apiKey}
+            onChangeKey={handleChangeKey}
+          />
+        )}
+      </div>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.render(<App/>,document.getElementById("app"));
+</script>
+</body>
+</html>
