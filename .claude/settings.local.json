@@ -14,7 +14,11 @@
       "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-gvmc.cjs 2>&1)",
       "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && node read-gvmc2.cjs 2>&1 | head -200)",
       "Bash(cd \"C:\\\\Users\\\\ramon\\\\OneDrive\\\\Documents\\\\tod-app\" && rm read-xlsx.cjs read-projects.cjs read-gvmc.cjs read-gvmc2.cjs)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(grep:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }

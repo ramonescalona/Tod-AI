@@ -1213,12 +1213,11 @@ function LiveCSR({projectId}){
 
       <div className="po-kpis" style={{gridTemplateColumns:"repeat(3,1fr)",marginBottom:8}}>
         <div className="po-kpi"><label>Budget</label><div className="val" style={{fontSize:13}}>{fp(grandBudget)}</div></div>
-        <div className="po-kpi"><label>JV Actuals</label><div className="val" style={{fontSize:13,color:"#085041"}}>{liveData?fp(grandA):<span style={{fontSize:11,color:"#aaa"}}>Loading…</span>}</div></div>
-        <div className="po-kpi" style={{borderLeft:"3px solid #C5A23A"}}><label>PO Committed</label><div className="val" style={{fontSize:13,color:"#C5A23A"}}>{liveData?fp(grandC):<span style={{fontSize:11,color:"#aaa"}}>Loading…</span>}</div></div>
+        <div className="po-kpi" style={{borderLeft:"3px solid #C5A23A"}}><label>Cost to Date</label><div className="val" style={{fontSize:13,color:"#C5A23A"}}>{liveData?fp(grandA+grandC):<span style={{fontSize:11,color:"#aaa"}}>Loading…</span>}</div></div>
+        <div className="po-kpi" style={{borderLeft:"3px solid #5a7fcf"}}><label>Cost Status Report</label><div className="val" style={{fontSize:13,color:"#5a7fcf"}}>{grandCSR?fp(grandCSR):<span style={{fontSize:11,color:"#aaa"}}>—</span>}</div></div>
       </div>
-      <div className="po-kpis" style={{gridTemplateColumns:"repeat(3,1fr)",marginBottom:12}}>
+      <div className="po-kpis" style={{gridTemplateColumns:"repeat(2,1fr)",marginBottom:12}}>
         <div className="po-kpi" style={{borderLeft:"3px solid #1D9E75"}}><label>Cost to Complete</label><div className="val" style={{fontSize:13,color:"#1D9E75"}}>{grandCTC?fp(grandCTC):<span style={{fontSize:11,color:"#aaa"}}>—</span>}</div></div>
-        <div className="po-kpi" style={{borderLeft:"3px solid #5a7fcf"}}><label>CSR Value</label><div className="val" style={{fontSize:13,color:"#5a7fcf"}}>{grandCSR?fp(grandCSR):<span style={{fontSize:11,color:"#aaa"}}>—</span>}</div></div>
         <div className="po-kpi" style={{borderLeft:"3px solid "+(grandForecast>grandBudget?"#A32D2D":"#085041")}}><label>Forecast Final</label><div className="val" style={{fontSize:13,color:grandForecast>grandBudget?"#A32D2D":"#085041"}}>{liveData?fp(grandForecast):<span style={{fontSize:11,color:"#aaa"}}>Loading…</span>}</div></div>
       </div>
 
@@ -1235,13 +1234,12 @@ function LiveCSR({projectId}){
         <table className="lcsr-table">
           <thead>
             <tr>
-              <th className="frozen-item" style={{textAlign:"left",paddingLeft:8}}>Item</th>
+              <th className="frozen-item" style={{textAlign:"left",paddingLeft:8}}>ITEM NO.</th>
               <th className="frozen-desc" style={{textAlign:"left"}}>Work Description</th>
-              <th className="fin" style={{minWidth:110}}>Budget</th>
-              <th className="fin" style={{minWidth:100}}>Actual</th>
-              <th className="fin" style={{minWidth:100}}>Committed</th>
+              <th className="fin" style={{minWidth:110}}>BUDGETARY COST</th>
+              <th className="fin" style={{minWidth:100}}>COST TO DATE</th>
               <th className="fin" style={{minWidth:100,borderLeft:"2px solid rgba(255,255,255,.25)"}}>Cost to Complete</th>
-              <th className="fin" style={{minWidth:100,borderLeft:"2px solid rgba(255,255,255,.25)"}}>CSR Value</th>
+              <th className="fin" style={{minWidth:100,borderLeft:"2px solid rgba(255,255,255,.25)"}}>COST STATUS REPORT</th>
               <th className="fin" style={{minWidth:110}}>Forecast Final</th>
               <th className="fin" style={{minWidth:100}}>Variance</th>
               <th className="th-pct" style={{minWidth:90}}>% Used</th>
@@ -1296,8 +1294,7 @@ function LiveCSR({projectId}){
                       {isTotal?"GRAND TOTAL":desc}
                     </td>
                     <td className="num fin-cell">{budgetVal?nf(budgetVal):"—"}</td>
-                    <td className="num fin-cell" style={{color:actualColor}}>{aTotal?nf(aTotal):"—"}</td>
-                    <td className="num fin-cell" style={{color:committedColor}}>{cTotal?nf(cTotal):"—"}</td>
+                    <td className="num fin-cell" style={{color:committedColor}}>{(aTotal||cTotal)?nf((aTotal||0)+(cTotal||0)):"—"}</td>
                     <td className="num fin-cell" style={{color:ctcVal>0?(isDivRow?"#a8e6cf":"#1D9E75"):"#bbb",borderLeft:"2px solid "+(isDivRow?"rgba(255,255,255,.15)":"#e0e0de")}}>{ctcVal?nf(ctcVal):"—"}</td>
                     <td className="num fin-cell" style={{color:csrVal>0?(isDivRow?"#b8ccff":"#5a7fcf"):"#bbb",borderLeft:"2px solid "+(isDivRow?"rgba(255,255,255,.15)":"#e0e0de")}}>{csrVal?nf(csrVal):"—"}</td>
                     <td className={"num fin-cell"+(isOver?" over-budget":"")} style={{fontWeight:600}}>{forecast?nf(forecast):"—"}</td>
