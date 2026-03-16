@@ -1,0 +1,578 @@
+[
+  {
+    "name": "PROJ-0020-A.1.1.1. Staff",
+    "cost_breakdown": "A.1.1.1. Staff",
+    "material_cost": "",
+    "labor_cost": "240000",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "240000"
+  },
+  {
+    "name": "PROJ-0020-A.11.1.5. Angle Grinders",
+    "cost_breakdown": "A.11.1.5. Angle Grinders",
+    "material_cost": "65000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "65000"
+  },
+  {
+    "name": "PROJ-0020-A.11.2.1. Towercrane",
+    "cost_breakdown": "A.11.2.1. Towercrane",
+    "material_cost": "",
+    "labor_cost": "",
+    "equipment_cost": "4824000",
+    "other_cost": "",
+    "total_cost": "4824000"
+  },
+  {
+    "name": "PROJ-0020-A.11.2.2. Personnel Hoist",
+    "cost_breakdown": "A.11.2.2. Personnel Hoist",
+    "material_cost": "",
+    "labor_cost": "",
+    "equipment_cost": "1704000",
+    "other_cost": "",
+    "total_cost": "1704000"
+  },
+  {
+    "name": "PROJ-0020-A.11.4. Fuel , Parking & Toll Fees",
+    "cost_breakdown": "A.11.4. Fuel , Parking & Toll Fees",
+    "material_cost": "576000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "576000"
+  },
+  {
+    "name": "PROJ-0020-A.12.1.1.1. Salary including 13th Month Pay",
+    "cost_breakdown": "A.12.1.1.1. Salary including 13th Month Pay",
+    "material_cost": "9750000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "9750000"
+  },
+  {
+    "name": "PROJ-0020-A.12.1.2.1. Salary including 13th Month Pay",
+    "cost_breakdown": "A.12.1.2.1. Salary including 13th Month Pay",
+    "material_cost": "33697920",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "33697920"
+  },
+  {
+    "name": "PROJ-0020-A.12.3. Team Building",
+    "cost_breakdown": "A.12.3. Team Building",
+    "material_cost": "80000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "80000"
+  },
+  {
+    "name": "PROJ-0020-A.13.1. Weekly Coordination Meeting",
+    "cost_breakdown": "A.13.1. Weekly Coordination Meeting",
+    "material_cost": "144000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "144000"
+  },
+  {
+    "name": "PROJ-0020-A.13.2. Monthly Management Meeting",
+    "cost_breakdown": "A.13.2. Monthly Management Meeting",
+    "material_cost": "240000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "240000"
+  },
+  {
+    "name": "PROJ-0020-A.14.3. Others (please specify)",
+    "cost_breakdown": "A.14.3. Others (please specify)",
+    "material_cost": "",
+    "labor_cost": "",
+    "equipment_cost": "3000000",
+    "other_cost": "",
+    "total_cost": "3000000"
+  },
+  {
+    "name": "PROJ-0020-A.2.1. CARI (100%)",
+    "cost_breakdown": "A.2.1. CARI (100%)",
+    "material_cost": "3193320",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "3193320"
+  },
+  {
+    "name": "PROJ-0020-A.2.2. Performance Bond",
+    "cost_breakdown": "A.2.2. Performance Bond",
+    "material_cost": "2634664",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "2634664"
+  },
+  {
+    "name": "PROJ-0020-A.2.3. Surety Bond",
+    "cost_breakdown": "A.2.3. Surety Bond",
+    "material_cost": "958196",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "958196"
+  },
+  {
+    "name": "PROJ-0020-A.2.4. Guarantee Bond (10%)",
+    "cost_breakdown": "A.2.4. Guarantee Bond (10%)",
+    "material_cost": "399540",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "399540"
+  },
+  {
+    "name": "PROJ-0020-A.3.3. Building Permit",
+    "cost_breakdown": "A.3.3. Building Permit",
+    "material_cost": "120000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "120000"
+  },
+  {
+    "name": "PROJ-0020-A.3.5. Occupancy Permit",
+    "cost_breakdown": "A.3.5. Occupancy Permit",
+    "material_cost": "6136885.8",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "6136885.8"
+  },
+  {
+    "name": "PROJ-0020-A.4.1.1. On Site : Site Office",
+    "cost_breakdown": "A.4.1.1. On Site : Site Office",
+    "material_cost": "1014156",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1014156"
+  },
+  {
+    "name": "PROJ-0020-A.4.1.2. Offsite : Manpower Barracks",
+    "cost_breakdown": "A.4.1.2. Offsite : Manpower Barracks",
+    "material_cost": "1800000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1800000"
+  },
+  {
+    "name": "PROJ-0020-A.4.2.1. Staff House",
+    "cost_breakdown": "A.4.2.1. Staff House",
+    "material_cost": "360000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "360000"
+  },
+  {
+    "name": "PROJ-0020-A.4.2.2. Mancamp",
+    "cost_breakdown": "A.4.2.2. Mancamp",
+    "material_cost": "3775356",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "3775356"
+  },
+  {
+    "name": "PROJ-0020-A.4.4.1. Computers, Printers, Scanner",
+    "cost_breakdown": "A.4.4.1. Computers, Printers, Scanner",
+    "material_cost": "160000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "160000"
+  },
+  {
+    "name": "PROJ-0020-A.4.5. Office Supplies",
+    "cost_breakdown": "A.4.5. Office Supplies",
+    "material_cost": "240000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "240000"
+  },
+  {
+    "name": "PROJ-0020-A.4.8. Potable Water",
+    "cost_breakdown": "A.4.8. Potable Water",
+    "material_cost": "67200",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "67200"
+  },
+  {
+    "name": "PROJ-0020-A.5.2. Rental (off-site)",
+    "cost_breakdown": "A.5.2. Rental (off-site)",
+    "material_cost": "204000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "204000"
+  },
+  {
+    "name": "PROJ-0020-A.6.1.1. Materials",
+    "cost_breakdown": "A.6.1.1. Materials",
+    "material_cost": "4668000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "4668000"
+  },
+  {
+    "name": "PROJ-0020-A.6.2.2. Labor",
+    "cost_breakdown": "A.6.2.2. Labor",
+    "material_cost": "1932000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1932000"
+  },
+  {
+    "name": "PROJ-0020-A.6.3.1. Materials",
+    "cost_breakdown": "A.6.3.1. Materials",
+    "material_cost": "178200",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "178200"
+  },
+  {
+    "name": "PROJ-0020-A.7.1.2. Labor",
+    "cost_breakdown": "A.7.1.2. Labor",
+    "material_cost": "60000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "60000"
+  },
+  {
+    "name": "PROJ-0020-A.7.2.2. Labor",
+    "cost_breakdown": "A.7.2.2. Labor",
+    "material_cost": "48000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "48000"
+  },
+  {
+    "name": "PROJ-0020-A.7.3.1. Materials",
+    "cost_breakdown": "A.7.3.1. Materials",
+    "material_cost": "178000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "178000"
+  },
+  {
+    "name": "PROJ-0020-A.8.1. Subcontractor",
+    "cost_breakdown": "A.8.1. Subcontractor",
+    "material_cost": "132000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "132000"
+  },
+  {
+    "name": "PROJ-0020-A.8.2.1. Issuance of FCD Plans from Designer",
+    "cost_breakdown": "A.8.2.1. Issuance of FCD Plans from Designer",
+    "material_cost": "432000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "432000"
+  },
+  {
+    "name": "PROJ-0020-A.8.2.2. BIM",
+    "cost_breakdown": "A.8.2.2. BIM",
+    "material_cost": "720000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "720000"
+  },
+  {
+    "name": "PROJ-0020-A.9.1. Security",
+    "cost_breakdown": "A.9.1. Security",
+    "material_cost": "1944000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1944000"
+  },
+  {
+    "name": "PROJ-0020-A.9.3.2. Garbage Disposal",
+    "cost_breakdown": "A.9.3.2. Garbage Disposal",
+    "material_cost": "1488000",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1488000"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.1. CHB 6\"",
+    "cost_breakdown": "D.1.1.1. CHB 6\"",
+    "material_cost": "1744201.25",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1744201.25"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.2. Cement",
+    "cost_breakdown": "D.1.1.2. Cement",
+    "material_cost": "27511852.8",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "27511852.8"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.3. White Sand",
+    "cost_breakdown": "D.1.1.3. White Sand",
+    "material_cost": "6790731.6",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "6790731.6"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.4. Gravel",
+    "cost_breakdown": "D.1.1.4. Gravel",
+    "material_cost": "718745.4",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "718745.4"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.5. CHB 4\"",
+    "cost_breakdown": "D.1.1.5. CHB 4\"",
+    "material_cost": "9664028.45",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "9664028.45"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.6. Phenolic Plywood",
+    "cost_breakdown": "D.1.1.6. Phenolic Plywood",
+    "material_cost": "19853680",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "19853680"
+  },
+  {
+    "name": "PROJ-0020-D.1.1.7. Vibro Sand",
+    "cost_breakdown": "D.1.1.7. Vibro Sand",
+    "material_cost": "15030862",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "15030862"
+  },
+  {
+    "name": "PROJ-0020-D.1.3. Subcontractor",
+    "cost_breakdown": "D.1.3. Subcontractor",
+    "material_cost": "",
+    "labor_cost": "47006427",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "47006427"
+  },
+  {
+    "name": "PROJ-0020-D.1.4. Others (Please Specify)",
+    "cost_breakdown": "D.1.4. Others (Please Specify)",
+    "material_cost": "70371.84",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "70371.84"
+  },
+  {
+    "name": "PROJ-0020-D.2.3. Subcontractor",
+    "cost_breakdown": "D.2.3. Subcontractor",
+    "material_cost": "",
+    "labor_cost": "5885000",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "5885000"
+  },
+  {
+    "name": "PROJ-0020-D.3.1.2. Tile Adhesive",
+    "cost_breakdown": "D.3.1.2. Tile Adhesive",
+    "material_cost": "4563840.4",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "4563840.4"
+  },
+  {
+    "name": "PROJ-0020-D.3.1.3. Tile Grout",
+    "cost_breakdown": "D.3.1.3. Tile Grout",
+    "material_cost": "733474.35",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "733474.35"
+  },
+  {
+    "name": "PROJ-0020-D.3.3. Subcontractor",
+    "cost_breakdown": "D.3.3. Subcontractor",
+    "material_cost": "",
+    "labor_cost": "4563840.4",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "4563840.4"
+  },
+  {
+    "name": "PROJ-0020-D.4.1.2. Tile Adhesive",
+    "cost_breakdown": "D.4.1.2. Tile Adhesive",
+    "material_cost": "3210340",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "3210340"
+  },
+  {
+    "name": "PROJ-0020-D.4.1.3. Tile Grout",
+    "cost_breakdown": "D.4.1.3. Tile Grout",
+    "material_cost": "515947.5",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "515947.5"
+  },
+  {
+    "name": "PROJ-0020-D.4.3. Subcontractor",
+    "cost_breakdown": "D.4.3. Subcontractor",
+    "material_cost": "",
+    "labor_cost": "3210340",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "3210340"
+  },
+  {
+    "name": "PROJ-0020-D.4.4. Others (Please Specify)",
+    "cost_breakdown": "D.4.4. Others (Please Specify)",
+    "material_cost": "",
+    "labor_cost": "76709.9",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "76709.9"
+  },
+  {
+    "name": "PROJ-0020-D.5.3. Subcontractor",
+    "cost_breakdown": "D.5.3. Subcontractor",
+    "material_cost": "",
+    "labor_cost": "13735410",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "13735410"
+  },
+  {
+    "name": "PROJ-0020-E.1. MATERIALS",
+    "cost_breakdown": "E.1. MATERIALS",
+    "material_cost": "54520500.29",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "54520500.29"
+  },
+  {
+    "name": "PROJ-0020-E.4. OTHERS (PLEASE SPECIFY)",
+    "cost_breakdown": "E.4. OTHERS (PLEASE SPECIFY)",
+    "material_cost": "14732183.74",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "14732183.74"
+  },
+  {
+    "name": "PROJ-0020-F.1. MATERIALS",
+    "cost_breakdown": "F.1. MATERIALS",
+    "material_cost": "37183690.55",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "37183690.55"
+  },
+  {
+    "name": "PROJ-0020-F.4. OTHERS (PLEASE SPECIFY)",
+    "cost_breakdown": "F.4. OTHERS (PLEASE SPECIFY)",
+    "material_cost": "248400",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "248400"
+  },
+  {
+    "name": "PROJ-0020-G.1. MATERIALS",
+    "cost_breakdown": "G.1. MATERIALS",
+    "material_cost": "1762079.3",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "1762079.3"
+  },
+  {
+    "name": "PROJ-0020-G.4. OTHERS (PLEASE SPECIFY)",
+    "cost_breakdown": "G.4. OTHERS (PLEASE SPECIFY)",
+    "material_cost": "19291515.9",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "19291515.9"
+  },
+  {
+    "name": "PROJ-0020-H.3. SUBCONTRACTOR",
+    "cost_breakdown": "H.3. SUBCONTRACTOR",
+    "material_cost": "",
+    "labor_cost": "19509433.51",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "19509433.51"
+  },
+  {
+    "name": "PROJ-0020-H.4. OTHERS (PLEASE SPECIFY)",
+    "cost_breakdown": "H.4. OTHERS (PLEASE SPECIFY)",
+    "material_cost": "2023460.47",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "2023460.47"
+  },
+  {
+    "name": "PROJ-0020-I.1. MATERIALS",
+    "cost_breakdown": "I.1. MATERIALS",
+    "material_cost": "120676269.34",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "120676269.34"
+  },
+  {
+    "name": "PROJ-0020-I.4. OTHERS (PLEASE SPECIFY)",
+    "cost_breakdown": "I.4. OTHERS (PLEASE SPECIFY)",
+    "material_cost": "9600001",
+    "labor_cost": "",
+    "equipment_cost": "",
+    "other_cost": "",
+    "total_cost": "9600001"
+  }
+]
