@@ -456,7 +456,7 @@ async function loadCSRForProject(projectId){
     const[tree,bgtList,ctcList,csrList]=await Promise.all([
       loadPCBTree(),
       erpFetch(`/api/erp?resource=Budgetary%20Cost&limit=500&filters=${projFilter}&fields=${costFields}`),
-      erpFetch(`/api/erp?resource=Cost%20to%20Complete&limit=500&filters=${projFilter}&fields=${costFields}`).catch(e=>{ctcError=e.message;return [];}),
+      erpFetch(`/api/erp?resource=Cost%20To%20Complete&limit=500&filters=${projFilter}&fields=${costFields}`).catch(e=>{ctcError=e.message;return [];}),
       erpFetch(`/api/erp?resource=Cost%20Status%20Report&limit=500&filters=${projFilter}&fields=${costFields}`).catch(()=>[])
     ]);
     const bmap={};
